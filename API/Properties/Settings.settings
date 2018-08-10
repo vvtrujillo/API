@@ -1,0 +1,60 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="API.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="VersionSistema" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1.0.2</Value>
+    </Setting>
+    <Setting Name="ServidorSQLMaestroEntidades" Type="System.String" Scope="User">
+      <Value Profile="(Default)">MOLINO14\MOLINO14</Value>
+    </Setting>
+    <Setting Name="ServidorSQLCentral" Type="System.String" Scope="User">
+      <Value Profile="(Default)">MOLINO61\CULTIVODES</Value>
+    </Setting>
+    <Setting Name="RutaProgramaAcceso" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="PrivilegioAccesoMenu" Type="System.String" Scope="User">
+      <Value Profile="(Default)">b</Value>
+    </Setting>
+    <Setting Name="PrivilegioAccesoFuncionalidad" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Perfil" Type="System.String" Scope="User">
+      <Value Profile="(Default)">perfil</Value>
+    </Setting>
+    <Setting Name="NombreCorto" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Nombre" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Login" Type="System.String" Scope="User">
+      <Value Profile="(Default)">vvalenzuela</Value>
+    </Setting>
+    <Setting Name="IDSistema" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="IDPerfil" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="ColorFondoSinFoco" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">224, 230, 231</Value>
+    </Setting>
+    <Setting Name="ColorFondoConFoco" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">White</Value>
+    </Setting>
+    <Setting Name="Cargo" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="BaseSQLMaestroEntidades" Type="System.String" Scope="User">
+      <Value Profile="(Default)">MaestroEntidades</Value>
+    </Setting>
+    <Setting Name="BaseSQLCentral" Type="System.String" Scope="User">
+      <Value Profile="(Default)">AdministracionPlataformaInformatica</Value>
+    </Setting>
+    <Setting Name="BaseDeDatosCentral" Type="System.String" Scope="User">
+      <Value Profile="(Default)">AdministracionPlataformaInformatica</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
