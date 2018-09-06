@@ -93,9 +93,14 @@ namespace API.Formularios.Maestros
 
             tsbCancelarUsu.Visible = false;
             tsbGrabarUsu.Visible = false;
+            tsbNuevoUsu.Visible = true;
+            tsEditarUsu.Visible = true;
 
             vaciosComboBox = false;
             vaciosTextBox = false;
+
+            dgListaUsuarios.Enabled = false;
+
         }
 
         private void PrepararDataGrid(DataGridView pDataGrid)
@@ -289,6 +294,7 @@ namespace API.Formularios.Maestros
             cmbEmpresa.Enabled = true;
             tsbCancelarUsu.Visible = true;
             tsbGrabarUsu.Visible = true;
+            tsEditarUsu.Visible = false;
         }
 
         private void revisaTextBoxVacios()
@@ -313,6 +319,24 @@ namespace API.Formularios.Maestros
             {
                 vaciosComboBox = false;
             }
+        }
+
+        private void tsEditarUsu_Click(object sender, EventArgs e)
+        {
+            dgListaUsuarios.Enabled = true;
+            tsbCancelarUsu.Visible = true;
+            tsbNuevoUsu.Visible = false;
+            tsbGrabarUsu.Visible = true;
+        }
+
+        private void dgListaUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtNombre.Text = dgListaUsuarios.SelectedCells[Nombre].Value.ToString();
+            txtApellido.Text = dgListaUsuarios.SelectedCells[Apellido].Value.ToString();
+            txtNombreUser.Text = dgListaUsuarios.SelectedCells[NombreUsuario].Value.ToString();
+            txtCargo.Text = dgListaUsuarios.SelectedCells[CargoUsuario].Value.ToString();
+            txtEmail.Text = dgListaUsuarios.SelectedCells[EmailUsuario].Value.ToString();
+            txtTelefono.Text = dgListaUsuarios.SelectedCells[TelefonoUsuario].Value.ToString();
         }
     }
 }
