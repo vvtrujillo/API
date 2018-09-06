@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fActivo));
             this.gbSoftware = new System.Windows.Forms.GroupBox();
             this.cmbTipoSW = new System.Windows.Forms.ComboBox();
             this.lblTipoSW = new System.Windows.Forms.Label();
@@ -36,25 +35,12 @@
             this.cmbMarcaSW = new System.Windows.Forms.ComboBox();
             this.lblNombreProdSW = new System.Windows.Forms.Label();
             this.txtNombrePrdSW = new System.Windows.Forms.TextBox();
-            this.lblEstadoSW = new System.Windows.Forms.Label();
-            this.cmbEstadoSW = new System.Windows.Forms.ComboBox();
             this.lblModelo = new System.Windows.Forms.Label();
             this.cmbModeloHW = new System.Windows.Forms.ComboBox();
             this.cmbMarcaHW = new System.Windows.Forms.ComboBox();
             this.lblMarca = new System.Windows.Forms.Label();
             this.lblNombreProd = new System.Windows.Forms.Label();
             this.txtNombreProdHW = new System.Windows.Forms.TextBox();
-            this.lblEstado = new System.Windows.Forms.Label();
-            this.cmbEstadoActHW = new System.Windows.Forms.ComboBox();
-            this.tsActivo = new System.Windows.Forms.ToolStrip();
-            this.tsbCerrarActivo = new System.Windows.Forms.ToolStripButton();
-            this.tsbEliminarActivo = new System.Windows.Forms.ToolStripButton();
-            this.tsbImprimirActivo = new System.Windows.Forms.ToolStripButton();
-            this.tsEditarActivo = new System.Windows.Forms.ToolStripButton();
-            this.tsbGrabarActivo = new System.Windows.Forms.ToolStripButton();
-            this.tsbNuevoActivo = new System.Windows.Forms.ToolStripButton();
-            this.tslActivoNombreAct = new System.Windows.Forms.ToolStripLabel();
-            this.tsbCancelarActivo = new System.Windows.Forms.ToolStripButton();
             this.gbInsumos = new System.Windows.Forms.GroupBox();
             this.cmbFacturaIns = new System.Windows.Forms.ComboBox();
             this.lblFacturaIns = new System.Windows.Forms.Label();
@@ -145,10 +131,15 @@
             this.lblMarcaInsumo = new System.Windows.Forms.Label();
             this.lblNomProdInsumo = new System.Windows.Forms.Label();
             this.txtNomProdInsumo = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.cmbEstInsumo = new System.Windows.Forms.ComboBox();
+            this.tsActivo = new System.Windows.Forms.ToolStrip();
+            this.tsbCerrarActivo = new System.Windows.Forms.ToolStripButton();
+            this.tsbImprimirActivo = new System.Windows.Forms.ToolStripButton();
+            this.tsEditarActivo = new System.Windows.Forms.ToolStripButton();
+            this.tsbGrabarActivo = new System.Windows.Forms.ToolStripButton();
+            this.tsbNuevoActivo = new System.Windows.Forms.ToolStripButton();
+            this.tsbCancelActivo = new System.Windows.Forms.ToolStripButton();
+            this.tslActivoNombreAct = new System.Windows.Forms.ToolStripLabel();
             this.gbSoftware.SuspendLayout();
-            this.tsActivo.SuspendLayout();
             this.gbInsumos.SuspendLayout();
             this.tbContenedorAct.SuspendLayout();
             this.tbPageSW.SuspendLayout();
@@ -161,6 +152,7 @@
             this.tbpMonitorHW.SuspendLayout();
             this.tbpComunHW.SuspendLayout();
             this.tbPageInsumo.SuspendLayout();
+            this.tsActivo.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbSoftware
@@ -171,8 +163,6 @@
             this.gbSoftware.Controls.Add(this.cmbMarcaSW);
             this.gbSoftware.Controls.Add(this.lblNombreProdSW);
             this.gbSoftware.Controls.Add(this.txtNombrePrdSW);
-            this.gbSoftware.Controls.Add(this.lblEstadoSW);
-            this.gbSoftware.Controls.Add(this.cmbEstadoSW);
             this.gbSoftware.Location = new System.Drawing.Point(6, 6);
             this.gbSoftware.Name = "gbSoftware";
             this.gbSoftware.Size = new System.Drawing.Size(530, 122);
@@ -188,7 +178,7 @@
             "Hardware",
             "Software",
             "Insumo"});
-            this.cmbTipoSW.Location = new System.Drawing.Point(311, 78);
+            this.cmbTipoSW.Location = new System.Drawing.Point(306, 49);
             this.cmbTipoSW.Name = "cmbTipoSW";
             this.cmbTipoSW.Size = new System.Drawing.Size(131, 25);
             this.cmbTipoSW.TabIndex = 15;
@@ -197,7 +187,7 @@
             // lblTipoSW
             // 
             this.lblTipoSW.AutoSize = true;
-            this.lblTipoSW.Location = new System.Drawing.Point(271, 81);
+            this.lblTipoSW.Location = new System.Drawing.Point(266, 52);
             this.lblTipoSW.Name = "lblTipoSW";
             this.lblTipoSW.Size = new System.Drawing.Size(34, 17);
             this.lblTipoSW.TabIndex = 14;
@@ -206,7 +196,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(52, 81);
+            this.label1.Location = new System.Drawing.Point(53, 52);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(68, 17);
             this.label1.TabIndex = 13;
@@ -220,7 +210,7 @@
             "Hardware",
             "Software",
             "Insumo"});
-            this.cmbMarcaSW.Location = new System.Drawing.Point(126, 78);
+            this.cmbMarcaSW.Location = new System.Drawing.Point(126, 49);
             this.cmbMarcaSW.Name = "cmbMarcaSW";
             this.cmbMarcaSW.Size = new System.Drawing.Size(101, 25);
             this.cmbMarcaSW.TabIndex = 7;
@@ -229,7 +219,7 @@
             // lblNombreProdSW
             // 
             this.lblNombreProdSW.AutoSize = true;
-            this.lblNombreProdSW.Location = new System.Drawing.Point(0, 50);
+            this.lblNombreProdSW.Location = new System.Drawing.Point(5, 21);
             this.lblNombreProdSW.Name = "lblNombreProdSW";
             this.lblNombreProdSW.Size = new System.Drawing.Size(114, 17);
             this.lblNombreProdSW.TabIndex = 5;
@@ -237,38 +227,15 @@
             // 
             // txtNombrePrdSW
             // 
-            this.txtNombrePrdSW.Location = new System.Drawing.Point(126, 47);
+            this.txtNombrePrdSW.Location = new System.Drawing.Point(126, 18);
             this.txtNombrePrdSW.Name = "txtNombrePrdSW";
-            this.txtNombrePrdSW.Size = new System.Drawing.Size(238, 25);
+            this.txtNombrePrdSW.Size = new System.Drawing.Size(311, 25);
             this.txtNombrePrdSW.TabIndex = 4;
-            // 
-            // lblEstadoSW
-            // 
-            this.lblEstadoSW.AutoSize = true;
-            this.lblEstadoSW.Location = new System.Drawing.Point(59, 23);
-            this.lblEstadoSW.Name = "lblEstadoSW";
-            this.lblEstadoSW.Size = new System.Drawing.Size(48, 17);
-            this.lblEstadoSW.TabIndex = 3;
-            this.lblEstadoSW.Text = "Estado";
-            // 
-            // cmbEstadoSW
-            // 
-            this.cmbEstadoSW.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbEstadoSW.FormattingEnabled = true;
-            this.cmbEstadoSW.Items.AddRange(new object[] {
-            "Hardware",
-            "Software",
-            "Insumo"});
-            this.cmbEstadoSW.Location = new System.Drawing.Point(126, 16);
-            this.cmbEstadoSW.Name = "cmbEstadoSW";
-            this.cmbEstadoSW.Size = new System.Drawing.Size(101, 25);
-            this.cmbEstadoSW.TabIndex = 3;
-            this.cmbEstadoSW.SelectionChangeCommitted += new System.EventHandler(this.cmbEstadoSW_SelectionChangeCommitted);
             // 
             // lblModelo
             // 
             this.lblModelo.AutoSize = true;
-            this.lblModelo.Location = new System.Drawing.Point(71, 155);
+            this.lblModelo.Location = new System.Drawing.Point(71, 102);
             this.lblModelo.Name = "lblModelo";
             this.lblModelo.Size = new System.Drawing.Size(54, 17);
             this.lblModelo.TabIndex = 9;
@@ -282,7 +249,7 @@
             "Hardware",
             "Software",
             "Insumo"});
-            this.cmbModeloHW.Location = new System.Drawing.Point(131, 152);
+            this.cmbModeloHW.Location = new System.Drawing.Point(131, 99);
             this.cmbModeloHW.Name = "cmbModeloHW";
             this.cmbModeloHW.Size = new System.Drawing.Size(143, 25);
             this.cmbModeloHW.TabIndex = 8;
@@ -296,7 +263,7 @@
             "Hardware",
             "Software",
             "Insumo"});
-            this.cmbMarcaHW.Location = new System.Drawing.Point(131, 121);
+            this.cmbMarcaHW.Location = new System.Drawing.Point(131, 68);
             this.cmbMarcaHW.Name = "cmbMarcaHW";
             this.cmbMarcaHW.Size = new System.Drawing.Size(143, 25);
             this.cmbMarcaHW.TabIndex = 7;
@@ -305,7 +272,7 @@
             // lblMarca
             // 
             this.lblMarca.AutoSize = true;
-            this.lblMarca.Location = new System.Drawing.Point(80, 124);
+            this.lblMarca.Location = new System.Drawing.Point(80, 71);
             this.lblMarca.Name = "lblMarca";
             this.lblMarca.Size = new System.Drawing.Size(45, 17);
             this.lblMarca.TabIndex = 6;
@@ -314,7 +281,7 @@
             // lblNombreProd
             // 
             this.lblNombreProd.AutoSize = true;
-            this.lblNombreProd.Location = new System.Drawing.Point(11, 62);
+            this.lblNombreProd.Location = new System.Drawing.Point(11, 9);
             this.lblNombreProd.Name = "lblNombreProd";
             this.lblNombreProd.Size = new System.Drawing.Size(114, 17);
             this.lblNombreProd.TabIndex = 5;
@@ -322,161 +289,10 @@
             // 
             // txtNombreProdHW
             // 
-            this.txtNombreProdHW.Location = new System.Drawing.Point(131, 59);
+            this.txtNombreProdHW.Location = new System.Drawing.Point(131, 6);
             this.txtNombreProdHW.Name = "txtNombreProdHW";
             this.txtNombreProdHW.Size = new System.Drawing.Size(228, 25);
             this.txtNombreProdHW.TabIndex = 4;
-            // 
-            // lblEstado
-            // 
-            this.lblEstado.AutoSize = true;
-            this.lblEstado.Location = new System.Drawing.Point(77, 31);
-            this.lblEstado.Name = "lblEstado";
-            this.lblEstado.Size = new System.Drawing.Size(48, 17);
-            this.lblEstado.TabIndex = 3;
-            this.lblEstado.Text = "Estado";
-            // 
-            // cmbEstadoActHW
-            // 
-            this.cmbEstadoActHW.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbEstadoActHW.FormattingEnabled = true;
-            this.cmbEstadoActHW.Items.AddRange(new object[] {
-            "Hardware",
-            "Software",
-            "Insumo"});
-            this.cmbEstadoActHW.Location = new System.Drawing.Point(131, 28);
-            this.cmbEstadoActHW.Name = "cmbEstadoActHW";
-            this.cmbEstadoActHW.Size = new System.Drawing.Size(143, 25);
-            this.cmbEstadoActHW.TabIndex = 3;
-            this.cmbEstadoActHW.SelectionChangeCommitted += new System.EventHandler(this.cmbEstadoActHW_SelectionChangeCommitted);
-            // 
-            // tsActivo
-            // 
-            this.tsActivo.BackColor = System.Drawing.Color.Transparent;
-            this.tsActivo.BackgroundImage = global::API.Properties.Resources.BarraBotones;
-            this.tsActivo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.tsActivo.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbCerrarActivo,
-            this.tsbEliminarActivo,
-            this.tsbImprimirActivo,
-            this.tsEditarActivo,
-            this.tsbGrabarActivo,
-            this.tsbNuevoActivo,
-            this.tslActivoNombreAct,
-            this.tsbCancelarActivo});
-            this.tsActivo.Location = new System.Drawing.Point(0, 0);
-            this.tsActivo.Name = "tsActivo";
-            this.tsActivo.Size = new System.Drawing.Size(825, 25);
-            this.tsActivo.TabIndex = 64;
-            this.tsActivo.Text = "toolStrip1";
-            this.tsActivo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tsActivo_MouseDown);
-            // 
-            // tsbCerrarActivo
-            // 
-            this.tsbCerrarActivo.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbCerrarActivo.AutoSize = false;
-            this.tsbCerrarActivo.Font = new System.Drawing.Font("Verdana", 9.75F);
-            this.tsbCerrarActivo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.tsbCerrarActivo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tsbCerrarActivo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbCerrarActivo.Name = "tsbCerrarActivo";
-            this.tsbCerrarActivo.Size = new System.Drawing.Size(70, 22);
-            this.tsbCerrarActivo.Text = "Cerrar";
-            this.tsbCerrarActivo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.tsbCerrarActivo.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.tsbCerrarActivo.Click += new System.EventHandler(this.tsbCerrar_Click);
-            // 
-            // tsbEliminarActivo
-            // 
-            this.tsbEliminarActivo.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbEliminarActivo.AutoSize = false;
-            this.tsbEliminarActivo.Enabled = false;
-            this.tsbEliminarActivo.Font = new System.Drawing.Font("Verdana", 9.75F);
-            this.tsbEliminarActivo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.tsbEliminarActivo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tsbEliminarActivo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbEliminarActivo.Name = "tsbEliminarActivo";
-            this.tsbEliminarActivo.Size = new System.Drawing.Size(80, 22);
-            this.tsbEliminarActivo.Text = "Eliminar";
-            this.tsbEliminarActivo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.tsbEliminarActivo.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            // 
-            // tsbImprimirActivo
-            // 
-            this.tsbImprimirActivo.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbImprimirActivo.AutoSize = false;
-            this.tsbImprimirActivo.Font = new System.Drawing.Font("Verdana", 9.75F);
-            this.tsbImprimirActivo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.tsbImprimirActivo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tsbImprimirActivo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbImprimirActivo.Name = "tsbImprimirActivo";
-            this.tsbImprimirActivo.Size = new System.Drawing.Size(80, 22);
-            this.tsbImprimirActivo.Text = "Imprimir";
-            this.tsbImprimirActivo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.tsbImprimirActivo.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            // 
-            // tsEditarActivo
-            // 
-            this.tsEditarActivo.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsEditarActivo.AutoSize = false;
-            this.tsEditarActivo.Font = new System.Drawing.Font("Verdana", 9.75F);
-            this.tsEditarActivo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.tsEditarActivo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tsEditarActivo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsEditarActivo.Name = "tsEditarActivo";
-            this.tsEditarActivo.Size = new System.Drawing.Size(80, 22);
-            this.tsEditarActivo.Text = "Editar";
-            this.tsEditarActivo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.tsEditarActivo.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            // 
-            // tsbGrabarActivo
-            // 
-            this.tsbGrabarActivo.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbGrabarActivo.AutoSize = false;
-            this.tsbGrabarActivo.Font = new System.Drawing.Font("Verdana", 9.75F);
-            this.tsbGrabarActivo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.tsbGrabarActivo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tsbGrabarActivo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbGrabarActivo.Name = "tsbGrabarActivo";
-            this.tsbGrabarActivo.Size = new System.Drawing.Size(80, 22);
-            this.tsbGrabarActivo.Text = "Grabar";
-            this.tsbGrabarActivo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.tsbGrabarActivo.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.tsbGrabarActivo.Click += new System.EventHandler(this.tsbGrabar_Click);
-            // 
-            // tsbNuevoActivo
-            // 
-            this.tsbNuevoActivo.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbNuevoActivo.AutoSize = false;
-            this.tsbNuevoActivo.Font = new System.Drawing.Font("Verdana", 9.75F);
-            this.tsbNuevoActivo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.tsbNuevoActivo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tsbNuevoActivo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbNuevoActivo.Name = "tsbNuevoActivo";
-            this.tsbNuevoActivo.Size = new System.Drawing.Size(80, 22);
-            this.tsbNuevoActivo.Text = "Nuevo";
-            this.tsbNuevoActivo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.tsbNuevoActivo.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            // 
-            // tslActivoNombreAct
-            // 
-            this.tslActivoNombreAct.Font = new System.Drawing.Font("Verdana", 9.75F);
-            this.tslActivoNombreAct.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.tslActivoNombreAct.Name = "tslActivoNombreAct";
-            this.tslActivoNombreAct.Size = new System.Drawing.Size(59, 22);
-            this.tslActivoNombreAct.Text = "ACTIVO";
-            // 
-            // tsbCancelarActivo
-            // 
-            this.tsbCancelarActivo.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbCancelarActivo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tsbCancelarActivo.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tsbCancelarActivo.Image = ((System.Drawing.Image)(resources.GetObject("tsbCancelarActivo.Image")));
-            this.tsbCancelarActivo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbCancelarActivo.Name = "tsbCancelarActivo";
-            this.tsbCancelarActivo.Size = new System.Drawing.Size(69, 22);
-            this.tsbCancelarActivo.Text = "Cancelar";
-            this.tsbCancelarActivo.Click += new System.EventHandler(this.tsbCancelar_Click);
             // 
             // gbInsumos
             // 
@@ -583,7 +399,7 @@
             this.tbContenedorAct.Location = new System.Drawing.Point(23, 52);
             this.tbContenedorAct.Name = "tbContenedorAct";
             this.tbContenedorAct.SelectedIndex = 0;
-            this.tbContenedorAct.Size = new System.Drawing.Size(781, 518);
+            this.tbContenedorAct.Size = new System.Drawing.Size(635, 502);
             this.tbContenedorAct.TabIndex = 67;
             // 
             // tbPageSW
@@ -594,7 +410,7 @@
             this.tbPageSW.Location = new System.Drawing.Point(4, 26);
             this.tbPageSW.Name = "tbPageSW";
             this.tbPageSW.Padding = new System.Windows.Forms.Padding(3);
-            this.tbPageSW.Size = new System.Drawing.Size(773, 488);
+            this.tbPageSW.Size = new System.Drawing.Size(627, 472);
             this.tbPageSW.TabIndex = 0;
             this.tbPageSW.Text = "Software";
             this.tbPageSW.UseVisualStyleBackColor = true;
@@ -751,9 +567,8 @@
             "Insumo"});
             this.cmbAnoSW.Location = new System.Drawing.Point(315, 55);
             this.cmbAnoSW.Name = "cmbAnoSW";
-            this.cmbAnoSW.Size = new System.Drawing.Size(50, 25);
+            this.cmbAnoSW.Size = new System.Drawing.Size(64, 25);
             this.cmbAnoSW.TabIndex = 14;
-            this.cmbAnoSW.DropDown += new System.EventHandler(this.cmbAnoSW_DropDown);
             this.cmbAnoSW.SelectionChangeCommitted += new System.EventHandler(this.cmbAnoSW_SelectionChangeCommitted);
             // 
             // lblAnoSW
@@ -780,6 +595,7 @@
             this.txtCantidadSW.Name = "txtCantidadSW";
             this.txtCantidadSW.Size = new System.Drawing.Size(50, 25);
             this.txtCantidadSW.TabIndex = 19;
+            this.txtCantidadSW.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCantidadSW_KeyPress);
             // 
             // lblVersionSW
             // 
@@ -819,11 +635,11 @@
             // lblLicenciaSW
             // 
             this.lblLicenciaSW.AutoSize = true;
-            this.lblLicenciaSW.Location = new System.Drawing.Point(68, 27);
+            this.lblLicenciaSW.Location = new System.Drawing.Point(21, 27);
             this.lblLicenciaSW.Name = "lblLicenciaSW";
-            this.lblLicenciaSW.Size = new System.Drawing.Size(53, 17);
+            this.lblLicenciaSW.Size = new System.Drawing.Size(100, 17);
             this.lblLicenciaSW.TabIndex = 12;
-            this.lblLicenciaSW.Text = "Licencia";
+            this.lblLicenciaSW.Text = "Código Licencia";
             // 
             // tbPageHW
             // 
@@ -836,9 +652,7 @@
             this.tbPageHW.Controls.Add(this.txtNumSerie);
             this.tbPageHW.Controls.Add(this.cmbTipoHW);
             this.tbPageHW.Controls.Add(this.lblTipoHW);
-            this.tbPageHW.Controls.Add(this.cmbEstadoActHW);
             this.tbPageHW.Controls.Add(this.txtNombreProdHW);
-            this.tbPageHW.Controls.Add(this.lblEstado);
             this.tbPageHW.Controls.Add(this.lblNombreProd);
             this.tbPageHW.Controls.Add(this.lblModelo);
             this.tbPageHW.Controls.Add(this.lblMarca);
@@ -847,7 +661,7 @@
             this.tbPageHW.Location = new System.Drawing.Point(4, 26);
             this.tbPageHW.Name = "tbPageHW";
             this.tbPageHW.Padding = new System.Windows.Forms.Padding(3);
-            this.tbPageHW.Size = new System.Drawing.Size(773, 488);
+            this.tbPageHW.Size = new System.Drawing.Size(627, 472);
             this.tbPageHW.TabIndex = 1;
             this.tbPageHW.Text = "Hardware";
             this.tbPageHW.UseVisualStyleBackColor = true;
@@ -858,7 +672,7 @@
             this.tcHardwareTipo.Controls.Add(this.tbImprHW);
             this.tcHardwareTipo.Controls.Add(this.tbpMonitorHW);
             this.tcHardwareTipo.Controls.Add(this.tbpComunHW);
-            this.tcHardwareTipo.Location = new System.Drawing.Point(33, 255);
+            this.tcHardwareTipo.Location = new System.Drawing.Point(33, 218);
             this.tcHardwareTipo.Name = "tcHardwareTipo";
             this.tcHardwareTipo.SelectedIndex = 0;
             this.tcHardwareTipo.Size = new System.Drawing.Size(546, 218);
@@ -1150,10 +964,6 @@
             // 
             this.cmbTamanoMonitorHW.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTamanoMonitorHW.FormattingEnabled = true;
-            this.cmbTamanoMonitorHW.Items.AddRange(new object[] {
-            "Hardware",
-            "Software",
-            "Insumo"});
             this.cmbTamanoMonitorHW.Location = new System.Drawing.Point(133, 51);
             this.cmbTamanoMonitorHW.Name = "cmbTamanoMonitorHW";
             this.cmbTamanoMonitorHW.Size = new System.Drawing.Size(143, 25);
@@ -1172,10 +982,6 @@
             // 
             this.cmbTipoMoniHW.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTipoMoniHW.FormattingEnabled = true;
-            this.cmbTipoMoniHW.Items.AddRange(new object[] {
-            "Hardware",
-            "Software",
-            "Insumo"});
             this.cmbTipoMoniHW.Location = new System.Drawing.Point(133, 20);
             this.cmbTipoMoniHW.Name = "cmbTipoMoniHW";
             this.cmbTipoMoniHW.Size = new System.Drawing.Size(143, 25);
@@ -1208,9 +1014,7 @@
             this.cmbCantBocasHW.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCantBocasHW.FormattingEnabled = true;
             this.cmbCantBocasHW.Items.AddRange(new object[] {
-            "Hardware",
-            "Software",
-            "Insumo"});
+            ""});
             this.cmbCantBocasHW.Location = new System.Drawing.Point(146, 49);
             this.cmbCantBocasHW.Name = "cmbCantBocasHW";
             this.cmbCantBocasHW.Size = new System.Drawing.Size(143, 25);
@@ -1229,10 +1033,6 @@
             // 
             this.cmbTipoComHW.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTipoComHW.FormattingEnabled = true;
-            this.cmbTipoComHW.Items.AddRange(new object[] {
-            "Hardware",
-            "Software",
-            "Insumo"});
             this.cmbTipoComHW.Location = new System.Drawing.Point(146, 18);
             this.cmbTipoComHW.Name = "cmbTipoComHW";
             this.cmbTipoComHW.Size = new System.Drawing.Size(143, 25);
@@ -1250,7 +1050,7 @@
             // lblFechaCompraHW
             // 
             this.lblFechaCompraHW.AutoSize = true;
-            this.lblFechaCompraHW.Location = new System.Drawing.Point(33, 221);
+            this.lblFechaCompraHW.Location = new System.Drawing.Point(33, 167);
             this.lblFechaCompraHW.Name = "lblFechaCompraHW";
             this.lblFechaCompraHW.Size = new System.Drawing.Size(92, 17);
             this.lblFechaCompraHW.TabIndex = 32;
@@ -1258,7 +1058,7 @@
             // 
             // dtpFechaCompraHW
             // 
-            this.dtpFechaCompraHW.Location = new System.Drawing.Point(131, 215);
+            this.dtpFechaCompraHW.Location = new System.Drawing.Point(131, 161);
             this.dtpFechaCompraHW.Name = "dtpFechaCompraHW";
             this.dtpFechaCompraHW.Size = new System.Drawing.Size(238, 25);
             this.dtpFechaCompraHW.TabIndex = 31;
@@ -1266,23 +1066,25 @@
             // lblVidaUtil
             // 
             this.lblVidaUtil.AutoSize = true;
-            this.lblVidaUtil.Location = new System.Drawing.Point(302, 186);
+            this.lblVidaUtil.Location = new System.Drawing.Point(291, 133);
             this.lblVidaUtil.Name = "lblVidaUtil";
             this.lblVidaUtil.Size = new System.Drawing.Size(57, 17);
             this.lblVidaUtil.TabIndex = 18;
             this.lblVidaUtil.Text = "Vida Ùtil";
+            this.lblVidaUtil.Visible = false;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(365, 183);
+            this.textBox1.Location = new System.Drawing.Point(354, 130);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(51, 25);
             this.textBox1.TabIndex = 17;
+            this.textBox1.Visible = false;
             // 
             // lblNumSerie
             // 
             this.lblNumSerie.AutoSize = true;
-            this.lblNumSerie.Location = new System.Drawing.Point(36, 186);
+            this.lblNumSerie.Location = new System.Drawing.Point(36, 133);
             this.lblNumSerie.Name = "lblNumSerie";
             this.lblNumSerie.Size = new System.Drawing.Size(89, 17);
             this.lblNumSerie.TabIndex = 16;
@@ -1290,7 +1092,7 @@
             // 
             // txtNumSerie
             // 
-            this.txtNumSerie.Location = new System.Drawing.Point(131, 183);
+            this.txtNumSerie.Location = new System.Drawing.Point(131, 130);
             this.txtNumSerie.Name = "txtNumSerie";
             this.txtNumSerie.Size = new System.Drawing.Size(143, 25);
             this.txtNumSerie.TabIndex = 15;
@@ -1303,7 +1105,7 @@
             "Hardware",
             "Software",
             "Insumo"});
-            this.cmbTipoHW.Location = new System.Drawing.Point(131, 90);
+            this.cmbTipoHW.Location = new System.Drawing.Point(131, 37);
             this.cmbTipoHW.Name = "cmbTipoHW";
             this.cmbTipoHW.Size = new System.Drawing.Size(143, 25);
             this.cmbTipoHW.TabIndex = 11;
@@ -1312,7 +1114,7 @@
             // lblTipoHW
             // 
             this.lblTipoHW.AutoSize = true;
-            this.lblTipoHW.Location = new System.Drawing.Point(30, 93);
+            this.lblTipoHW.Location = new System.Drawing.Point(30, 40);
             this.lblTipoHW.Name = "lblTipoHW";
             this.lblTipoHW.Size = new System.Drawing.Size(95, 17);
             this.lblTipoHW.TabIndex = 10;
@@ -1334,11 +1136,9 @@
             this.tbPageInsumo.Controls.Add(this.lblMarcaInsumo);
             this.tbPageInsumo.Controls.Add(this.lblNomProdInsumo);
             this.tbPageInsumo.Controls.Add(this.txtNomProdInsumo);
-            this.tbPageInsumo.Controls.Add(this.label5);
-            this.tbPageInsumo.Controls.Add(this.cmbEstInsumo);
             this.tbPageInsumo.Location = new System.Drawing.Point(4, 26);
             this.tbPageInsumo.Name = "tbPageInsumo";
-            this.tbPageInsumo.Size = new System.Drawing.Size(773, 488);
+            this.tbPageInsumo.Size = new System.Drawing.Size(627, 472);
             this.tbPageInsumo.TabIndex = 2;
             this.tbPageInsumo.Text = "Insumo";
             this.tbPageInsumo.UseVisualStyleBackColor = true;
@@ -1346,7 +1146,7 @@
             // lblFechaCompraIns
             // 
             this.lblFechaCompraIns.AutoSize = true;
-            this.lblFechaCompraIns.Location = new System.Drawing.Point(36, 236);
+            this.lblFechaCompraIns.Location = new System.Drawing.Point(36, 214);
             this.lblFechaCompraIns.Name = "lblFechaCompraIns";
             this.lblFechaCompraIns.Size = new System.Drawing.Size(92, 17);
             this.lblFechaCompraIns.TabIndex = 27;
@@ -1354,7 +1154,7 @@
             // 
             // dtpFechaCompraIns
             // 
-            this.dtpFechaCompraIns.Location = new System.Drawing.Point(134, 230);
+            this.dtpFechaCompraIns.Location = new System.Drawing.Point(134, 208);
             this.dtpFechaCompraIns.Name = "dtpFechaCompraIns";
             this.dtpFechaCompraIns.Size = new System.Drawing.Size(244, 25);
             this.dtpFechaCompraIns.TabIndex = 26;
@@ -1362,7 +1162,7 @@
             // txtPartNumberIns
             // 
             this.txtPartNumberIns.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtPartNumberIns.Location = new System.Drawing.Point(134, 198);
+            this.txtPartNumberIns.Location = new System.Drawing.Point(134, 176);
             this.txtPartNumberIns.Name = "txtPartNumberIns";
             this.txtPartNumberIns.Size = new System.Drawing.Size(177, 25);
             this.txtPartNumberIns.TabIndex = 25;
@@ -1370,7 +1170,7 @@
             // lblPartNumberIns
             // 
             this.lblPartNumberIns.AutoSize = true;
-            this.lblPartNumberIns.Location = new System.Drawing.Point(45, 201);
+            this.lblPartNumberIns.Location = new System.Drawing.Point(45, 179);
             this.lblPartNumberIns.Name = "lblPartNumberIns";
             this.lblPartNumberIns.Size = new System.Drawing.Size(83, 17);
             this.lblPartNumberIns.TabIndex = 24;
@@ -1384,7 +1184,7 @@
             "Hardware",
             "Software",
             "Insumo"});
-            this.cmbTipoInsumo.Location = new System.Drawing.Point(134, 167);
+            this.cmbTipoInsumo.Location = new System.Drawing.Point(134, 145);
             this.cmbTipoInsumo.Name = "cmbTipoInsumo";
             this.cmbTipoInsumo.Size = new System.Drawing.Size(101, 25);
             this.cmbTipoInsumo.TabIndex = 23;
@@ -1393,7 +1193,7 @@
             // lblTipoInsumo
             // 
             this.lblTipoInsumo.AutoSize = true;
-            this.lblTipoInsumo.Location = new System.Drawing.Point(94, 170);
+            this.lblTipoInsumo.Location = new System.Drawing.Point(94, 148);
             this.lblTipoInsumo.Name = "lblTipoInsumo";
             this.lblTipoInsumo.Size = new System.Drawing.Size(34, 17);
             this.lblTipoInsumo.TabIndex = 22;
@@ -1402,7 +1202,7 @@
             // txtNumSerieIns
             // 
             this.txtNumSerieIns.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtNumSerieIns.Location = new System.Drawing.Point(134, 136);
+            this.txtNumSerieIns.Location = new System.Drawing.Point(134, 114);
             this.txtNumSerieIns.Name = "txtNumSerieIns";
             this.txtNumSerieIns.Size = new System.Drawing.Size(177, 25);
             this.txtNumSerieIns.TabIndex = 21;
@@ -1410,7 +1210,7 @@
             // lblNumSerieIns
             // 
             this.lblNumSerieIns.AutoSize = true;
-            this.lblNumSerieIns.Location = new System.Drawing.Point(39, 139);
+            this.lblNumSerieIns.Location = new System.Drawing.Point(39, 117);
             this.lblNumSerieIns.Name = "lblNumSerieIns";
             this.lblNumSerieIns.Size = new System.Drawing.Size(89, 17);
             this.lblNumSerieIns.TabIndex = 20;
@@ -1419,7 +1219,7 @@
             // lblModeloInsumo
             // 
             this.lblModeloInsumo.AutoSize = true;
-            this.lblModeloInsumo.Location = new System.Drawing.Point(74, 108);
+            this.lblModeloInsumo.Location = new System.Drawing.Point(74, 86);
             this.lblModeloInsumo.Name = "lblModeloInsumo";
             this.lblModeloInsumo.Size = new System.Drawing.Size(54, 17);
             this.lblModeloInsumo.TabIndex = 19;
@@ -1433,7 +1233,7 @@
             "Hardware",
             "Software",
             "Insumo"});
-            this.cmbModeloInsumo.Location = new System.Drawing.Point(134, 105);
+            this.cmbModeloInsumo.Location = new System.Drawing.Point(134, 83);
             this.cmbModeloInsumo.Name = "cmbModeloInsumo";
             this.cmbModeloInsumo.Size = new System.Drawing.Size(101, 25);
             this.cmbModeloInsumo.TabIndex = 18;
@@ -1447,7 +1247,7 @@
             "Hardware",
             "Software",
             "Insumo"});
-            this.cmbMarInsumo.Location = new System.Drawing.Point(134, 74);
+            this.cmbMarInsumo.Location = new System.Drawing.Point(134, 52);
             this.cmbMarInsumo.Name = "cmbMarInsumo";
             this.cmbMarInsumo.Size = new System.Drawing.Size(101, 25);
             this.cmbMarInsumo.TabIndex = 17;
@@ -1456,7 +1256,7 @@
             // lblMarcaInsumo
             // 
             this.lblMarcaInsumo.AutoSize = true;
-            this.lblMarcaInsumo.Location = new System.Drawing.Point(83, 77);
+            this.lblMarcaInsumo.Location = new System.Drawing.Point(83, 55);
             this.lblMarcaInsumo.Name = "lblMarcaInsumo";
             this.lblMarcaInsumo.Size = new System.Drawing.Size(45, 17);
             this.lblMarcaInsumo.TabIndex = 16;
@@ -1465,7 +1265,7 @@
             // lblNomProdInsumo
             // 
             this.lblNomProdInsumo.AutoSize = true;
-            this.lblNomProdInsumo.Location = new System.Drawing.Point(14, 46);
+            this.lblNomProdInsumo.Location = new System.Drawing.Point(14, 24);
             this.lblNomProdInsumo.Name = "lblNomProdInsumo";
             this.lblNomProdInsumo.Size = new System.Drawing.Size(114, 17);
             this.lblNomProdInsumo.TabIndex = 15;
@@ -1473,40 +1273,139 @@
             // 
             // txtNomProdInsumo
             // 
-            this.txtNomProdInsumo.Location = new System.Drawing.Point(134, 43);
+            this.txtNomProdInsumo.Location = new System.Drawing.Point(134, 21);
             this.txtNomProdInsumo.MaxLength = 20;
             this.txtNomProdInsumo.Name = "txtNomProdInsumo";
             this.txtNomProdInsumo.Size = new System.Drawing.Size(177, 25);
             this.txtNomProdInsumo.TabIndex = 14;
             // 
-            // label5
+            // tsActivo
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(80, 19);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(48, 17);
-            this.label5.TabIndex = 12;
-            this.label5.Text = "Estado";
+            this.tsActivo.BackColor = System.Drawing.Color.Transparent;
+            this.tsActivo.BackgroundImage = global::API.Properties.Resources.BarraBotones;
+            this.tsActivo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tsActivo.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbCerrarActivo,
+            this.tsbImprimirActivo,
+            this.tsEditarActivo,
+            this.tsbGrabarActivo,
+            this.tsbNuevoActivo,
+            this.tsbCancelActivo,
+            this.tslActivoNombreAct});
+            this.tsActivo.Location = new System.Drawing.Point(0, 0);
+            this.tsActivo.Name = "tsActivo";
+            this.tsActivo.Size = new System.Drawing.Size(738, 25);
+            this.tsActivo.TabIndex = 64;
+            this.tsActivo.Text = "toolStrip1";
+            this.tsActivo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tsActivo_MouseDown);
             // 
-            // cmbEstInsumo
+            // tsbCerrarActivo
             // 
-            this.cmbEstInsumo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbEstInsumo.FormattingEnabled = true;
-            this.cmbEstInsumo.Items.AddRange(new object[] {
-            "Hardware",
-            "Software",
-            "Insumo"});
-            this.cmbEstInsumo.Location = new System.Drawing.Point(134, 12);
-            this.cmbEstInsumo.Name = "cmbEstInsumo";
-            this.cmbEstInsumo.Size = new System.Drawing.Size(101, 25);
-            this.cmbEstInsumo.TabIndex = 13;
-            this.cmbEstInsumo.SelectionChangeCommitted += new System.EventHandler(this.cmbEstInsumo_SelectionChangeCommitted);
+            this.tsbCerrarActivo.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbCerrarActivo.AutoSize = false;
+            this.tsbCerrarActivo.Font = new System.Drawing.Font("Verdana", 9.75F);
+            this.tsbCerrarActivo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tsbCerrarActivo.Image = global::API.Properties.Resources.Cerrar_16;
+            this.tsbCerrarActivo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tsbCerrarActivo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbCerrarActivo.Name = "tsbCerrarActivo";
+            this.tsbCerrarActivo.Size = new System.Drawing.Size(70, 22);
+            this.tsbCerrarActivo.Text = "Cerrar";
+            this.tsbCerrarActivo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.tsbCerrarActivo.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.tsbCerrarActivo.Click += new System.EventHandler(this.tsbCerrar_Click);
+            // 
+            // tsbImprimirActivo
+            // 
+            this.tsbImprimirActivo.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbImprimirActivo.AutoSize = false;
+            this.tsbImprimirActivo.Font = new System.Drawing.Font("Verdana", 9.75F);
+            this.tsbImprimirActivo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tsbImprimirActivo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tsbImprimirActivo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbImprimirActivo.Name = "tsbImprimirActivo";
+            this.tsbImprimirActivo.Size = new System.Drawing.Size(80, 22);
+            this.tsbImprimirActivo.Text = "Imprimir";
+            this.tsbImprimirActivo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.tsbImprimirActivo.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.tsbImprimirActivo.Visible = false;
+            // 
+            // tsEditarActivo
+            // 
+            this.tsEditarActivo.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsEditarActivo.AutoSize = false;
+            this.tsEditarActivo.Font = new System.Drawing.Font("Verdana", 9.75F);
+            this.tsEditarActivo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tsEditarActivo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tsEditarActivo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsEditarActivo.Name = "tsEditarActivo";
+            this.tsEditarActivo.Size = new System.Drawing.Size(80, 22);
+            this.tsEditarActivo.Text = "Editar";
+            this.tsEditarActivo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.tsEditarActivo.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.tsEditarActivo.Visible = false;
+            // 
+            // tsbGrabarActivo
+            // 
+            this.tsbGrabarActivo.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbGrabarActivo.AutoSize = false;
+            this.tsbGrabarActivo.Font = new System.Drawing.Font("Verdana", 9.75F);
+            this.tsbGrabarActivo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tsbGrabarActivo.Image = global::API.Properties.Resources.Grabar2;
+            this.tsbGrabarActivo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tsbGrabarActivo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbGrabarActivo.Name = "tsbGrabarActivo";
+            this.tsbGrabarActivo.Size = new System.Drawing.Size(80, 22);
+            this.tsbGrabarActivo.Text = "Grabar";
+            this.tsbGrabarActivo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.tsbGrabarActivo.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.tsbGrabarActivo.Click += new System.EventHandler(this.tsbGrabar_Click);
+            // 
+            // tsbNuevoActivo
+            // 
+            this.tsbNuevoActivo.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbNuevoActivo.AutoSize = false;
+            this.tsbNuevoActivo.Font = new System.Drawing.Font("Verdana", 9.75F);
+            this.tsbNuevoActivo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tsbNuevoActivo.Image = global::API.Properties.Resources.Nuevo_18;
+            this.tsbNuevoActivo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tsbNuevoActivo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbNuevoActivo.Name = "tsbNuevoActivo";
+            this.tsbNuevoActivo.Size = new System.Drawing.Size(80, 22);
+            this.tsbNuevoActivo.Text = "Nuevo";
+            this.tsbNuevoActivo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.tsbNuevoActivo.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.tsbNuevoActivo.Visible = false;
+            // 
+            // tsbCancelActivo
+            // 
+            this.tsbCancelActivo.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbCancelActivo.AutoSize = false;
+            this.tsbCancelActivo.Font = new System.Drawing.Font("Verdana", 9.75F);
+            this.tsbCancelActivo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tsbCancelActivo.Image = global::API.Properties.Resources.cancel_icon;
+            this.tsbCancelActivo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tsbCancelActivo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbCancelActivo.Name = "tsbCancelActivo";
+            this.tsbCancelActivo.Size = new System.Drawing.Size(90, 22);
+            this.tsbCancelActivo.Text = "Cancelar";
+            this.tsbCancelActivo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.tsbCancelActivo.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.tsbCancelActivo.Click += new System.EventHandler(this.tsbCancelar_Click);
+            // 
+            // tslActivoNombreAct
+            // 
+            this.tslActivoNombreAct.Font = new System.Drawing.Font("Verdana", 9.75F);
+            this.tslActivoNombreAct.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tslActivoNombreAct.Name = "tslActivoNombreAct";
+            this.tslActivoNombreAct.Size = new System.Drawing.Size(59, 22);
+            this.tslActivoNombreAct.Text = "ACTIVO";
             // 
             // fActivo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(825, 589);
+            this.ClientSize = new System.Drawing.Size(738, 588);
             this.Controls.Add(this.tbContenedorAct);
             this.Controls.Add(this.tsActivo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -1515,8 +1414,6 @@
             this.Load += new System.EventHandler(this.fActivo_Load);
             this.gbSoftware.ResumeLayout(false);
             this.gbSoftware.PerformLayout();
-            this.tsActivo.ResumeLayout(false);
-            this.tsActivo.PerformLayout();
             this.gbInsumos.ResumeLayout(false);
             this.gbInsumos.PerformLayout();
             this.tbContenedorAct.ResumeLayout(false);
@@ -1538,14 +1435,14 @@
             this.tbpComunHW.PerformLayout();
             this.tbPageInsumo.ResumeLayout(false);
             this.tbPageInsumo.PerformLayout();
+            this.tsActivo.ResumeLayout(false);
+            this.tsActivo.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Label lblEstado;
-        private System.Windows.Forms.ComboBox cmbEstadoActHW;
         private System.Windows.Forms.ComboBox cmbMarcaHW;
         private System.Windows.Forms.Label lblMarca;
         private System.Windows.Forms.Label lblNombreProd;
@@ -1554,7 +1451,6 @@
         private System.Windows.Forms.ComboBox cmbModeloHW;
         private System.Windows.Forms.ToolStrip tsActivo;
         private System.Windows.Forms.ToolStripButton tsbCerrarActivo;
-        private System.Windows.Forms.ToolStripButton tsbEliminarActivo;
         private System.Windows.Forms.ToolStripButton tsbImprimirActivo;
         private System.Windows.Forms.ToolStripButton tsEditarActivo;
         private System.Windows.Forms.ToolStripButton tsbGrabarActivo;
@@ -1563,8 +1459,6 @@
         private System.Windows.Forms.GroupBox gbSoftware;
         private System.Windows.Forms.ComboBox cmbMarcaSW;
         private System.Windows.Forms.TextBox txtNombrePrdSW;
-        private System.Windows.Forms.Label lblEstadoSW;
-        private System.Windows.Forms.ComboBox cmbEstadoSW;
         private System.Windows.Forms.GroupBox gbInsumos;
         private System.Windows.Forms.ComboBox cmbFacturaIns;
         private System.Windows.Forms.Label lblFacturaIns;
@@ -1584,8 +1478,6 @@
         private System.Windows.Forms.Label lblMarcaInsumo;
         private System.Windows.Forms.Label lblNomProdInsumo;
         private System.Windows.Forms.TextBox txtNomProdInsumo;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox cmbEstInsumo;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblCantidadSW;
@@ -1631,7 +1523,6 @@
         private System.Windows.Forms.Label lblTipoInsumo;
         private System.Windows.Forms.TextBox txtNumSerieIns;
         private System.Windows.Forms.Label lblNumSerieIns;
-        private System.Windows.Forms.ToolStripButton tsbCancelarActivo;
         private System.Windows.Forms.DateTimePicker dtpFechaCompra;
         private System.Windows.Forms.Label lblFechaCompra;
         private System.Windows.Forms.Label lblFechaCompraHW;
@@ -1662,5 +1553,6 @@
         private System.Windows.Forms.Label lblTamPantallaHW;
         private System.Windows.Forms.ComboBox cmbTipoPantallaHW;
         private System.Windows.Forms.Label lblTipoPantallaHW;
+        private System.Windows.Forms.ToolStripButton tsbCancelActivo;
     }
 }

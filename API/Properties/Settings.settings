@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="VersionSistema" Type="System.String" Scope="User">
-      <Value Profile="(Default)">1.0.2</Value>
+      <Value Profile="(Default)">1.0.6</Value>
     </Setting>
     <Setting Name="ServidorSQLMaestroEntidades" Type="System.String" Scope="User">
       <Value Profile="(Default)">MOLINO14\MOLINO14</Value>

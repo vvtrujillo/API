@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cmbPlanta = new System.Windows.Forms.ComboBox();
             this.lblPlanta = new System.Windows.Forms.Label();
             this.lblEmpresa = new System.Windows.Forms.Label();
@@ -193,6 +193,7 @@
             this.tsbCerrar.AutoSize = false;
             this.tsbCerrar.Font = new System.Drawing.Font("Verdana", 9.75F);
             this.tsbCerrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tsbCerrar.Image = global::API.Properties.Resources.Cerrar_16;
             this.tsbCerrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.tsbCerrar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbCerrar.Name = "tsbCerrar";
@@ -216,6 +217,7 @@
             this.tsbEliminar.Text = "Eliminar";
             this.tsbEliminar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.tsbEliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.tsbEliminar.Visible = false;
             // 
             // tsbImprimir
             // 
@@ -230,6 +232,7 @@
             this.tsbImprimir.Text = "Imprimir";
             this.tsbImprimir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.tsbImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.tsbImprimir.Visible = false;
             // 
             // tsEditar
             // 
@@ -237,6 +240,7 @@
             this.tsEditar.AutoSize = false;
             this.tsEditar.Font = new System.Drawing.Font("Verdana", 9.75F);
             this.tsEditar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tsEditar.Image = global::API.Properties.Resources.Modificar;
             this.tsEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.tsEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsEditar.Name = "tsEditar";
@@ -244,6 +248,7 @@
             this.tsEditar.Text = "Editar";
             this.tsEditar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.tsEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.tsEditar.Visible = false;
             // 
             // tsbGrabar
             // 
@@ -251,6 +256,7 @@
             this.tsbGrabar.AutoSize = false;
             this.tsbGrabar.Font = new System.Drawing.Font("Verdana", 9.75F);
             this.tsbGrabar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tsbGrabar.Image = global::API.Properties.Resources.Grabar2;
             this.tsbGrabar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.tsbGrabar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbGrabar.Name = "tsbGrabar";
@@ -266,6 +272,7 @@
             this.tsbNuevo.AutoSize = false;
             this.tsbNuevo.Font = new System.Drawing.Font("Verdana", 9.75F);
             this.tsbNuevo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tsbNuevo.Image = global::API.Properties.Resources.Nuevo_18;
             this.tsbNuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.tsbNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbNuevo.Name = "tsbNuevo";
@@ -273,6 +280,7 @@
             this.tsbNuevo.Text = "Nuevo";
             this.tsbNuevo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.tsbNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.tsbNuevo.Click += new System.EventHandler(this.tsbNuevo_Click);
             // 
             // tsbCancelar
             // 
@@ -280,10 +288,11 @@
             this.tsbCancelar.AutoSize = false;
             this.tsbCancelar.Font = new System.Drawing.Font("Verdana", 9.75F);
             this.tsbCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tsbCancelar.Image = global::API.Properties.Resources.cancel_icon;
             this.tsbCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.tsbCancelar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbCancelar.Name = "tsbCancelar";
-            this.tsbCancelar.Size = new System.Drawing.Size(80, 22);
+            this.tsbCancelar.Size = new System.Drawing.Size(90, 22);
             this.tsbCancelar.Text = "Cancelar";
             this.tsbCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.tsbCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -305,35 +314,35 @@
             this.dgArea.AllowUserToDeleteRows = false;
             this.dgArea.AllowUserToResizeColumns = false;
             this.dgArea.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(238)))), ((int)(((byte)(239)))));
-            this.dgArea.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(238)))), ((int)(((byte)(239)))));
+            this.dgArea.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgArea.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgArea.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgArea.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(152)))), ((int)(((byte)(156)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgArea.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(152)))), ((int)(((byte)(156)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgArea.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgArea.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgArea.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgArea.DefaultCellStyle = dataGridViewCellStyle7;
             this.dgArea.Location = new System.Drawing.Point(61, 272);
             this.dgArea.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgArea.MultiSelect = false;
             this.dgArea.Name = "dgArea";
             this.dgArea.ReadOnly = true;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(226)))), ((int)(((byte)(228)))));
-            this.dgArea.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(226)))), ((int)(((byte)(228)))));
+            this.dgArea.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dgArea.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgArea.Size = new System.Drawing.Size(775, 220);
             this.dgArea.TabIndex = 188;

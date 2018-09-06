@@ -36,6 +36,9 @@ namespace API.Formularios.Maestros
 
         public string cConexionSQLCentral = string.Empty;
 
+        //variables locales
+        private bool vacio;
+
         //Variables grilla
         private int idModelo = 0;
         private int Modelo = 1;
@@ -58,6 +61,9 @@ namespace API.Formularios.Maestros
             LimpiaVariables();
             tsActualiza.Visible = false;
             tsbEliminar.Visible = false;
+            vacio = false;
+            tsbCancelar.Visible = false;
+            tsbGrabar.Visible = false;
         }
 
         private void LimpiaVariables()
@@ -65,6 +71,7 @@ namespace API.Formularios.Maestros
             idMarcaInsert = 0;
             idModeloSelecc = 0;
             txtNombreModelo.Text = String.Empty;
+            txtNombreModelo.Text = "";
         }
 
         private void CargarComboBoxMarca()
@@ -282,6 +289,7 @@ namespace API.Formularios.Maestros
         {
             dgModelo.Enabled = false;
             tsbGrabar.Visible = true;
+            tsbCancelar.Visible = true;
             HabilitaObjetosIngreso();            
         }
 
@@ -292,7 +300,16 @@ namespace API.Formularios.Maestros
 
         private void tsbGrabar_Click(object sender, EventArgs e)
         {
-            IngresaNuevoModelo();
+            ValidaControlesCompletos();
+
+            if(vacio==true)
+            {
+                Rutinas.PresentaMensajeAceptar(cFormularioPadre, "malo", "Campos Vacíos", "Debe ingresar todos los campos para insertar", false, false);
+            }
+            else
+            {
+                IngresaNuevoModelo();
+            }            
         }
 
         private void dgModelo_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -340,5 +357,17 @@ namespace API.Formularios.Maestros
             }
             EstadoInicial();
         }       
+
+        private void ValidaControlesCompletos()
+        {
+            if (String.IsNullOrEmpty(txtNombreModelo.Text)||(String.IsNullOrEmpty(cmbMarcaModelo.Text)))
+            {                
+                vacio = true;                
+            }
+            else
+            {
+                vacio = false;
+            }
+        }
     }
 }

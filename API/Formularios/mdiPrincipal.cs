@@ -6,6 +6,9 @@ using API.Fin;
 using API.Formularios.Parametros;
 using API.Formularios.Maestros;
 using API.Formularios.Activo;
+using API.Formularios.Auditoria;
+using API.Formularios.Busquedas;
+
 
 
 namespace API.Formularios
@@ -277,6 +280,51 @@ namespace API.Formularios
         }
 
         private void tsmBuscaxUsuario_Click(object sender, EventArgs e)
+        {
+            fBusquedaActivos faux = new fBusquedaActivos();
+            sstPrincipal.Items["Proceso"].Text = "Acerca de";
+            Rutinas.AplicarAccesoAFuncionalidad(faux, Properties.Settings.Default.PrivilegioAccesoFuncionalidad);
+            faux.FormularioPadre = this;
+            faux.MdiParent = this;
+            faux.ConexionSQL = cConexionSQLCentral;
+            faux.StartPosition = FormStartPosition.CenterScreen;
+            faux.TopLevel = false;
+            faux.AutoScaleMode = AutoScaleMode.None;
+            faux.Show();
+            faux.Focus();
+        }
+
+        private void tsAuditoria_Click(object sender, EventArgs e)
+        {
+            fAuditoria faux = new fAuditoria();
+            sstPrincipal.Items["Proceso"].Text = "Acerca de";
+            Rutinas.AplicarAccesoAFuncionalidad(faux, Properties.Settings.Default.PrivilegioAccesoFuncionalidad);
+            faux.FormularioPadre = this;
+            faux.MdiParent = this;
+            faux.ConexionSQL = cConexionSQLCentral;
+            faux.StartPosition = FormStartPosition.CenterScreen;
+            faux.TopLevel = false;
+            faux.AutoScaleMode = AutoScaleMode.None;
+            faux.Show();
+            faux.Focus();
+        }
+
+        private void tslItemBusqueda_Click(object sender, EventArgs e)
+        {
+            fBusqueda faux = new fBusqueda();
+            sstPrincipal.Items["Proceso"].Text = "Acerca de";
+            Rutinas.AplicarAccesoAFuncionalidad(faux, Properties.Settings.Default.PrivilegioAccesoFuncionalidad);
+            faux.FormularioPadre = this;
+            faux.MdiParent = this;
+            faux.ConexionSQL = cConexionSQLCentral;
+            faux.StartPosition = FormStartPosition.CenterScreen;
+            faux.TopLevel = false;
+            faux.AutoScaleMode = AutoScaleMode.None;
+            faux.Show();
+            faux.Focus();
+        }
+
+        private void tsmBusqActxUsuario_Click(object sender, EventArgs e)
         {
             fBusquedaActivos faux = new fBusquedaActivos();
             sstPrincipal.Items["Proceso"].Text = "Acerca de";

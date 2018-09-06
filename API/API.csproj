@@ -148,6 +148,18 @@
     <Compile Include="Formularios\Activo\fBusquedaActivos.Designer.cs">
       <DependentUpon>fBusquedaActivos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Auditoria\fAuditoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Auditoria\fAuditoria.Designer.cs">
+      <DependentUpon>fAuditoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Busquedas\fBusqueda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Busquedas\fBusqueda.Designer.cs">
+      <DependentUpon>fBusqueda.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Fin\fAcercaDe.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -237,6 +249,12 @@
     <EmbeddedResource Include="Formularios\Activo\fBusquedaActivos.resx">
       <DependentUpon>fBusquedaActivos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Auditoria\fAuditoria.resx">
+      <DependentUpon>fAuditoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Busquedas\fBusqueda.resx">
+      <DependentUpon>fBusqueda.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Fin\fAcercaDe.resx">
       <DependentUpon>fAcercaDe.cs</DependentUpon>
     </EmbeddedResource>
@@ -302,6 +320,15 @@
   <ItemGroup>
     <Content Include="Logo MSC_2.ico" />
     <Content Include="Logo_256x256.ico" />
+    <None Include="Resources\if_Wide_brush_131923.png" />
+    <None Include="Resources\Eliminar.png" />
+    <None Include="Resources\cancel-icon.png" />
+    <None Include="Resources\Prohibido_32x32.png" />
+    <None Include="Resources\Modificar.png" />
+    <None Include="Resources\Nuevo_18.png" />
+    <None Include="Resources\Agregar 18x18.png" />
+    <None Include="Resources\Cerrar_16.png" />
+    <None Include="Resources\Cancelar 18x18.png" />
     <None Include="Resources\Buscar_16.ico" />
     <None Include="Resources\Grabar2.png" />
     <None Include="Resources\BarraBotones.jpg" />

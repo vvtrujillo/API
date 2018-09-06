@@ -102,6 +102,16 @@ namespace API.Formularios.Activo
 
         private string vchNombreFabricanteSW;
 
+        private bool vaciosTextBoxSw;
+        private bool vaciosComboBoxSw;
+
+        private bool vaciosTextBoxHw;
+        private bool vaciosComboBoxHw;
+
+        private bool vaciosTexBoxIns;
+        private bool vaciosComboBoxIns;
+
+
         public fActivo()
         {
             InitializeComponent();
@@ -110,18 +120,18 @@ namespace API.Formularios.Activo
         private void fActivo_Load(object sender, EventArgs e)
         {
             EstadoInicial();
-            CargaComboBoxTotal();                       
+            CargaComboBoxTotal();
         }
 
         private void CargaComboBoxTotal()
         {
-            CargarComboBoxEstados();
+
             CargarComboBoxMarca();
             CargarComboBoxFacturaActivo();
-            CargarComboBoxEstadosSW();
+
             CargarComboBoxMarcaSW();
             CargarComboBoxTipoLicSW();
-            CargarComboBoxEstadosIns();
+
             CargarComboBoxMarcaIns();
             CargarComboBoxTipoSW();
             CargarComboBoxTipoHW();
@@ -136,22 +146,23 @@ namespace API.Formularios.Activo
             CargarComboBoxVelocImprHW();
             CargarComboBoxTipoPantallaHW();
             CargarComboBoxTamanoPantallaHW();
+
+            CargarComboBoxAnioActivo();
         }
 
         private void cmbModelo_SelectionChangeCommitted(object sender, EventArgs e)
-        {                        
-            intModeloCB = Convert.ToString(cmbModeloHW.SelectedValue);           
+        {
+            intModeloCB = Convert.ToString(cmbModeloHW.SelectedValue);
         }
-
 
         private void limpiaVariables()
         {
             txtNombreProdHW.Text = String.Empty;
-            cmbEstadoActHW.Text = String.Empty;
+
             cmbMarcaHW.SelectedIndex = -1;
             cmbModeloHW.SelectedIndex = -1;
 
-            
+
             dtpFechaVenc.Value = DateTime.Now;
             dtpFechaCompra.Value = DateTime.Now;
             dtpFechaCompraHW.Value = DateTime.Now;
@@ -220,10 +231,10 @@ namespace API.Formularios.Activo
             txtLicencia.Text = String.Empty;
             txtNombrePrdSW.Text = String.Empty;
             txtVersionSW.Text = String.Empty;
-            txtDescripcionSW.Text = String.Empty;          
+            txtDescripcionSW.Text = String.Empty;
 
             //Text Box HW
-            txtNombreProdHW.Text = String.Empty;            
+            txtNombreProdHW.Text = String.Empty;
             txtNumSerie.Text = String.Empty;
 
             //Text Box Ins
@@ -233,7 +244,7 @@ namespace API.Formularios.Activo
 
             //Combo Box SW
 
-            cmbEstadoSW.SelectedIndex = -1;
+
             cmbMarcaSW.SelectedIndex = -1;
             cmbTipoSW.SelectedIndex = -1;
             cmbTipoLicSW.SelectedIndex = -1;
@@ -241,7 +252,7 @@ namespace API.Formularios.Activo
 
             //Combo Box HW
 
-            cmbEstadoActHW.SelectedIndex = -1;
+
             cmbTipoHW.SelectedIndex = -1;
             cmbMarcaHW.SelectedIndex = -1;
             cmbModeloHW.SelectedIndex = -1;
@@ -256,7 +267,7 @@ namespace API.Formularios.Activo
 
             //Combo Box Ins
 
-            cmbEstInsumo.SelectedIndex = -1;
+
             cmbMarInsumo.SelectedIndex = -1;
             cmbModeloInsumo.SelectedIndex = -1;
             cmbTipoInsumo.SelectedIndex = -1;
@@ -272,14 +283,13 @@ namespace API.Formularios.Activo
             //group Box Vencimiento
             gbVencimientoSW.Visible = false;
 
-        }   
+        }
 
         private void EstadoInicial()
         {
             limpiaVariables();
             tsEditarActivo.Visible = false;
             tsbImprimirActivo.Visible = false;
-            tsbEliminarActivo.Visible = false;
             cmbModeloHW.Enabled = false;
 
             ((Control)this.tbImprHW).Enabled = false;
@@ -292,23 +302,49 @@ namespace API.Formularios.Activo
         {
             string tabActivo;
 
-            tabActivo = tbContenedorAct.SelectedTab.Name;            
+            tabActivo = tbContenedorAct.SelectedTab.Name;
 
-            if (tabActivo=="tbPageSW")
+            if (tabActivo == "tbPageSW")
             {
-                InsertNewActivo();
+                RevisaTextBoxVaciosSw();
+                RevisaComboBoxVaciosSw();
+                if(vaciosComboBoxSw==true||vaciosTextBoxSw==true)
+                {
+                    Rutinas.PresentaMensajeAceptar(cFormularioPadre, "malo", "Campos Vacíos", "Debe ingresar todos los datos para grabar un Software.", false, false);
+                }
+                else
+                {
+                    InsertNewActivo();
+                }                
             }
-            else if (tabActivo=="tbPageHW")
+            else if (tabActivo == "tbPageHW")
             {
-                InsertaNewActivoHW();                
+                RevisaComboBoxVaciosHw();
+                RevisaTextBoxVaciosHw();
+                if(vaciosTextBoxHw==true||vaciosComboBoxHw==true)
+                {
+                    Rutinas.PresentaMensajeAceptar(cFormularioPadre,"malo","Campos Vacíos","Debe ingresar todos los datos para grabar un Hardware.",false,false);
+                }
+                else
+                {
+                    InsertaNewActivoHW();
+                }                
             }
-            else if (tabActivo=="tbPageInsumo")
+            else if (tabActivo == "tbPageInsumo")
             {
-                InsertNewActivoIns();
+                RevisaComboBoxVaciosIns();
+                RevisaTextBoxVaciosIns();
+                if(vaciosTexBoxIns==true||vaciosComboBoxIns==true)
+                {
+                    Rutinas.PresentaMensajeAceptar(cFormularioPadre, "malo", "Campos Vacíos", "Debe ingresar todos los datos para grabar un Insumo.", false, false);
+                }
+                else
+                {
+                    InsertNewActivoIns();
+                }                
             }
 
         }
-
 
         private void InsertNewActivoIns()
         {
@@ -339,6 +375,8 @@ namespace API.Formularios.Activo
             auxParametro = cmd.Parameters.Add("@dtFechaCompra", SqlDbType.DateTime);
             auxParametro = cmd.Parameters.Add("@msgError", SqlDbType.VarChar, 255);
             auxParametro.Direction = ParameterDirection.Output;
+
+            vchEstadoActivo = "Por activar";
 
             cmd.Parameters["@vchTipoProducto"].Value = "INSUMO";
             cmd.Parameters["@vchNombreProd"].Value = txtNomProdInsumo.Text.Trim();
@@ -433,6 +471,7 @@ namespace API.Formularios.Activo
             auxParametro = cmd.Parameters.Add("@msgError", SqlDbType.VarChar, 255);
             auxParametro.Direction = ParameterDirection.Output;
 
+            EstadoHW = "Por activar";
 
             cmd.Parameters["@TipoProducto"].Value = "HARDWARE";
             cmd.Parameters["@NombreProducto"].Value = txtNombreProdHW.Text.Trim();
@@ -449,9 +488,9 @@ namespace API.Formularios.Activo
             cmd.Parameters["@SerieHW"].Value = txtNumSerie.Text.Trim();
             cmd.Parameters["@dtFechaAsocU"].Value = DBNull.Value;
             cmd.Parameters["@VidaUtil"].Value = DBNull.Value;
-            cmd.Parameters["@EstadoHW"].Value = EstadoHW;
+            cmd.Parameters["@EstadoHW"].Value = DBNull.Value;
             cmd.Parameters["@idUsuario"].Value = DBNull.Value;
-            cmd.Parameters["@TipoComputador"].Value =  TipoComputador;
+            cmd.Parameters["@TipoComputador"].Value = TipoComputador;
             cmd.Parameters["@GeneracionProc"].Value = GeneracionProc;
             cmd.Parameters["@VelProcesador"].Value = VelProcesador;
             cmd.Parameters["@TipoDiscoDuro"].Value = DBNull.Value;
@@ -530,7 +569,7 @@ namespace API.Formularios.Activo
             auxParametro = cmd.Parameters.Add("@msgError", SqlDbType.VarChar, 255);
             auxParametro.Direction = ParameterDirection.Output;
 
-
+            vchEstadoActSW = "Por activar";
 
             cmd.Parameters["@TipoProducto"].Value = "SOFTWARE";
             cmd.Parameters["@NombreProducto"].Value = txtNombrePrdSW.Text.Trim();
@@ -546,7 +585,7 @@ namespace API.Formularios.Activo
             cmd.Parameters["@AnoSW"].Value = vchAnoSW;
             cmd.Parameters["@DescripcionSW"].Value = txtDescripcionSW.Text.Trim();
             cmd.Parameters["@TiempoVencimiento"].Value = "";
-            if (rbVenceSi.Checked) { cmd.Parameters["@FechaVencimiento"].Value = dtpFechaVenc.Text; } else { cmd.Parameters["@FechaVencimiento"].Value = DBNull.Value; }        
+            if (rbVenceSi.Checked) { cmd.Parameters["@FechaVencimiento"].Value = dtpFechaVenc.Text; } else { cmd.Parameters["@FechaVencimiento"].Value = DBNull.Value; }
             cmd.Parameters["@FabricanteSW"].Value = vchNombreFabricanteSW;
             cmd.Parameters["@dtFechaCompra"].Value = dtpFechaCompra.Text;
             cmd.Parameters["@vchTipoSoftware"].Value = vchTipoSW;
@@ -582,20 +621,19 @@ namespace API.Formularios.Activo
         }
 
         private void tsbGrabar_Click(object sender, EventArgs e)
-        {
-            Grabar();          
+        {             
+            Grabar();
         }
 
         private void dgContieneHW_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-           
+
         }
 
         private void dgContieneHW_DoubleClick(object sender, EventArgs e)
         {
-          
-        }  
-             
+
+        }
 
         private void tsbCerrar_Click(object sender, EventArgs e)
         {
@@ -609,21 +647,17 @@ namespace API.Formularios.Activo
 
         private void cmbTipoSel_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            
 
-                
+
+
 
         }
 
         private void cmbMarcaSW_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            
             intIdMarcaActivo = Convert.ToString(cmbMarcaSW.SelectedValue);
             vchNombreFabricanteSW = cmbMarcaSW.Text;
-     
         }
-
-        
 
         private void cmbMarInsumo_SelectionChangeCommitted(object sender, EventArgs e)
         {
@@ -633,10 +667,8 @@ namespace API.Formularios.Activo
 
         private void cmbModeloInsumo_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            intModeloCB = Convert.ToString(cmbModeloInsumo.SelectedValue);          
+            intModeloCB = Convert.ToString(cmbModeloInsumo.SelectedValue);
         }
-
-      
 
         private void label3_Click(object sender, EventArgs e)
         {
@@ -652,39 +684,17 @@ namespace API.Formularios.Activo
         {
             ReleaseCapture();
             SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
-        }       
-
-        private void cmbAnoSW_DropDown(object sender, EventArgs e)
-        {
-            cmbAnoSW.DataSource = Enumerable.Range(1950, 100).ToList();
-            
         }
 
         private void txtLicencia_TextChanged(object sender, EventArgs e)
         {
-            
-        
+
+
         }
 
         private void txtLicencia_KeyPress(object sender, KeyPressEventArgs e)
         {
 
-        }
-
-        private void CargarComboBoxEstados()
-        {
-            Rutinas.CargarDatosComboBox(cConexionSQL, "spObtieneEstadosAct", cmbEstadoActHW, "Estado", "idEstado");
-            cmbEstadoActHW.SelectedIndex = -1;
-        }
-        private void CargarComboBoxEstadosSW()
-        {
-            Rutinas.CargarDatosComboBox(cConexionSQL, "spObtieneEstadosAct", cmbEstadoSW, "Estado", "idEstado");
-            cmbEstadoSW.SelectedIndex = -1;
-        }
-        private void CargarComboBoxEstadosIns()
-        {
-            Rutinas.CargarDatosComboBox(cConexionSQL, "spObtieneEstadosAct", cmbEstInsumo, "Estado", "idEstado");
-            cmbEstInsumo.SelectedIndex = -1;
         }
 
         private void CargarComboBoxMarca()
@@ -698,6 +708,7 @@ namespace API.Formularios.Activo
             Rutinas.CargarDatosComboBox(cConexionSQL, "spObtieneMarcaComboBox", cmbMarcaSW, "NombreMarca", "idMarca");
             cmbMarcaSW.SelectedIndex = -1;
         }
+
         private void CargarComboBoxMarcaIns()
         {
             Rutinas.CargarDatosComboBox(cConexionSQL, "spObtieneMarcaComboBox", cmbMarInsumo, "NombreMarca", "idMarca");
@@ -718,10 +729,9 @@ namespace API.Formularios.Activo
             cmbModeloInsumo.SelectedIndex = -1;
         }
 
-
         private void CargarComboBoxFacturaActivo()
         {
-            
+
         }
 
         private void CargarComboBoxTipoSW()
@@ -745,7 +755,7 @@ namespace API.Formularios.Activo
         private void CargarComboBoxTipoCompHW()
         {
             Rutinas.CargarDatosComboBox(cConexionSQL, "spObtieneCBTipoCompHW", cmbTipoCompu, "ValorParam", "idParamHW");
-            cmbTipoCompu.SelectedIndex = -1;                
+            cmbTipoCompu.SelectedIndex = -1;
         }
 
         private void CargarComboBoxModeloProcHW()
@@ -796,38 +806,39 @@ namespace API.Formularios.Activo
             cmbTamPantallaHW.SelectedIndex = -1;
         }
 
-        private void cmbEstadoActHW_SelectionChangeCommitted(object sender, EventArgs e)
+        private void CargarComboBoxAnioActivo()
         {
-            EstadoHW = cmbEstadoActHW.Text;       
+            Rutinas.CargarDatosComboBox(cConexionSQL, "spObtieneAniosComboBox", cmbAnoSW, "ValorAnio", "idAnio");
+            cmbAnoSW.SelectedIndex = -1;
         }
 
         private void cmbTipoHW_SelectionChangeCommitted(object sender, EventArgs e)
         {
-           
+
             tipoDispHW = cmbTipoHW.Text;
 
-            if (tipoDispHW=="COMPUTADOR")
+            if (tipoDispHW == "COMPUTADOR")
             {
                 ((Control)this.tbCompuHW).Enabled = true;
-                
+
                 tcHardwareTipo.SelectedTab = tbCompuHW;
             }
             else if (tipoDispHW == "IMPRESORAS")
             {
                 ((Control)this.tbImprHW).Enabled = true;
-                
+
                 tcHardwareTipo.SelectedTab = tbImprHW;
             }
             else if (tipoDispHW == "COMUNICACIONES")
             {
                 ((Control)this.tbpComunHW).Enabled = true;
-                
+
                 tcHardwareTipo.SelectedTab = tbpComunHW;
             }
             else if (tipoDispHW == "MONITOR")
             {
                 ((Control)this.tbpMonitorHW).Enabled = true;
-                
+
                 tcHardwareTipo.SelectedTab = tbpMonitorHW;
             }
 
@@ -837,15 +848,15 @@ namespace API.Formularios.Activo
 
         private void BloqueaTabsHardware(string tipoDispHab)
         {
-            if (tipoDispHab== "COMPUTADOR")
+            if (tipoDispHab == "COMPUTADOR")
             {
                 ((Control)this.tbImprHW).Enabled = false;
                 ((Control)this.tbpComunHW).Enabled = false;
-                ((Control)this.tbpMonitorHW).Enabled = false;                
+                ((Control)this.tbpMonitorHW).Enabled = false;
             }
 
-            else if (tipoDispHab== "IMPRESORA")
-            {                
+            else if (tipoDispHab == "IMPRESORA")
+            {
                 ((Control)this.tbpComunHW).Enabled = false;
                 ((Control)this.tbpMonitorHW).Enabled = false;
                 ((Control)this.tbCompuHW).Enabled = false;
@@ -853,7 +864,7 @@ namespace API.Formularios.Activo
 
             else if (tipoDispHab == "COMUNICACIONES")
             {
-                ((Control)this.tbImprHW).Enabled = false;          
+                ((Control)this.tbImprHW).Enabled = false;
                 ((Control)this.tbpMonitorHW).Enabled = false;
                 ((Control)this.tbCompuHW).Enabled = false;
             }
@@ -861,7 +872,7 @@ namespace API.Formularios.Activo
             else if (tipoDispHab == "MONITOR")
             {
                 ((Control)this.tbImprHW).Enabled = false;
-                ((Control)this.tbpComunHW).Enabled = false;              
+                ((Control)this.tbpComunHW).Enabled = false;
                 ((Control)this.tbCompuHW).Enabled = false;
             }
         }
@@ -903,11 +914,6 @@ namespace API.Formularios.Activo
             GeneracionProc = cmbGeneracionProcHW.Text;
         }
 
-        private void cmbEstInsumo_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            vchEstadoActivo = cmbEstInsumo.Text;
-        }
-        
         private void cmbTipoInsumo_SelectionChangeCommitted(object sender, EventArgs e)
         {
             vchTipoInsumo = cmbTipoInsumo.Text;
@@ -916,11 +922,6 @@ namespace API.Formularios.Activo
         private void cmbTipoLicSW_SelectionChangeCommitted(object sender, EventArgs e)
         {
             vchTipoLicenSW = cmbTipoLicSW.Text;
-        }
-
-        private void cmbEstadoSW_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            vchEstadoActSW = cmbEstadoSW.Text;
         }
 
         private void cmbAnoSW_SelectionChangeCommitted(object sender, EventArgs e)
@@ -987,6 +988,124 @@ namespace API.Formularios.Activo
             TamanoPantallaComp = cmbTamPantallaHW.Text;
         }
 
-        
+        private void RevisaTextBoxVaciosSw()
+        {
+            if(String.IsNullOrEmpty(txtNombrePrdSW.Text)|| String.IsNullOrEmpty(txtLicencia.Text) || String.IsNullOrEmpty(txtVersionSW.Text) || String.IsNullOrEmpty(txtCantidadSW.Text)||
+                String.IsNullOrEmpty(txtDescripcionSW.Text))
+            {
+                vaciosTextBoxSw = true;
+            }
+            else
+            {
+                vaciosTextBoxSw = false;
+            }           
+        }
+
+        private void RevisaComboBoxVaciosSw()
+        {
+            if(String.IsNullOrEmpty(cmbMarcaSW.Text)||String.IsNullOrEmpty(cmbTipoSW.Text)||String.IsNullOrEmpty(cmbTipoLicSW.Text)||String.IsNullOrEmpty(cmbAnoSW.Text))
+            {
+                vaciosComboBoxSw = true;
+            }
+            else
+            {
+                vaciosComboBoxSw = false;
+            }
+        }
+       
+        private void RevisaComboBoxVaciosHw()
+        {
+            if(String.IsNullOrEmpty(cmbTipoHW.Text)||String.IsNullOrEmpty(cmbMarcaHW.Text)||String.IsNullOrEmpty(cmbModeloHW.Text))
+            {
+                if(tcHardwareTipo.SelectedTab==tbCompuHW)
+                {
+                    if(String.IsNullOrEmpty(cmbTipoCompu.Text)||String.IsNullOrEmpty(cmbModProc.Text)||String.IsNullOrEmpty(cmbVelocProc.Text)||String.IsNullOrEmpty(cmbCapacDDHw.Text)||
+                        String.IsNullOrEmpty(cmbGeneracionProcHW.Text)||String.IsNullOrEmpty(cmbCapacMemRam.Text)||String.IsNullOrEmpty(cmbTipoPantallaHW.Text)||String.IsNullOrEmpty(cmbTamPantallaHW.Text))
+                    {
+                        vaciosComboBoxHw = true;
+                    }
+                }
+                else if(tcHardwareTipo.SelectedTab==tbImprHW)
+                {
+                    if(String.IsNullOrEmpty(cmbTipoImprHW.Text)||String.IsNullOrEmpty(cmbVelocImprHW.Text))
+                    {
+                        vaciosComboBoxHw = true;
+                    }
+                }
+                else if(tcHardwareTipo.SelectedTab==tbpMonitorHW)
+                {
+                    if(String.IsNullOrEmpty(cmbTipoMoniHW.Text)||String.IsNullOrEmpty(cmbTamanoMonitorHW.Text))
+                    {
+                        vaciosComboBoxHw = true;
+                    }
+                }
+                else if(tcHardwareTipo.SelectedTab==tbpComunHW)
+                {
+                    if(String.IsNullOrEmpty(cmbTipoComHW.Text)||String.IsNullOrEmpty(cmbCantBocasHW.Text))
+                    {
+                        vaciosComboBoxHw = true;
+                    }
+                }
+                else
+                {
+                    vaciosComboBoxHw = false;
+                }
+            }
+        }
+
+        private void RevisaTextBoxVaciosHw()
+        {
+            if(String.IsNullOrEmpty(txtNombreProdHW.Text)||String.IsNullOrEmpty(txtNumSerie.Text))
+            {
+                vaciosTextBoxHw = true;
+            }
+            else
+            {
+                vaciosTextBoxHw = false;
+            }
+        }
+
+        private void RevisaComboBoxVaciosIns()
+        {
+            if(String.IsNullOrEmpty(cmbMarInsumo.Text)||String.IsNullOrEmpty(cmbModeloInsumo.Text)||String.IsNullOrEmpty(cmbTipoInsumo.Text))
+            {
+                vaciosComboBoxIns = true;
+            }
+            else
+            {
+                vaciosComboBoxIns = false;
+            }
+        }
+
+        private void RevisaTextBoxVaciosIns()
+        {
+            if(String.IsNullOrEmpty(txtNomProdInsumo.Text)||String.IsNullOrEmpty(txtNumSerieIns.Text)||String.IsNullOrEmpty(txtPartNumberIns.Text))
+            {
+                vaciosTexBoxIns = true;
+            }
+            else
+            {
+                vaciosTexBoxIns = false;
+            }
+        }
+
+        private void txtCantidadSW_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Para obligar a que sólo se introduzcan números
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+              if (Char.IsControl(e.KeyChar)) //permitir teclas de control como retroceso
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                //el resto de teclas pulsadas se desactivan
+                e.Handled = true;
+            }
+        }
     }
 }

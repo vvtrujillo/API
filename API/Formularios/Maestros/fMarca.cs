@@ -58,7 +58,7 @@ namespace API.Formularios.Maestros
             tsbCancelar.Visible = false;
             tsbGrabar.Visible = false;
             ExtraeMarca();
-        }
+        }        
 
         private void BloqueoTxtBox()
         {
@@ -99,6 +99,7 @@ namespace API.Formularios.Maestros
                 dgMarca.Columns[chkBoxDG].Width = 40; pDataGrid.Columns[chkBoxDG].HeaderText = "Sel";
                 dgMarca.Columns[idMarca].Visible = false; pDataGrid.Columns[idMarca].HeaderText = "idMarca";
                 dgMarca.Columns[NombreMarca].Width = 200; pDataGrid.Columns[NombreMarca].HeaderText = "Nombre Marca";
+                dgMarca.Columns[NombreMarca].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
         }
 
@@ -292,8 +293,15 @@ namespace API.Formularios.Maestros
         }
         
         private void tsbGrabar_Click(object sender, EventArgs e)
-        {            
-            IngresaNuevaMarca();
+        {   
+            if(String.IsNullOrEmpty(txtMarca.Text))
+            {
+                Rutinas.PresentaMensajeAceptar(cFormularioPadre, "malo", "Debe ingresar Marca a grabar", "", false, false);                
+            }
+            else
+            {
+                IngresaNuevaMarca();
+            }            
         }
 
         private void dgMarca_CellContentClick(object sender, DataGridViewCellEventArgs e)

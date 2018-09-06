@@ -38,6 +38,9 @@ namespace API.Formularios.Activo
         private string strUsuarioBusqueda;
         private string vchTipoHWAsoc;
         private string vchTipoEspHW;
+        private bool faltandatos;
+        private bool AgregoSoftware;
+        private bool ControlesVacios;
 
         //Variables para Insert Asoc Nuevo
         private int idCompHwSelecc;
@@ -50,18 +53,45 @@ namespace API.Formularios.Activo
 
         //variables grilla Computador
         private int checkSelComp = 0;
-        private int idHardware=1;
-        private int SerieHW=2;
-        private int NombreHW=3;
-        private int NombreMarca=4;
-        private int NombreModelo=5;
+        private int tipoCompHw = 1;
+        private int idHardware=2;
+        private int SerieHW=3;
+        private int NombreHW=4;
+        private int NombreMarca=5;
+        private int NombreModelo=6;
+        private int DireccionIP = 7;
+        private int NombreEquipRed = 8;
 
         //Variables grilla Impresora
-        private int idHardwareImpr = 0;
-        private int SerieHWImpr = 1;
-        private int NombreHWImpr = 2;
-        private int NombreMarcaImpr = 3;
-        private int NombreModeloImpr = 4;
+        private int CheckSelImp = 0;
+        private int idHardwareImp = 1;
+        private int TipoImpresoraHW = 2;
+        private int SerieHWImp = 3;
+        private int NombreHWImp = 4;
+        private int NombreMarcaImp = 5;
+        private int NombreModeloImp = 6;
+        private int DireccionIPImp = 7;
+        private int NombreEquipRedImp = 8;
+
+        //variables grilla Monitor
+        private int CheckSelMon = 0;
+        private int idHardwareMon = 1;
+        private int TipoMonitorHW = 2;
+        private int SerieHWMon = 3;
+        private int NombreHWMon = 4;
+        private int NombreMarcaMon = 5;
+        private int NombreModeloMon = 6;
+
+        //variables grilla Comunicaciones
+        private int CheckSelComu = 0;
+        private int idHardwareComu = 1;
+        private int TipoComuniacionesHW = 2;
+        private int SerieHWComu = 3;
+        private int NombreHWComu = 4;
+        private int NombreMarcaComu = 5;
+        private int NombreModeloComu = 6;
+        private int DireccionIPComu = 7;
+        private int NombreEquipRedComu = 8;
 
         //variables grilla Software list
         private int checkSelSW = 0;
@@ -71,23 +101,26 @@ namespace API.Formularios.Activo
         private int NombreSW = 4;
         private int DescripcionSW = 5;
 
-        //variables para Asoc HW a usuario
-
+        //variables para Asoc HW a usuario       
 
         public fAsociaActivo()
         {
             InitializeComponent();
         }
 
+        private void ConsultaDatosIngresados()
+        {
+            
+        }
+
         private void EstadoInicial()
         {
             cmbHardwareAsoc.Enabled = false;
-            cmbTipoHWAsocAct.Enabled = false;
             tcAsocActivos.Enabled = false;
+            faltandatos = false;
 
             //Elimina botones
             tsbImprimirActivo.Visible = false;
-            tsbEliminarActivo.Visible = false;
             tsEditarActivo.Visible = false;
 
             //Limpia txt
@@ -97,11 +130,14 @@ namespace API.Formularios.Activo
 
             //Limpia Combo Box
             cmbHardwareAsoc.SelectedIndex = -1;
-            cmbTipoHWAsocAct.SelectedIndex = -1;
 
             //Limpia Grilla            
             dgSeleccComp.Rows.Clear();
             dgSoftwareList.Rows.Clear();
+            dgSeleccImpr.Rows.Clear();
+
+            //
+            tcAsocActivos.SelectedTab = tbpCompu;
 
             //Limpia Variables
             strUsuarioBusqueda = "";
@@ -109,15 +145,13 @@ namespace API.Formularios.Activo
             vchTipoEspHW = "";
             intIdSoftware = 0;
             idCompHwSelecc = 0;
-
-            //Radio Button
-            rbSWsi.Enabled = false; rbSWsi.Checked = false;
-            rbSWno.Enabled = false; rbSWno.Checked = false;
+            AgregoSoftware = false;
+            ControlesVacios = false;
             
             //Area Sw
             gbSoftwareList.Visible = false;
         }
-
+        
         private void CargarComboBoxTipoHW()
         {
             Rutinas.CargarDatosComboBox(cConexionSQL, "spObtieneCBTipoHW", cmbHardwareAsoc, "DescripParam", "idParamHW");
@@ -159,20 +193,97 @@ namespace API.Formularios.Activo
 
         private void PrepararDataGridImpr(DataGridView pDataGrid)
         {
+            pDataGrid.SelectionMode = DataGridViewSelectionMode.CellSelect;
+            pDataGrid.RowHeadersVisible = false;
+            pDataGrid.ReadOnly = false;
+
             foreach (DataGridViewColumn c in pDataGrid.Columns)
             {
                 c.Resizable = DataGridViewTriState.True;
-                c.ReadOnly = true;
+                if (c.Name == "sel_hw_imp")
+                {
+                    c.ReadOnly = false;
+                }
+                else
+                {
+                    c.ReadOnly = true;
+                }
                 c.DefaultCellStyle.Font = cFuente;
             }
             pDataGrid.RowHeadersVisible = false;
+
             if (pDataGrid.Name == "dgSeleccImpr")
             {
-                dgSeleccImpr.Columns[idHardwareImpr].Visible = false; pDataGrid.Columns[idHardwareImpr].HeaderText = "idHardware";
-                dgSeleccImpr.Columns[SerieHWImpr].Width = 100; pDataGrid.Columns[SerieHWImpr].HeaderText = "N° Serie";
-                dgSeleccImpr.Columns[NombreHWImpr].Width = 200; pDataGrid.Columns[NombreHWImpr].HeaderText = "Nombre HW";
-                dgSeleccImpr.Columns[NombreMarcaImpr].Width = 100; pDataGrid.Columns[NombreMarcaImpr].HeaderText = "Marca";
-                dgSeleccImpr.Columns[NombreModeloImpr].Width = 150; pDataGrid.Columns[NombreModeloImpr].HeaderText = "Modelo";
+                dgSeleccImpr.Columns[CheckSelImp].Width = 30; pDataGrid.Columns[CheckSelImp].HeaderText = "Sel";
+                dgSeleccImpr.Columns[idHardwareImp].Visible = false; pDataGrid.Columns[idHardwareImp].HeaderText = "idHardware";
+                dgSeleccImpr.Columns[SerieHWImp].Width = 100; pDataGrid.Columns[SerieHWImp].HeaderText = "N° Serie";
+                dgSeleccImpr.Columns[NombreHWImp].Width = 300; pDataGrid.Columns[NombreHWImp].HeaderText = "Nombre HW";
+                dgSeleccImpr.Columns[NombreMarcaImp].Width = 130; pDataGrid.Columns[NombreMarcaImp].HeaderText = "Marca";
+                dgSeleccImpr.Columns[NombreModeloImp].Width = 150; pDataGrid.Columns[NombreModeloImp].HeaderText = "Modelo";
+            }
+        }
+
+        private void PrepararDataGridComun(DataGridView pDataGrid)
+        {
+            pDataGrid.SelectionMode = DataGridViewSelectionMode.CellSelect;
+            pDataGrid.RowHeadersVisible = false;
+            pDataGrid.ReadOnly = false;
+
+            foreach (DataGridViewColumn c in pDataGrid.Columns)
+            {
+                c.Resizable = DataGridViewTriState.True;
+                if (c.Name == "sel_comu")
+                {
+                    c.ReadOnly = false;
+                }
+                else
+                {
+                    c.ReadOnly = true;
+                }
+                c.DefaultCellStyle.Font = cFuente;
+            }
+            pDataGrid.RowHeadersVisible = false;
+
+            if (pDataGrid.Name == "dgSeleccComun")
+            {
+                dgSeleccComun.Columns[CheckSelComu].Width = 30; pDataGrid.Columns[CheckSelComu].HeaderText = "Sel";
+                dgSeleccComun.Columns[idHardwareComu].Visible = false; pDataGrid.Columns[idHardwareComu].HeaderText = "idHardware";
+                dgSeleccComun.Columns[SerieHWComu].Width = 100; pDataGrid.Columns[SerieHWComu].HeaderText = "N° Serie";
+                dgSeleccComun.Columns[NombreHWComu].Width = 300; pDataGrid.Columns[NombreHWComu].HeaderText = "Nombre HW";
+                dgSeleccComun.Columns[NombreMarcaComu].Width = 130; pDataGrid.Columns[NombreMarcaComu].HeaderText = "Marca";
+                dgSeleccComun.Columns[NombreModeloComu].Width = 150; pDataGrid.Columns[NombreModeloComu].HeaderText = "Modelo";
+            }
+        }
+
+        private void PrepararDataGridMonit(DataGridView pDataGrid)
+        {
+            pDataGrid.SelectionMode = DataGridViewSelectionMode.CellSelect;
+            pDataGrid.RowHeadersVisible = false;
+            pDataGrid.ReadOnly = false;
+
+            foreach (DataGridViewColumn c in pDataGrid.Columns)
+            {
+                c.Resizable = DataGridViewTriState.True;
+                if (c.Name == "sel_monit")
+                {
+                    c.ReadOnly = false;
+                }
+                else
+                {
+                    c.ReadOnly = true;
+                }
+                c.DefaultCellStyle.Font = cFuente;
+            }
+            pDataGrid.RowHeadersVisible = false;
+
+            if (pDataGrid.Name == "dgSeleccMonit")
+            {
+                dgSeleccMonit.Columns[CheckSelMon].Width = 30; pDataGrid.Columns[CheckSelMon].HeaderText = "Sel";
+                dgSeleccMonit.Columns[idHardwareMon].Visible = false; pDataGrid.Columns[idHardwareMon].HeaderText = "idHardware";
+                dgSeleccMonit.Columns[SerieHWMon].Width = 100; pDataGrid.Columns[SerieHWMon].HeaderText = "N° Serie";
+                dgSeleccMonit.Columns[NombreHWMon].Width = 300; pDataGrid.Columns[NombreHWMon].HeaderText = "Nombre HW";
+                dgSeleccMonit.Columns[NombreMarcaMon].Width = 130; pDataGrid.Columns[NombreMarcaMon].HeaderText = "Marca";
+                dgSeleccMonit.Columns[NombreModeloMon].Width = 150; pDataGrid.Columns[NombreModeloMon].HeaderText = "Modelo";
             }
         }
 
@@ -208,18 +319,62 @@ namespace API.Formularios.Activo
             }
         }
 
-
         private void ObtieneHWAsocComp()
         {   
             SqlConnection SqlCon = new SqlConnection(cConexionSQL);
-            SqlCommand cmd = new SqlCommand("spObtieneTipoHWAsocAct", SqlCon);
+            SqlCommand cmd = new SqlCommand("spObtieneListaHardwareComp", SqlCon);
+            cmd.CommandType = CommandType.StoredProcedure;
+                    
+            SqlCon.Open();
+
+            SqlDataReader drBuscar;
+            drBuscar = cmd.ExecuteReader();
+            dgSeleccComp.Rows.Clear();
+            if (drBuscar.HasRows)
+            {
+
+                drBuscar.Read();
+                do
+                {
+                    dgSeleccComp.Rows.Add(1);
+                    dgSeleccComp.Rows[dgSeleccComp.Rows.Count - 1].Cells[checkSelComp].Value = false;
+                    dgSeleccComp.Rows[dgSeleccComp.Rows.Count - 1].Cells[idHardware].Value = drBuscar.GetInt32(drBuscar.GetOrdinal("idHardware"));
+                    dgSeleccComp.Rows[dgSeleccComp.Rows.Count - 1].Cells[tipoCompHw].Value = drBuscar.GetString(drBuscar.GetOrdinal("TipoComputador"));
+                    dgSeleccComp.Rows[dgSeleccComp.Rows.Count - 1].Cells[SerieHW].Value = drBuscar.GetString(drBuscar.GetOrdinal("SerieHW"));
+                    dgSeleccComp.Rows[dgSeleccComp.Rows.Count - 1].Cells[NombreHW].Value = drBuscar.GetString(drBuscar.GetOrdinal("NombreHW"));
+                    dgSeleccComp.Rows[dgSeleccComp.Rows.Count - 1].Cells[NombreMarca].Value = drBuscar.GetString(drBuscar.GetOrdinal("NombreMarca"));
+                    dgSeleccComp.Rows[dgSeleccComp.Rows.Count - 1].Cells[NombreModelo].Value = drBuscar.GetString(drBuscar.GetOrdinal("NombreModelo"));
+                    dgSeleccComp.Rows[dgSeleccComp.Rows.Count - 1].Cells[DireccionIP].Value = drBuscar.GetString(drBuscar.GetOrdinal("DireccionIP"));
+                    dgSeleccComp.Rows[dgSeleccComp.Rows.Count - 1].Cells[NombreEquipRed].Value = drBuscar.GetString(drBuscar.GetOrdinal("NombreEquipRed"));
+                    dgSeleccComp.Columns[NombreModelo].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+                }
+                while (drBuscar.Read());
+            }
+
+            PrepararDataGridComp(dgSeleccComp);
+
+            drBuscar.Close(); drBuscar.Dispose();
+            cmd.Connection.Close(); cmd.Connection.Dispose();
+            SqlCon.Close(); SqlCon.Dispose();
+            
+            if(dgSeleccComp.Rows.Count==0)
+            {
+                Rutinas.PresentaMensajeAceptar(cFormularioPadre,"alertaexclamacionamarillo","Atención","No existen Computadores disponibles para asociar.",false,false);
+                EstadoInicial();
+            }
+        }
+
+        private void ObtieneHWyaAsociadoUsr()
+        {
+            SqlConnection SqlCon = new SqlConnection(cConexionSQL);
+            SqlCommand cmd = new SqlCommand("spObtieneListaHardwareyaAsoc", SqlCon);
             cmd.CommandType = CommandType.StoredProcedure;
             SqlParameter auxParametro = null;
-            auxParametro = cmd.Parameters.Add("@vchTipoHW", SqlDbType.VarChar, 50);
-            auxParametro = cmd.Parameters.Add("@vchTipoEspHW", SqlDbType.VarChar, 50);
 
-            cmd.Parameters["@vchTipoHW"].Value = vchTipoHWAsoc;
-            cmd.Parameters["@vchTipoEspHW"].Value = vchTipoEspHW;
+            auxParametro = cmd.Parameters.Add("@intIdUsuario", SqlDbType.Int);
+
+            cmd.Parameters["@intIdUsuario"].Value = Convert.ToInt32(strUsuarioBusqueda); ;
 
             SqlCon.Open();
 
@@ -235,10 +390,14 @@ namespace API.Formularios.Activo
                     dgSeleccComp.Rows.Add(1);
                     dgSeleccComp.Rows[dgSeleccComp.Rows.Count - 1].Cells[checkSelComp].Value = false;
                     dgSeleccComp.Rows[dgSeleccComp.Rows.Count - 1].Cells[idHardware].Value = drBuscar.GetInt32(drBuscar.GetOrdinal("idHardware"));
+                    dgSeleccComp.Rows[dgSeleccComp.Rows.Count - 1].Cells[tipoCompHw].Value = drBuscar.GetString(drBuscar.GetOrdinal("TipoComputador"));
                     dgSeleccComp.Rows[dgSeleccComp.Rows.Count - 1].Cells[SerieHW].Value = drBuscar.GetString(drBuscar.GetOrdinal("SerieHW"));
                     dgSeleccComp.Rows[dgSeleccComp.Rows.Count - 1].Cells[NombreHW].Value = drBuscar.GetString(drBuscar.GetOrdinal("NombreHW"));
                     dgSeleccComp.Rows[dgSeleccComp.Rows.Count - 1].Cells[NombreMarca].Value = drBuscar.GetString(drBuscar.GetOrdinal("NombreMarca"));
                     dgSeleccComp.Rows[dgSeleccComp.Rows.Count - 1].Cells[NombreModelo].Value = drBuscar.GetString(drBuscar.GetOrdinal("NombreModelo"));
+                    dgSeleccComp.Rows[dgSeleccComp.Rows.Count - 1].Cells[DireccionIP].Value = drBuscar.GetString(drBuscar.GetOrdinal("DireccionIP"));
+                    dgSeleccComp.Rows[dgSeleccComp.Rows.Count - 1].Cells[NombreEquipRed].Value = drBuscar.GetString(drBuscar.GetOrdinal("NombreEquipRed"));
+                    dgSeleccComp.Columns[NombreModelo].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
                 }
                 while (drBuscar.Read());
@@ -249,21 +408,143 @@ namespace API.Formularios.Activo
             drBuscar.Close(); drBuscar.Dispose();
             cmd.Connection.Close(); cmd.Connection.Dispose();
             SqlCon.Close(); SqlCon.Dispose();
-
+            ObtieneSoftwareList();
+            gbSoftwareList.Visible = true;
         }
 
         private void ObtieneHWAsocImpr()
         {
-            string aux = "EXEC spObtieneTipoHWAsocAct " + "'"+vchTipoHWAsoc+"'" + "," + "'"+vchTipoEspHW+"'";
             SqlConnection SqlCon = new SqlConnection(cConexionSQL);
-            SqlDataAdapter SqlDa = new SqlDataAdapter(aux, SqlCon);
-            DataSet ds = new DataSet("Consulta");
-            SqlDa.Fill(ds, "Consulta");
-            dgSeleccImpr.DataSource = ds.Tables["Consulta"];
+            SqlCommand cmd = new SqlCommand("spObtieneListaHardwareImp", SqlCon);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            SqlCon.Open();
+
+            SqlDataReader drBuscar;
+            drBuscar = cmd.ExecuteReader();
+            dgSeleccImpr.Rows.Clear();
+            if (drBuscar.HasRows)
+            {
+
+                drBuscar.Read();
+                do
+                {
+                    dgSeleccImpr.Rows.Add(1);
+                    dgSeleccImpr.Rows[dgSeleccImpr.Rows.Count - 1].Cells[CheckSelImp].Value = false;
+                    dgSeleccImpr.Rows[dgSeleccImpr.Rows.Count - 1].Cells[idHardwareImp].Value = drBuscar.GetInt32(drBuscar.GetOrdinal("idHardware"));
+                    dgSeleccImpr.Rows[dgSeleccImpr.Rows.Count - 1].Cells[TipoImpresoraHW].Value = drBuscar.GetString(drBuscar.GetOrdinal("TipoImpresoraHW"));
+                    dgSeleccImpr.Rows[dgSeleccImpr.Rows.Count - 1].Cells[SerieHWImp].Value = drBuscar.GetString(drBuscar.GetOrdinal("SerieHW"));
+                    dgSeleccImpr.Rows[dgSeleccImpr.Rows.Count - 1].Cells[NombreHWImp].Value = drBuscar.GetString(drBuscar.GetOrdinal("NombreHW"));
+                    dgSeleccImpr.Rows[dgSeleccImpr.Rows.Count - 1].Cells[NombreMarcaImp].Value = drBuscar.GetString(drBuscar.GetOrdinal("NombreMarca"));
+                    dgSeleccImpr.Rows[dgSeleccImpr.Rows.Count - 1].Cells[NombreModeloImp].Value = drBuscar.GetString(drBuscar.GetOrdinal("NombreModelo"));
+                    dgSeleccImpr.Rows[dgSeleccImpr.Rows.Count - 1].Cells[DireccionIPImp].Value = drBuscar.GetString(drBuscar.GetOrdinal("DireccionIP"));
+                    dgSeleccImpr.Rows[dgSeleccImpr.Rows.Count - 1].Cells[NombreEquipRedImp].Value = drBuscar.GetString(drBuscar.GetOrdinal("NombreEquipRed"));
+                    dgSeleccImpr.Columns[NombreModeloImp].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+                }
+                while (drBuscar.Read());
+            }
+
             PrepararDataGridImpr(dgSeleccImpr);
-            dgSeleccImpr.Refresh();
-            if (dgSeleccImpr.RowCount > 0) { dgSeleccImpr.Rows[0].Selected = false; }
-            dgSeleccImpr.ClearSelection();
+
+            drBuscar.Close(); drBuscar.Dispose();
+            cmd.Connection.Close(); cmd.Connection.Dispose();
+            SqlCon.Close(); SqlCon.Dispose();
+
+            if (dgSeleccImpr.Rows.Count == 0)
+            {
+                Rutinas.PresentaMensajeAceptar(cFormularioPadre, "alertaexclamacionamarillo", "Atención", "No existen Impresoras disponibles para asociar.", false, false);
+                EstadoInicial();
+            }
+        }
+
+        private void ObtieneHWAsocMonit()
+        {
+            SqlConnection SqlCon = new SqlConnection(cConexionSQL);
+            SqlCommand cmd = new SqlCommand("spObtieneListaHardwareMonit", SqlCon);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            SqlCon.Open();
+
+            SqlDataReader drBuscar;
+            drBuscar = cmd.ExecuteReader();
+            dgSeleccMonit.Rows.Clear();
+            if (drBuscar.HasRows)
+            {
+
+                drBuscar.Read();
+                do
+                {
+                    dgSeleccMonit.Rows.Add(1);
+                    dgSeleccMonit.Rows[dgSeleccMonit.Rows.Count - 1].Cells[CheckSelMon].Value = false;
+                    dgSeleccMonit.Rows[dgSeleccMonit.Rows.Count - 1].Cells[idHardwareMon].Value = drBuscar.GetInt32(drBuscar.GetOrdinal("idHardware"));
+                    dgSeleccMonit.Rows[dgSeleccMonit.Rows.Count - 1].Cells[TipoMonitorHW].Value = drBuscar.GetString(drBuscar.GetOrdinal("TipoImpresoraHW"));
+                    dgSeleccMonit.Rows[dgSeleccMonit.Rows.Count - 1].Cells[SerieHWMon].Value = drBuscar.GetString(drBuscar.GetOrdinal("SerieHW"));
+                    dgSeleccMonit.Rows[dgSeleccMonit.Rows.Count - 1].Cells[NombreHWMon].Value = drBuscar.GetString(drBuscar.GetOrdinal("NombreHW"));
+                    dgSeleccMonit.Rows[dgSeleccMonit.Rows.Count - 1].Cells[NombreMarcaMon].Value = drBuscar.GetString(drBuscar.GetOrdinal("NombreMarca"));
+                    dgSeleccMonit.Rows[dgSeleccMonit.Rows.Count - 1].Cells[NombreModeloMon].Value = drBuscar.GetString(drBuscar.GetOrdinal("NombreModelo"));
+                    dgSeleccMonit.Columns[NombreModeloMon].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+                }
+                while (drBuscar.Read());
+            }
+
+            PrepararDataGridMonit(dgSeleccMonit);
+
+            drBuscar.Close(); drBuscar.Dispose();
+            cmd.Connection.Close(); cmd.Connection.Dispose();
+            SqlCon.Close(); SqlCon.Dispose();
+
+            if (dgSeleccMonit.Rows.Count == 0)
+            {
+                Rutinas.PresentaMensajeAceptar(cFormularioPadre, "alertaexclamacionamarillo", "Atención", "No existen Monitores disponibles para asociar.", false, false);
+                EstadoInicial();
+            }
+        }
+
+        private void ObtieneHWAsocComun()
+        {
+            SqlConnection SqlCon = new SqlConnection(cConexionSQL);
+            SqlCommand cmd = new SqlCommand("spObtieneListaHardwareComun", SqlCon);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            SqlCon.Open();
+
+            SqlDataReader drBuscar;
+            drBuscar = cmd.ExecuteReader();
+            dgSeleccComun.Rows.Clear();
+            if (drBuscar.HasRows)
+            {
+
+                drBuscar.Read();
+                do
+                {
+                    dgSeleccComun.Rows.Add(1);
+                    dgSeleccComun.Rows[dgSeleccComun.Rows.Count - 1].Cells[CheckSelComu].Value = false;
+                    dgSeleccComun.Rows[dgSeleccComun.Rows.Count - 1].Cells[idHardwareComu].Value = drBuscar.GetInt32(drBuscar.GetOrdinal("idHardware"));
+                    dgSeleccComun.Rows[dgSeleccComun.Rows.Count - 1].Cells[TipoComuniacionesHW].Value = drBuscar.GetString(drBuscar.GetOrdinal("TipoComunicacionesHW"));
+                    dgSeleccComun.Rows[dgSeleccComun.Rows.Count - 1].Cells[SerieHWComu].Value = drBuscar.GetString(drBuscar.GetOrdinal("SerieHW"));
+                    dgSeleccComun.Rows[dgSeleccComun.Rows.Count - 1].Cells[NombreHWComu].Value = drBuscar.GetString(drBuscar.GetOrdinal("NombreHW"));
+                    dgSeleccComun.Rows[dgSeleccComun.Rows.Count - 1].Cells[NombreMarcaComu].Value = drBuscar.GetString(drBuscar.GetOrdinal("NombreMarca"));
+                    dgSeleccComun.Rows[dgSeleccComun.Rows.Count - 1].Cells[NombreModeloComu].Value = drBuscar.GetString(drBuscar.GetOrdinal("NombreModelo"));
+                    dgSeleccComun.Rows[dgSeleccComun.Rows.Count - 1].Cells[DireccionIPComu].Value = drBuscar.GetString(drBuscar.GetOrdinal("DireccionIP"));
+                    dgSeleccComun.Rows[dgSeleccComun.Rows.Count - 1].Cells[NombreEquipRedComu].Value = drBuscar.GetString(drBuscar.GetOrdinal("NombreEquipRed"));
+                    dgSeleccComun.Columns[NombreModeloComu].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                }
+                while (drBuscar.Read());
+            }
+
+            PrepararDataGridComun(dgSeleccComun);
+
+            drBuscar.Close(); drBuscar.Dispose();
+            cmd.Connection.Close(); cmd.Connection.Dispose();
+            SqlCon.Close(); SqlCon.Dispose();
+
+            if (dgSeleccComun.Rows.Count == 0)
+            {
+                Rutinas.PresentaMensajeAceptar(cFormularioPadre, "alertaexclamacionamarillo", "Atención", "No existen Equipos de Comuniaciones disponibles para asociar.", false, false);
+                EstadoInicial();
+            }
         }
 
         private void ObtieneSoftwareList()
@@ -290,6 +571,7 @@ namespace API.Formularios.Activo
                     dgSoftwareList.Rows[dgSoftwareList.Rows.Count - 1].Cells[TipoLicencia].Value = drBuscar.GetString(drBuscar.GetOrdinal("TipoLicencia"));
                     dgSoftwareList.Rows[dgSoftwareList.Rows.Count - 1].Cells[NombreSW].Value = drBuscar.GetString(drBuscar.GetOrdinal("NombreSW"));
                     dgSoftwareList.Rows[dgSoftwareList.Rows.Count - 1].Cells[DescripcionSW].Value = drBuscar.GetString(drBuscar.GetOrdinal("DescripcionSW"));
+                    dgSoftwareList.Columns[DescripcionSW].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
                 }
                 while (drBuscar.Read());
@@ -319,8 +601,10 @@ namespace API.Formularios.Activo
             cmd.Parameters["@intIdUsuario"].Value = Convert.ToInt32(strUsuarioBusqueda);
 
             cmd.ExecuteNonQuery();
+            dgSeleccComp.Rows.Clear();
+            dgSeleccImpr.Rows.Clear();                       
 
-            txtUsuarioBuscar.Text = cmd.Parameters["@vchNombreUsuario"].Value.ToString();
+            txtUsuarioBuscar.Text = cmd.Parameters["@vchNombreUsuario"].Value.ToString();            
             
             cmd.Connection.Close(); cmd.Connection.Dispose();
             Con.Close(); Con.Dispose();
@@ -353,13 +637,9 @@ namespace API.Formularios.Activo
             auxParametro.Direction = ParameterDirection.Output;
 
             cmd.Parameters["@intIdHardware"].Value = intIdHardware;
-            if (rbSWsi.Checked)
+            if (AgregoSoftware)
             {
-                cmd.Parameters["@intIdSoftware"].Value = intIdSoftware;
-            }
-            else if (rbSWno.Checked)
-            {
-                cmd.Parameters["@intIdSoftware"].Value = DBNull.Value;
+                cmd.Parameters["@intIdSoftware"].Value = intIdSoftware;                
             }
             else
             {
@@ -400,8 +680,7 @@ namespace API.Formularios.Activo
                 else
                 {
                     EstadoInicial();
-                }
-                
+                }                
             }
             else
             {
@@ -424,43 +703,41 @@ namespace API.Formularios.Activo
         {
             ReleaseCapture();
             SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
-        }
-
-        private void CargaComboBoxTipoHWAsocAct()
-        {
-            string spObtieneCBTipo;
-            spObtieneCBTipo = "spObtieneCBTipoHWAsoc " + vchTipoHWAsoc;
-
-            Rutinas.CargarDatosComboBox(cConexionSQL, spObtieneCBTipo, cmbTipoHWAsocAct, "TipoHW", "idTipo");
-            cmbTipoHWAsocAct.SelectedIndex = -1;
-        }
+        }        
 
         private void cmbHardwareAsoc_SelectionChangeCommitted(object sender, EventArgs e)
         {
             vchTipoHWAsoc = cmbHardwareAsoc.Text;
             tcAsocActivos.Enabled = true;
-            rbSWsi.Enabled = true;
-            rbSWno.Enabled = true; 
 
             if (vchTipoHWAsoc=="COMPUTADOR")
-            {
-                CargaComboBoxTipoHWAsocAct();
-                cmbTipoHWAsocAct.Enabled = true;
-                                         
+            {                            
                 tcAsocActivos.SelectedTab = tbpCompu;
 
-                BuscaActivoDeUsuario();
+                BuscaActivoDeUsuario("COMP");
             }
             else if (vchTipoHWAsoc=="IMPRESORAS")
             {
-                CargaComboBoxTipoHWAsocAct();
-                cmbTipoHWAsocAct.Enabled = true;
+             
+                tcAsocActivos.SelectedTab = tbpImpresora;
+                BuscaActivoDeUsuario("IMPR");
 
-                tcAsocActivos.SelectedTab = tbpImpresora;                
+            }
+            else if (vchTipoHWAsoc == "MONITOR")
+            {
+
+                tcAsocActivos.SelectedTab = tbpMonitor;
+                BuscaActivoDeUsuario("MONI");
+
+            }
+            else if (vchTipoHWAsoc == "COMUNICACIONES")
+            {
+                tcAsocActivos.SelectedTab = tbpComun;
+                BuscaActivoDeUsuario("COMU");
             }
         }
         
-        private void BuscaActivoDeUsuario()
+        private void BuscaActivoDeUsuario(string tipoHw)
         {            
             SqlConnection Con = new SqlConnection(cConexionSQL);
             Con.Open();
@@ -468,45 +745,98 @@ namespace API.Formularios.Activo
             cmd.CommandType = CommandType.StoredProcedure;
             SqlParameter auxParametro = null;
 
-            auxParametro = cmd.Parameters.Add("@intIdUsuario", SqlDbType.Int);            
+            auxParametro = cmd.Parameters.Add("@intIdUsuario", SqlDbType.Int);
+            auxParametro = cmd.Parameters.Add("@chTipohw", SqlDbType.Char,4);
             auxParametro = cmd.Parameters.Add("@vchMsgOut", SqlDbType.Char, 1);
             auxParametro.Direction = ParameterDirection.Output;
 
             cmd.Parameters["@intIdUsuario"].Value = Convert.ToInt32(strUsuarioBusqueda);
+            cmd.Parameters["@chTipohw"].Value = tipoHw;
 
             cmd.ExecuteNonQuery();           
 
-            if (cmd.Parameters["@vchMsgOut"].Value.ToString()=="S")
+            if (cmd.Parameters["@vchMsgOut"].Value.ToString()=="S") 
             {
-                if (Rutinas.PresentaMensajeAceptarCancelar(cFormularioPadre, "alertaconsultaamarillo", "", "Usuario ya tiene HW asignado.\n"
-                                                           + "Desea Agregar otro ?", false, false)==false)
+                if (tipoHw=="COMP")
                 {
-                    EstadoInicial();
-                }               
-               
+                    if (Rutinas.PresentaMensajeAceptarCancelar(cFormularioPadre, "alertaconsultaamarillo", "Atención", "Usuario ya tiene Computador asignado.\n"
+                                                           + "Desea Agregar Software a este?", false, false) == false)
+                    {                        
+                        ObtieneHWAsocComp();
+                    }
+
+                    else
+                    {
+                        ObtieneHWyaAsociadoUsr();
+                        txtNumIPComp.Enabled = false;
+                        txtNombEquipRed.Enabled = false;
+                    }
+                }
+
+                else if (tipoHw=="IMPR")
+                {
+                    if (Rutinas.PresentaMensajeAceptarCancelar(cFormularioPadre, "alertaconsultaamarillo", "Atención", "Usuario ya tiene Impresora asignado.\n"
+                                                           + "Desea asignar otra?", false, false))
+                    {
+                        ObtieneHWAsocImpr();
+                    }
+                    else
+                    {
+                        EstadoInicial();
+                    }
+                }
+
+                else if (tipoHw == "MONI")
+                {
+                    if (Rutinas.PresentaMensajeAceptarCancelar(cFormularioPadre, "alertaconsultaamarillo", "Atención", "Usuario ya tiene Monitor asignado.\n"
+                                                           + "Desea asignar otro?", false, false))
+                    {
+                        ObtieneHWAsocMonit();
+                    }
+                    else
+                    {
+                        EstadoInicial();
+                    }
+                }
+
+                else if (tipoHw == "COMU")
+                {
+                    if (Rutinas.PresentaMensajeAceptarCancelar(cFormularioPadre, "alertaconsultaamarillo", "Atención", "Usuario ya tiene Equipo de Comuniaciones asignado.\n"
+                                                           + "Desea asignar otro?", false, false))
+                    {
+                        ObtieneHWAsocComun();
+                    }
+                    else
+                    {
+                        EstadoInicial();
+                    }
+                }
+
+            }
+            else
+            {
+                if (tipoHw == "COMP")
+                {
+                    ObtieneHWAsocComp();
+                }
+                else if (tipoHw == "IMPR")
+                {
+                    ObtieneHWAsocImpr();
+                }
+                else if (tipoHw == "MONI")
+                {
+                    ObtieneHWAsocMonit();
+                }
+                else if (tipoHw == "COMU")
+                {
+                    ObtieneHWAsocComun();
+                }
+
             }
 
             cmd.Connection.Close(); cmd.Connection.Dispose();
             Con.Close(); Con.Dispose();
-        }    
-
-        private void cmbTipoHWAsocAct_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            vchTipoEspHW = cmbTipoHWAsocAct.Text;
-            if (vchTipoHWAsoc == "COMPUTADOR")
-            {
-                ObtieneHWAsocComp();
-            }
-            else if (vchTipoHWAsoc == "IMPRESORAS")
-            {
-                ObtieneHWAsocImpr();
-            }
-        }
-
-        private void tsbCancelarActivo_Click(object sender, EventArgs e)
-        {
-            EstadoInicial();
-        }
+        }                
 
         private void rbSWsi_Click(object sender, EventArgs e)
         {
@@ -524,6 +854,8 @@ namespace API.Formularios.Activo
             dgSeleccComp.EndEdit();
             VerificarComputadorSeleccionado(dgSeleccComp, e.RowIndex, e.ColumnIndex);
             intIdHardware = Convert.ToInt32(dgSeleccComp.Rows[e.RowIndex].Cells[idHardware].Value);
+            txtNumIPComp.Text=Convert.ToString(dgSeleccComp.Rows[e.RowIndex].Cells[DireccionIP].Value);
+            txtNombEquipRed.Text = Convert.ToString(dgSeleccComp.Rows[e.RowIndex].Cells[NombreEquipRed].Value);
         }
 
         private void VerificarComputadorSeleccionado(DataGridView pDataGrid, int pFila, int pColumna)
@@ -535,6 +867,23 @@ namespace API.Formularios.Activo
                 if (pFila != row.Index)
                 {
                     DataGridViewCheckBoxCell chbDesocupados = (DataGridViewCheckBoxCell)row.Cells[checkSelComp]; //columna donde se hace la selección
+                    if ((bool)chbDesocupados.Value == true)
+                    {
+                        chbDesocupados.Value = false;
+                    }
+                }
+            }
+        }
+
+        private void VerificarImpresoraSeleccionada(DataGridView pDataGrid, int pFila, int pColumna)
+        {
+            if (pFila < 0 || pColumna != 0) { return; } //columna distinta de cero
+
+            foreach (DataGridViewRow row in pDataGrid.Rows)
+            {
+                if (pFila != row.Index)
+                {
+                    DataGridViewCheckBoxCell chbDesocupados = (DataGridViewCheckBoxCell)row.Cells[CheckSelImp]; //columna donde se hace la selección
                     if ((bool)chbDesocupados.Value == true)
                     {
                         chbDesocupados.Value = false;
@@ -558,6 +907,8 @@ namespace API.Formularios.Activo
                     }
                 }
             }
+
+            AgregoSoftware = true;
         }
 
         private void dgSoftwareList_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -569,7 +920,69 @@ namespace API.Formularios.Activo
 
         private void tsbGrabarActivo_Click(object sender, EventArgs e)
         {
-            InsertaNuevoAsocHW();
+            ValidaControlesCompletos();
+            if (ControlesVacios == true)
+            {
+                Rutinas.PresentaMensajeAceptar(cFormularioPadre, "alertamalorojo","Error","Debe ingresar todos los datos para grabar.",false,false);
+                return;
+            } //verifica text box completos
+
+            if (tcAsocActivos.SelectedTab==tbpCompu)
+            {
+                if (AgregoSoftware == false)
+                {
+                    if (Rutinas.PresentaMensajeAceptarCancelar(cFormularioPadre, "alertaexclamacionamarillo", "Atención", "Desea Agregar Software antes de Grabar?", false, false))
+                    {
+                        gbSoftwareList.Visible = true;
+                        ObtieneSoftwareList();
+                    }
+                    else
+                    {
+                        InsertaNuevoAsocHW();
+                    }
+                }
+                else
+                {
+                    InsertaNuevoAsocHW();
+                }
+            }
+
+            else
+            {
+                InsertaNuevoAsocHW();
+            }           
+
+        }
+
+        private void tsbCancelarAsocActivo_Click(object sender, EventArgs e)
+        {
+            EstadoInicial();
+        }
+
+        private void ValidaControlesCompletos()
+        {
+            if (tcAsocActivos.SelectedTab==tbpCompu)
+            {
+                if (String.IsNullOrEmpty(txtNumIPComp.Text) || String.IsNullOrEmpty(txtNombEquipRed.Text))
+                {
+                    ControlesVacios = true;
+                }
+                else
+                {
+                    ControlesVacios = false;
+                }
+            }
+            else
+            {
+                ControlesVacios = false;
+            }
+        }
+
+        private void dgSeleccImpr_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dgSeleccImpr.EndEdit();
+            VerificarImpresoraSeleccionada(dgSeleccImpr, e.RowIndex, e.ColumnIndex);
+            intIdHardware = Convert.ToInt32(dgSeleccImpr.Rows[e.RowIndex].Cells[idHardwareImp].Value);
         }
     }
 }

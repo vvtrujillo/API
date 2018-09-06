@@ -34,21 +34,20 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblMarca = new System.Windows.Forms.Label();
             this.txtMarca = new System.Windows.Forms.TextBox();
+            this.dgMarca = new System.Windows.Forms.DataGridView();
+            this.Sel = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.id_Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre_Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tsMarca = new System.Windows.Forms.ToolStrip();
             this.tsbCerrar = new System.Windows.Forms.ToolStripButton();
             this.tsbEliminar = new System.Windows.Forms.ToolStripButton();
-            this.tsbImprimir = new System.Windows.Forms.ToolStripButton();
             this.tsEditar = new System.Windows.Forms.ToolStripButton();
             this.tsbGrabar = new System.Windows.Forms.ToolStripButton();
             this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
             this.tsbCancelar = new System.Windows.Forms.ToolStripButton();
             this.tslMarca = new System.Windows.Forms.ToolStripLabel();
-            this.dgMarca = new System.Windows.Forms.DataGridView();
-            this.Sel = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.id_Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre_Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tsMarca.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgMarca)).BeginInit();
+            this.tsMarca.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblMarca
@@ -68,140 +67,6 @@
             this.txtMarca.Name = "txtMarca";
             this.txtMarca.Size = new System.Drawing.Size(157, 25);
             this.txtMarca.TabIndex = 1;
-            // 
-            // tsMarca
-            // 
-            this.tsMarca.BackColor = System.Drawing.Color.Transparent;
-            this.tsMarca.BackgroundImage = global::API.Properties.Resources.BarraBotones;
-            this.tsMarca.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.tsMarca.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbCerrar,
-            this.tsbEliminar,
-            this.tsbImprimir,
-            this.tsEditar,
-            this.tsbGrabar,
-            this.tsbNuevo,
-            this.tsbCancelar,
-            this.tslMarca});
-            this.tsMarca.Location = new System.Drawing.Point(0, 0);
-            this.tsMarca.Name = "tsMarca";
-            this.tsMarca.Size = new System.Drawing.Size(557, 25);
-            this.tsMarca.TabIndex = 65;
-            this.tsMarca.Text = "toolStrip1";
-            this.tsMarca.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tsMarca_MouseDown);
-            // 
-            // tsbCerrar
-            // 
-            this.tsbCerrar.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbCerrar.AutoSize = false;
-            this.tsbCerrar.Font = new System.Drawing.Font("Verdana", 9.75F);
-            this.tsbCerrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.tsbCerrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tsbCerrar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbCerrar.Name = "tsbCerrar";
-            this.tsbCerrar.Size = new System.Drawing.Size(70, 22);
-            this.tsbCerrar.Text = "Cerrar";
-            this.tsbCerrar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.tsbCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.tsbCerrar.Click += new System.EventHandler(this.tsbCerrar_Click);
-            // 
-            // tsbEliminar
-            // 
-            this.tsbEliminar.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbEliminar.AutoSize = false;
-            this.tsbEliminar.Enabled = false;
-            this.tsbEliminar.Font = new System.Drawing.Font("Verdana", 9.75F);
-            this.tsbEliminar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.tsbEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tsbEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbEliminar.Name = "tsbEliminar";
-            this.tsbEliminar.Size = new System.Drawing.Size(80, 22);
-            this.tsbEliminar.Text = "Eliminar";
-            this.tsbEliminar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.tsbEliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.tsbEliminar.Click += new System.EventHandler(this.tsbEliminar_Click);
-            // 
-            // tsbImprimir
-            // 
-            this.tsbImprimir.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbImprimir.AutoSize = false;
-            this.tsbImprimir.Font = new System.Drawing.Font("Verdana", 9.75F);
-            this.tsbImprimir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.tsbImprimir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tsbImprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbImprimir.Name = "tsbImprimir";
-            this.tsbImprimir.Size = new System.Drawing.Size(80, 22);
-            this.tsbImprimir.Text = "Imprimir";
-            this.tsbImprimir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.tsbImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.tsbImprimir.Visible = false;
-            // 
-            // tsEditar
-            // 
-            this.tsEditar.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsEditar.AutoSize = false;
-            this.tsEditar.Font = new System.Drawing.Font("Verdana", 9.75F);
-            this.tsEditar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.tsEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tsEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsEditar.Name = "tsEditar";
-            this.tsEditar.Size = new System.Drawing.Size(80, 22);
-            this.tsEditar.Text = "Editar";
-            this.tsEditar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.tsEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.tsEditar.Click += new System.EventHandler(this.tsEditar_Click);
-            // 
-            // tsbGrabar
-            // 
-            this.tsbGrabar.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbGrabar.AutoSize = false;
-            this.tsbGrabar.Font = new System.Drawing.Font("Verdana", 9.75F);
-            this.tsbGrabar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.tsbGrabar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tsbGrabar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbGrabar.Name = "tsbGrabar";
-            this.tsbGrabar.Size = new System.Drawing.Size(80, 22);
-            this.tsbGrabar.Text = "Grabar";
-            this.tsbGrabar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.tsbGrabar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.tsbGrabar.Click += new System.EventHandler(this.tsbGrabar_Click);
-            // 
-            // tsbNuevo
-            // 
-            this.tsbNuevo.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbNuevo.AutoSize = false;
-            this.tsbNuevo.Font = new System.Drawing.Font("Verdana", 9.75F);
-            this.tsbNuevo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.tsbNuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tsbNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbNuevo.Name = "tsbNuevo";
-            this.tsbNuevo.Size = new System.Drawing.Size(80, 22);
-            this.tsbNuevo.Text = "Nuevo";
-            this.tsbNuevo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.tsbNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.tsbNuevo.Click += new System.EventHandler(this.tsbNuevo_Click);
-            // 
-            // tsbCancelar
-            // 
-            this.tsbCancelar.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbCancelar.AutoSize = false;
-            this.tsbCancelar.Font = new System.Drawing.Font("Verdana", 9.75F);
-            this.tsbCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.tsbCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tsbCancelar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbCancelar.Name = "tsbCancelar";
-            this.tsbCancelar.Size = new System.Drawing.Size(80, 22);
-            this.tsbCancelar.Text = "Cancelar";
-            this.tsbCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.tsbCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            // 
-            // tslMarca
-            // 
-            this.tslMarca.Font = new System.Drawing.Font("Verdana", 9.75F);
-            this.tslMarca.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.tslMarca.Name = "tslMarca";
-            this.tslMarca.Size = new System.Drawing.Size(54, 22);
-            this.tslMarca.Text = "MARCA";
             // 
             // dgMarca
             // 
@@ -243,7 +108,7 @@
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(226)))), ((int)(((byte)(228)))));
             this.dgMarca.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgMarca.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgMarca.Size = new System.Drawing.Size(243, 312);
+            this.dgMarca.Size = new System.Drawing.Size(376, 312);
             this.dgMarca.TabIndex = 190;
             this.dgMarca.TabStop = false;
             this.dgMarca.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgMarca_CellContentClick);
@@ -268,11 +133,134 @@
             this.Nombre_Marca.Name = "Nombre_Marca";
             this.Nombre_Marca.ReadOnly = true;
             // 
+            // tsMarca
+            // 
+            this.tsMarca.BackColor = System.Drawing.Color.Transparent;
+            this.tsMarca.BackgroundImage = global::API.Properties.Resources.BarraBotones;
+            this.tsMarca.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tsMarca.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbCerrar,
+            this.tsbEliminar,
+            this.tsEditar,
+            this.tsbGrabar,
+            this.tsbNuevo,
+            this.tsbCancelar,
+            this.tslMarca});
+            this.tsMarca.Location = new System.Drawing.Point(0, 0);
+            this.tsMarca.Name = "tsMarca";
+            this.tsMarca.Size = new System.Drawing.Size(599, 25);
+            this.tsMarca.TabIndex = 65;
+            this.tsMarca.Text = "toolStrip1";
+            this.tsMarca.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tsMarca_MouseDown);
+            // 
+            // tsbCerrar
+            // 
+            this.tsbCerrar.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbCerrar.AutoSize = false;
+            this.tsbCerrar.Font = new System.Drawing.Font("Verdana", 9.75F);
+            this.tsbCerrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tsbCerrar.Image = global::API.Properties.Resources.Cerrar_16;
+            this.tsbCerrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tsbCerrar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbCerrar.Name = "tsbCerrar";
+            this.tsbCerrar.Size = new System.Drawing.Size(70, 22);
+            this.tsbCerrar.Text = "Cerrar";
+            this.tsbCerrar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.tsbCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.tsbCerrar.Click += new System.EventHandler(this.tsbCerrar_Click);
+            // 
+            // tsbEliminar
+            // 
+            this.tsbEliminar.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbEliminar.AutoSize = false;
+            this.tsbEliminar.Enabled = false;
+            this.tsbEliminar.Font = new System.Drawing.Font("Verdana", 9.75F);
+            this.tsbEliminar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tsbEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tsbEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbEliminar.Name = "tsbEliminar";
+            this.tsbEliminar.Size = new System.Drawing.Size(80, 22);
+            this.tsbEliminar.Text = "Eliminar";
+            this.tsbEliminar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.tsbEliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.tsbEliminar.Click += new System.EventHandler(this.tsbEliminar_Click);
+            // 
+            // tsEditar
+            // 
+            this.tsEditar.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsEditar.AutoSize = false;
+            this.tsEditar.Font = new System.Drawing.Font("Verdana", 9.75F);
+            this.tsEditar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tsEditar.Image = global::API.Properties.Resources.Modificar;
+            this.tsEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tsEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsEditar.Name = "tsEditar";
+            this.tsEditar.Size = new System.Drawing.Size(80, 22);
+            this.tsEditar.Text = "Editar";
+            this.tsEditar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.tsEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.tsEditar.Click += new System.EventHandler(this.tsEditar_Click);
+            // 
+            // tsbGrabar
+            // 
+            this.tsbGrabar.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbGrabar.AutoSize = false;
+            this.tsbGrabar.Font = new System.Drawing.Font("Verdana", 9.75F);
+            this.tsbGrabar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tsbGrabar.Image = global::API.Properties.Resources.Grabar2;
+            this.tsbGrabar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tsbGrabar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbGrabar.Name = "tsbGrabar";
+            this.tsbGrabar.Size = new System.Drawing.Size(80, 22);
+            this.tsbGrabar.Text = "Grabar";
+            this.tsbGrabar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.tsbGrabar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.tsbGrabar.Click += new System.EventHandler(this.tsbGrabar_Click);
+            // 
+            // tsbNuevo
+            // 
+            this.tsbNuevo.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbNuevo.AutoSize = false;
+            this.tsbNuevo.Font = new System.Drawing.Font("Verdana", 9.75F);
+            this.tsbNuevo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tsbNuevo.Image = global::API.Properties.Resources.Nuevo_18;
+            this.tsbNuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tsbNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbNuevo.Name = "tsbNuevo";
+            this.tsbNuevo.Size = new System.Drawing.Size(80, 22);
+            this.tsbNuevo.Text = "Nuevo";
+            this.tsbNuevo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.tsbNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.tsbNuevo.Click += new System.EventHandler(this.tsbNuevo_Click);
+            // 
+            // tsbCancelar
+            // 
+            this.tsbCancelar.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbCancelar.AutoSize = false;
+            this.tsbCancelar.Font = new System.Drawing.Font("Verdana", 9.75F);
+            this.tsbCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tsbCancelar.Image = global::API.Properties.Resources.cancel_icon;
+            this.tsbCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tsbCancelar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbCancelar.Name = "tsbCancelar";
+            this.tsbCancelar.Size = new System.Drawing.Size(90, 22);
+            this.tsbCancelar.Text = "Cancelar";
+            this.tsbCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.tsbCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            // 
+            // tslMarca
+            // 
+            this.tslMarca.Font = new System.Drawing.Font("Verdana", 9.75F);
+            this.tslMarca.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tslMarca.Name = "tslMarca";
+            this.tslMarca.Size = new System.Drawing.Size(54, 22);
+            this.tslMarca.Text = "MARCA";
+            // 
             // fMarca
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(557, 399);
+            this.ClientSize = new System.Drawing.Size(599, 399);
             this.Controls.Add(this.dgMarca);
             this.Controls.Add(this.tsMarca);
             this.Controls.Add(this.txtMarca);
@@ -282,9 +270,9 @@
             this.Name = "fMarca";
             this.Text = "fMarca";
             this.Load += new System.EventHandler(this.fMarca_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgMarca)).EndInit();
             this.tsMarca.ResumeLayout(false);
             this.tsMarca.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgMarca)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -297,7 +285,6 @@
         private System.Windows.Forms.ToolStrip tsMarca;
         private System.Windows.Forms.ToolStripButton tsbCerrar;
         private System.Windows.Forms.ToolStripButton tsbEliminar;
-        private System.Windows.Forms.ToolStripButton tsbImprimir;
         private System.Windows.Forms.ToolStripButton tsEditar;
         private System.Windows.Forms.ToolStripButton tsbGrabar;
         private System.Windows.Forms.ToolStripButton tsbNuevo;

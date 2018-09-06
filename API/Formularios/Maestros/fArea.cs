@@ -50,10 +50,11 @@ namespace API.Formularios.Maestros
         private string auxIdEmpresa;
         private string auxIDPlanta;
 
+        private bool vaciosTextBox;
+        private bool vaciosComboBox;
 
         //Vamos a traer las empresas
-
-        
+                
         private void ObtieneAreas()
         {
             string aux = "EXEC spObtieneAreaPlantas";
@@ -116,10 +117,9 @@ namespace API.Formularios.Maestros
 
             if (auxRespuesta == "")
             {
-                Rutinas.PresentaMensajeAceptar(cFormularioPadre, "bueno", "Operación Correcta.", "", false, false);
+                Rutinas.PresentaMensajeAceptar(cFormularioPadre, "bueno", "Operación Correcta.", "Se realizó la inserción.", false, false);
                 EstadoInicial();       
             }
-
 
         }
 
@@ -136,6 +136,10 @@ namespace API.Formularios.Maestros
             txtEmailArea.Enabled = false;
             txtTelefonoArea.Text = String.Empty;
             txtTelefonoArea.Enabled = false;
+
+            cmbEmpresa.Enabled = false;
+            tsbGrabar.Visible = false;
+            tsbCancelar.Visible = false;
         }
 
         private void HabilitaTextBoxArea()
@@ -158,7 +162,7 @@ namespace API.Formularios.Maestros
             if (pDataGrid.Name == "dgArea")
             {
                 dgArea.Columns[idArea].Visible = false; pDataGrid.Columns[idArea].HeaderText = "idArea";
-                dgArea.Columns[idPlanta].Width = 20; pDataGrid.Columns[idPlanta].HeaderText = "idPlanta";
+                dgArea.Columns[idPlanta].Visible=false; pDataGrid.Columns[idPlanta].HeaderText = "idPlanta";
                 dgArea.Columns[NombreArea].Width = 200; pDataGrid.Columns[NombreArea].HeaderText = "Nombre Área";
                 dgArea.Columns[ResponsableArea].Width = 200; pDataGrid.Columns[ResponsableArea].HeaderText = "Responsable";
                 dgArea.Columns[TelefonoArea].Width = 70; pDataGrid.Columns[TelefonoArea].HeaderText = "Teléfono";
@@ -176,7 +180,7 @@ namespace API.Formularios.Maestros
         {
             string cadenaSPObtienePlanta= "pa_ObtenerEmpresaPlantas "+ auxIdEmpresa;
            
-            Rutinas.CargarDatosComboBox(cConexionSQLMaestro, cadenaSPObtienePlanta, cmbPlanta, "Descripcion", "IDPlanta");
+            Rutinas.CargarDatosComboBox(cConexionSQL, cadenaSPObtienePlanta, cmbPlanta, "Descripcion", "IDPlanta");
             cmbPlanta.SelectedIndex = -1;
         }       
 
@@ -218,7 +222,17 @@ namespace API.Formularios.Maestros
 
         private void tsbGrabar_Click(object sender, EventArgs e)
         {
-            InsertNewArea();
+            revisaTextBoxVacios();
+            revisaComboBoxVacios();
+
+            if(vaciosTextBox==true||vaciosComboBox==true)
+            {
+                Rutinas.PresentaMensajeAceptar(cFormularioPadre, "malo", "Faltan datos", "De ingresar al menos Nombre de área.", false, false);
+            }
+            else
+            {
+                InsertNewArea();
+            }            
         }
 
         private void cmbPlanta_SelectionChangeCommitted(object sender, EventArgs e)
@@ -235,6 +249,37 @@ namespace API.Formularios.Maestros
         private void tsbCancelar_Click(object sender, EventArgs e)
         {
             EstadoInicial();
+        }
+
+        private void tsbNuevo_Click(object sender, EventArgs e)
+        {
+            cmbEmpresa.Enabled = true;
+            tsbGrabar.Visible = true;
+            tsbCancelar.Visible = true;
+        }
+
+        private void revisaTextBoxVacios()
+        {
+            if(String.IsNullOrEmpty(txtNombreArea.Text))
+            {
+                vaciosTextBox = true;            
+            }
+            else
+            {
+                vaciosTextBox = false;
+            }
+        }
+
+        private void revisaComboBoxVacios()
+        {
+            if (String.IsNullOrEmpty(cmbEmpresa.Text) || String.IsNullOrEmpty(cmbPlanta.Text))
+            {
+                vaciosComboBox = true;
+            }
+            else
+            {
+                vaciosComboBox = false;
+            }                
         }
     }
 }

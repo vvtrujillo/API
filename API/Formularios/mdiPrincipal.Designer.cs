@@ -45,11 +45,16 @@
             this.activoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.asociarActivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmBuscaxUsuario = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmBusquedas = new System.Windows.Forms.ToolStripMenuItem();
+            this.tslItemBusqueda = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmBusqActxUsuario = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmMaestros = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmMarca = new System.Windows.Forms.ToolStripMenuItem();
-            this.tslArea = new System.Windows.Forms.ToolStripMenuItem();
-            this.tslUsuario = new System.Windows.Forms.ToolStripMenuItem();
             this.modeloToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tslUsuario = new System.Windows.Forms.ToolStripMenuItem();
+            this.tslArea = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmAuditoria = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsAuditoria = new System.Windows.Forms.ToolStripMenuItem();
             this.finToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmAcercaDe = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmActualizacionDeControles = new System.Windows.Forms.ToolStripMenuItem();
@@ -145,7 +150,9 @@
             this.msPrincipal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmParametros,
             this.tsmActivos,
+            this.tsmBusquedas,
             this.tsmMaestros,
+            this.tsmAuditoria,
             this.finToolStripMenuItem});
             this.msPrincipal.Location = new System.Drawing.Point(0, 0);
             this.msPrincipal.Name = "msPrincipal";
@@ -205,6 +212,32 @@
             this.tsmBuscaxUsuario.Text = "Búsqueda por Usuario";
             this.tsmBuscaxUsuario.Click += new System.EventHandler(this.tsmBuscaxUsuario_Click);
             // 
+            // tsmBusquedas
+            // 
+            this.tsmBusquedas.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tslItemBusqueda,
+            this.tsmBusqActxUsuario});
+            this.tsmBusquedas.Name = "tsmBusquedas";
+            this.tsmBusquedas.Size = new System.Drawing.Size(76, 20);
+            this.tsmBusquedas.Tag = "-";
+            this.tsmBusquedas.Text = "Búsquedas";
+            // 
+            // tslItemBusqueda
+            // 
+            this.tslItemBusqueda.Name = "tslItemBusqueda";
+            this.tslItemBusqueda.Size = new System.Drawing.Size(226, 22);
+            this.tslItemBusqueda.Tag = "fBusqueda";
+            this.tslItemBusqueda.Text = "Búsqueda";
+            this.tslItemBusqueda.Click += new System.EventHandler(this.tslItemBusqueda_Click);
+            // 
+            // tsmBusqActxUsuario
+            // 
+            this.tsmBusqActxUsuario.Name = "tsmBusqActxUsuario";
+            this.tsmBusqActxUsuario.Size = new System.Drawing.Size(226, 22);
+            this.tsmBusqActxUsuario.Tag = "fBusquedaActivos";
+            this.tsmBusqActxUsuario.Text = "Búsqueda Activo por usuario";
+            this.tsmBusqActxUsuario.Click += new System.EventHandler(this.tsmBusqActxUsuario_Click);
+            // 
             // tsmMaestros
             // 
             this.tsmMaestros.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -220,34 +253,51 @@
             // tsmMarca
             // 
             this.tsmMarca.Name = "tsmMarca";
-            this.tsmMarca.Size = new System.Drawing.Size(152, 22);
+            this.tsmMarca.Size = new System.Drawing.Size(115, 22);
             this.tsmMarca.Tag = "fMarca";
             this.tsmMarca.Text = "Marca";
             this.tsmMarca.Click += new System.EventHandler(this.tsmMarca_Click_1);
             // 
-            // tslArea
+            // modeloToolStripMenuItem
             // 
-            this.tslArea.Name = "tslArea";
-            this.tslArea.Size = new System.Drawing.Size(152, 22);
-            this.tslArea.Tag = "fArea";
-            this.tslArea.Text = "Área";
-            this.tslArea.Click += new System.EventHandler(this.tslArea_Click);
+            this.modeloToolStripMenuItem.Name = "modeloToolStripMenuItem";
+            this.modeloToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
+            this.modeloToolStripMenuItem.Tag = "fModelo";
+            this.modeloToolStripMenuItem.Text = "Modelo";
+            this.modeloToolStripMenuItem.Click += new System.EventHandler(this.modeloToolStripMenuItem_Click);
             // 
             // tslUsuario
             // 
             this.tslUsuario.Name = "tslUsuario";
-            this.tslUsuario.Size = new System.Drawing.Size(152, 22);
+            this.tslUsuario.Size = new System.Drawing.Size(115, 22);
             this.tslUsuario.Tag = "fUsuario";
             this.tslUsuario.Text = "Usuario";
             this.tslUsuario.Click += new System.EventHandler(this.tslUsuario_Click);
             // 
-            // modeloToolStripMenuItem
+            // tslArea
             // 
-            this.modeloToolStripMenuItem.Name = "modeloToolStripMenuItem";
-            this.modeloToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.modeloToolStripMenuItem.Tag = "fModelo";
-            this.modeloToolStripMenuItem.Text = "Modelo";
-            this.modeloToolStripMenuItem.Click += new System.EventHandler(this.modeloToolStripMenuItem_Click);
+            this.tslArea.Name = "tslArea";
+            this.tslArea.Size = new System.Drawing.Size(115, 22);
+            this.tslArea.Tag = "fArea";
+            this.tslArea.Text = "Área";
+            this.tslArea.Click += new System.EventHandler(this.tslArea_Click);
+            // 
+            // tsmAuditoria
+            // 
+            this.tsmAuditoria.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsAuditoria});
+            this.tsmAuditoria.Name = "tsmAuditoria";
+            this.tsmAuditoria.Size = new System.Drawing.Size(68, 20);
+            this.tsmAuditoria.Tag = "-";
+            this.tsmAuditoria.Text = "Auditoría";
+            // 
+            // tsAuditoria
+            // 
+            this.tsAuditoria.Name = "tsAuditoria";
+            this.tsAuditoria.Size = new System.Drawing.Size(123, 22);
+            this.tsAuditoria.Tag = "fAuditoria";
+            this.tsAuditoria.Text = "Auditoría";
+            this.tsAuditoria.Click += new System.EventHandler(this.tsAuditoria_Click);
             // 
             // finToolStripMenuItem
             // 
@@ -350,6 +400,11 @@
         private System.Windows.Forms.ToolStripMenuItem activoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem asociarActivoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tsmBuscaxUsuario;
+        private System.Windows.Forms.ToolStripMenuItem tsmAuditoria;
+        private System.Windows.Forms.ToolStripMenuItem tsAuditoria;
+        private System.Windows.Forms.ToolStripMenuItem tsmBusquedas;
+        private System.Windows.Forms.ToolStripMenuItem tslItemBusqueda;
+        private System.Windows.Forms.ToolStripMenuItem tsmBusqActxUsuario;
     }
 }
 

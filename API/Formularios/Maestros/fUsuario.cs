@@ -56,6 +56,9 @@ namespace API.Formularios.Maestros
         private string auxIdPlanta;
         private string auxIdArea;
 
+        private bool vaciosTextBox;
+        private bool vaciosComboBox;
+
         public fUsuario()
         {
             InitializeComponent();
@@ -63,6 +66,9 @@ namespace API.Formularios.Maestros
 
         private void EstadoInicial()
         {
+            ObtieneListaUsuarios();
+            CargarComboboxEmpresa();
+
             cmbEmpresa.Enabled = false;
             cmbPlanta.Enabled = false;
             cmbArea.Enabled = false;
@@ -72,6 +78,24 @@ namespace API.Formularios.Maestros
             txtEmail.Enabled = false;
             txtTelefono.Enabled = false;
             txtCargo.Enabled = false;
+
+            txtApellido.Text = String.Empty;
+            txtCargo.Text = String.Empty;
+            txtEmail.Text = String.Empty;
+            txtIdUsuario.Text = String.Empty;
+            txtNombre.Text = String.Empty;
+            txtNombreUser.Text = String.Empty;
+            txtTelefono.Text = String.Empty;
+
+            cmbArea.SelectedIndex = -1;
+            cmbEmpresa.SelectedIndex = -1;
+            cmbPlanta.SelectedIndex = -1;
+
+            tsbCancelarUsu.Visible = false;
+            tsbGrabarUsu.Visible = false;
+
+            vaciosComboBox = false;
+            vaciosTextBox = false;
         }
 
         private void PrepararDataGrid(DataGridView pDataGrid)
@@ -134,9 +158,7 @@ namespace API.Formularios.Maestros
 
         private void fUsuario_Load(object sender, EventArgs e)
         {
-            EstadoInicial();
-            ObtieneListaUsuarios();
-            CargarComboboxEmpresa();
+            EstadoInicial();                        
         }
 
         private void cmbEmpresa_SelectionChangeCommitted(object sender, EventArgs e)
@@ -208,7 +230,8 @@ namespace API.Formularios.Maestros
 
             if (auxRespuesta == "")
             {
-                Rutinas.PresentaMensajeAceptar(cFormularioPadre, "bueno", "Operación Correcta.", "", false, false);                
+                Rutinas.PresentaMensajeAceptar(cFormularioPadre, "bueno", "Operación Correcta.", "Se realizó el ingreso de nuevo usuario.", false, false);
+                EstadoInicial();             
             }
 
 
@@ -222,7 +245,17 @@ namespace API.Formularios.Maestros
 
         private void tsbGrabar_Click(object sender, EventArgs e)
         {
-            InsertNewUsuario();
+            revisaTextBoxVacios();
+            revisaComboBoxVacios();
+
+            if (vaciosTextBox==true||vaciosComboBox==true)
+            {
+                Rutinas.PresentaMensajeAceptar(cFormularioPadre, "malo", "Faltan datos", "De ingresar al menos Nombre, Apellido y Nombre de usuario.", false, false);
+            }
+            else
+            {
+                InsertNewUsuario();
+            }            
         }       
 
         private void tsMarca_MouseDown(object sender, MouseEventArgs e)
@@ -254,6 +287,32 @@ namespace API.Formularios.Maestros
         private void tsbNuevoUsu_Click(object sender, EventArgs e)
         {
             cmbEmpresa.Enabled = true;
+            tsbCancelarUsu.Visible = true;
+            tsbGrabarUsu.Visible = true;
+        }
+
+        private void revisaTextBoxVacios()
+        {
+            if(String.IsNullOrEmpty(txtApellido.Text)||String.IsNullOrEmpty(txtNombre.Text)||String.IsNullOrEmpty(txtNombreUser.Text))
+            {
+                vaciosTextBox = true;
+            }
+            else
+            {
+                vaciosTextBox = false;
+            }
+        }
+
+        private void revisaComboBoxVacios()
+        {
+            if(String.IsNullOrEmpty(cmbEmpresa.Text)||String.IsNullOrEmpty(cmbPlanta.Text)||String.IsNullOrEmpty(cmbArea.Text))
+            {
+                vaciosComboBox = true;
+            }
+            else
+            {
+                vaciosComboBox = false;
+            }
         }
     }
 }
