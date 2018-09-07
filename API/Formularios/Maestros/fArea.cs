@@ -52,6 +52,8 @@ namespace API.Formularios.Maestros
 
         private bool vaciosTextBox;
         private bool vaciosComboBox;
+        private int intIdArea;
+        private bool auxActualizarArea;
 
         //Vamos a traer las empresas
                 
@@ -125,6 +127,8 @@ namespace API.Formularios.Maestros
 
         private void EstadoInicial()
         {
+            ObtieneAreas();
+
             cmbEmpresa.SelectedIndex = -1;
             cmbPlanta.SelectedIndex = -1;
             cmbPlanta.Enabled = false;
@@ -140,6 +144,12 @@ namespace API.Formularios.Maestros
             cmbEmpresa.Enabled = false;
             tsbGrabar.Visible = false;
             tsbCancelar.Visible = false;
+            tsEditar.Visible = true;
+            tsbNuevo.Visible = true;
+            intIdArea = 0;
+            auxActualizarArea = false;
+
+            dgArea.Enabled = false;
         }
 
         private void HabilitaTextBoxArea()
@@ -187,8 +197,7 @@ namespace API.Formularios.Maestros
         private void fArea_Load(object sender, EventArgs e)
         {
             EstadoInicial();
-            CargarComboboxEmpresa();
-            ObtieneAreas();
+            CargarComboboxEmpresa();                        
         }
 
         public fArea()
@@ -222,17 +231,25 @@ namespace API.Formularios.Maestros
 
         private void tsbGrabar_Click(object sender, EventArgs e)
         {
-            revisaTextBoxVacios();
-            revisaComboBoxVacios();
-
-            if(vaciosTextBox==true||vaciosComboBox==true)
+            if(auxActualizarArea!=true)
             {
-                Rutinas.PresentaMensajeAceptar(cFormularioPadre, "malo", "Faltan datos", "De ingresar al menos Nombre de área.", false, false);
+                revisaTextBoxVacios();
+                revisaComboBoxVacios();
+
+                if (vaciosTextBox == true || vaciosComboBox == true)
+                {
+                    Rutinas.PresentaMensajeAceptar(cFormularioPadre, "malo", "Faltan datos", "De ingresar al menos Nombre de área.", false, false);
+                }
+                else
+                {
+                    InsertNewArea();
+                }
             }
             else
             {
-                InsertNewArea();
-            }            
+                UpdateArea();
+            }
+                        
         }
 
         private void cmbPlanta_SelectionChangeCommitted(object sender, EventArgs e)
@@ -256,6 +273,7 @@ namespace API.Formularios.Maestros
             cmbEmpresa.Enabled = true;
             tsbGrabar.Visible = true;
             tsbCancelar.Visible = true;
+            tsEditar.Visible = false;
         }
 
         private void revisaTextBoxVacios()
@@ -280,6 +298,76 @@ namespace API.Formularios.Maestros
             {
                 vaciosComboBox = false;
             }                
+        }
+
+        private void tsEditar_Click(object sender, EventArgs e)
+        {
+            dgArea.Enabled = true;
+
+            tsbNuevo.Visible = false;
+            tsbCancelar.Visible = true;
+            tsbGrabar.Visible = true;
+            auxActualizarArea = true;
+
+            txtNombreArea.Enabled = true;
+            txtRespArea.Enabled = true;
+            txtTelefonoArea.Enabled = true;
+            txtEmailArea.Enabled = true;
+        }
+
+        private void UpdateArea()
+        {
+            string auxRespuesta = "";
+            SqlConnection Con = new SqlConnection(cConexionSQL);
+            Con.Open();
+            SqlCommand cmd = new SqlCommand("spUpdateAreaAPI", Con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            SqlParameter auxParametro = null;
+
+            auxParametro = cmd.Parameters.Add("@intIdArea", SqlDbType.Int);
+            auxParametro = cmd.Parameters.Add("@vchNombreArea", SqlDbType.VarChar, 255);
+            auxParametro = cmd.Parameters.Add("@vchResponsableArea", SqlDbType.VarChar, 255);
+            auxParametro = cmd.Parameters.Add("@vchTelefonoArea", SqlDbType.VarChar, 255);
+            auxParametro = cmd.Parameters.Add("@vchEmailArea", SqlDbType.VarChar, 255);            
+            auxParametro = cmd.Parameters.Add("@msgError", SqlDbType.VarChar, 255);
+            auxParametro.Direction = ParameterDirection.Output;
+
+            cmd.Parameters["@intIdArea"].Value = intIdArea;
+            cmd.Parameters["@vchNombreArea"].Value = txtNombreArea.Text.Trim();
+            cmd.Parameters["@vchResponsableArea"].Value = txtRespArea.Text.Trim();
+            cmd.Parameters["@vchTelefonoArea"].Value = txtTelefonoArea.Text.Trim();
+            cmd.Parameters["@vchEmailArea"].Value = txtEmailArea.Text.Trim();            
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+                if (cmd.Parameters["@msgError"].Value.ToString() != "")
+                {
+                    auxRespuesta = "No se pudo Actualizar, " + cmd.Parameters["@msgError"].Value.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                auxRespuesta = "No se pudo Actualizar" + ex.ToString();
+            }
+
+            cmd.Connection.Close(); cmd.Connection.Dispose();
+            Con.Close(); Con.Dispose();
+
+            if (auxRespuesta == "")
+            {
+                Rutinas.PresentaMensajeAceptar(cFormularioPadre, "bueno", "Operación Correcta.", "Se realizó la Actualización del área.", false, false);
+                EstadoInicial();
+            }
+        }
+
+        private void dgArea_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtNombreArea.Text = dgArea.SelectedCells[NombreArea].Value.ToString();
+            txtEmailArea.Text = dgArea.SelectedCells[EmailArea].Value.ToString();
+            txtRespArea.Text = dgArea.SelectedCells[ResponsableArea].Value.ToString();
+            txtTelefonoArea.Text = dgArea.SelectedCells[TelefonoArea].Value.ToString();
+            intIdArea = Convert.ToInt32(dgArea.SelectedCells[idArea].Value.ToString());
         }
     }
 }

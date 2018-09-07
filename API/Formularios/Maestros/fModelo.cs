@@ -47,6 +47,7 @@ namespace API.Formularios.Maestros
         //variables locales
         private int idMarcaInsert;
         private int idModeloSelecc;
+        private bool ActualizaModeloBool;
 
         public fModelo()
         {
@@ -59,11 +60,12 @@ namespace API.Formularios.Maestros
             BloqueaObjetosIngreso();
             ObtieneModelo();
             LimpiaVariables();
-            tsActualiza.Visible = false;
-            tsbEliminar.Visible = false;
+            tsActualiza.Visible = false;            
             vacio = false;
             tsbCancelar.Visible = false;
             tsbGrabar.Visible = false;
+            tsEditar.Visible = true;
+            ActualizaModeloBool = false;
         }
 
         private void LimpiaVariables()
@@ -266,12 +268,12 @@ namespace API.Formularios.Maestros
         }
 
         private void EditarModelo()
-        {
-            tsbEliminar.Visible = true;
-            tsActualiza.Visible = true;
-            tsbGrabar.Visible = false;
+        {           
+            tsActualiza.Visible = false;
+            tsbGrabar.Visible = true;
             cmbMarcaModelo.Enabled = true;
-            txtNombreModelo.Enabled = true;            
+            txtNombreModelo.Enabled = true;
+            ActualizaModeloBool = true;
         }
 
         private void fModelo_Load(object sender, EventArgs e)
@@ -290,6 +292,7 @@ namespace API.Formularios.Maestros
             dgModelo.Enabled = false;
             tsbGrabar.Visible = true;
             tsbCancelar.Visible = true;
+            tsEditar.Visible = false;
             HabilitaObjetosIngreso();            
         }
 
@@ -300,16 +303,24 @@ namespace API.Formularios.Maestros
 
         private void tsbGrabar_Click(object sender, EventArgs e)
         {
-            ValidaControlesCompletos();
-
-            if(vacio==true)
+            if (ActualizaModeloBool != true)
             {
-                Rutinas.PresentaMensajeAceptar(cFormularioPadre, "malo", "Campos Vacíos", "Debe ingresar todos los campos para insertar", false, false);
+                ValidaControlesCompletos();
+
+                if (vacio == true)
+                {
+                    Rutinas.PresentaMensajeAceptar(cFormularioPadre, "malo", "Campos Vacíos", "Debe ingresar todos los campos para insertar", false, false);
+                }
+                else
+                {
+                    IngresaNuevoModelo();
+                }
             }
             else
             {
-                IngresaNuevoModelo();
-            }            
+                ActualizaModelo();
+            }
+                        
         }
 
         private void dgModelo_CellContentClick(object sender, DataGridViewCellEventArgs e)

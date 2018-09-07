@@ -42,6 +42,7 @@ namespace API.Formularios.Maestros
 
         //
         public int intIdMarcaSel;
+        private bool ActualizaMarca;
 
 
         public fMarca()
@@ -54,10 +55,14 @@ namespace API.Formularios.Maestros
             txtMarca.Enabled = false;
             txtMarca.Text = String.Empty;
             intIdMarcaSel = 0;
-            tsbEliminar.Visible = false;
+           
             tsbCancelar.Visible = false;
             tsbGrabar.Visible = false;
             ExtraeMarca();
+            tsbNuevo.Visible = true;
+            dgMarca.Enabled = false;
+            ActualizaMarca = false;
+            tsEditar.Visible = true;
         }        
 
         private void BloqueoTxtBox()
@@ -294,14 +299,22 @@ namespace API.Formularios.Maestros
         
         private void tsbGrabar_Click(object sender, EventArgs e)
         {   
-            if(String.IsNullOrEmpty(txtMarca.Text))
+            if(ActualizaMarca!=true)
             {
-                Rutinas.PresentaMensajeAceptar(cFormularioPadre, "malo", "Debe ingresar Marca a grabar", "", false, false);                
+                if (String.IsNullOrEmpty(txtMarca.Text))
+                {
+                    Rutinas.PresentaMensajeAceptar(cFormularioPadre, "malo", "Debe ingresar Marca a grabar", "", false, false);
+                }
+                else
+                {
+                    IngresaNuevaMarca();
+                }
             }
             else
             {
-                IngresaNuevaMarca();
-            }            
+                ActualizaNombreMarca();
+            }
+                        
         }
 
         private void dgMarca_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -328,16 +341,17 @@ namespace API.Formularios.Maestros
             txtMarca.Text = String.Empty;
             tsbGrabar.Visible = true;
             tsEditar.Visible = false;
+            tsbCancelar.Visible = true;
         }
 
         private void tsEditar_Click(object sender, EventArgs e)
         {
-            txtMarca.Enabled = true;
-            tsbEliminar.Visible = true;
-            tsbEliminar.Enabled = true;
+            txtMarca.Enabled = true;            
             tsbGrabar.Visible = true;
             tsbCancelar.Visible = true;
-
+            tsbNuevo.Visible = false;
+            dgMarca.Enabled = true;
+            ActualizaMarca = true;
         }
 
         private void tsbEliminar_Click(object sender, EventArgs e)
@@ -364,6 +378,11 @@ namespace API.Formularios.Maestros
                     }
                 }
             }
+        }
+
+        private void tsbCancelar_Click(object sender, EventArgs e)
+        {
+            EstadoInicial();
         }
     }
 }
