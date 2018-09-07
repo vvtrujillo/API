@@ -58,6 +58,9 @@ namespace API.Formularios.Maestros
 
         private bool vaciosTextBox;
         private bool vaciosComboBox;
+        private bool auxActualizar;
+
+        private int intIdUsuarioUpdate;
 
         public fUsuario()
         {
@@ -100,6 +103,7 @@ namespace API.Formularios.Maestros
             vaciosTextBox = false;
 
             dgListaUsuarios.Enabled = false;
+            auxActualizar = false;
 
         }
 
@@ -250,17 +254,24 @@ namespace API.Formularios.Maestros
 
         private void tsbGrabar_Click(object sender, EventArgs e)
         {
-            revisaTextBoxVacios();
-            revisaComboBoxVacios();
-
-            if (vaciosTextBox==true||vaciosComboBox==true)
+            if (auxActualizar != true)
             {
-                Rutinas.PresentaMensajeAceptar(cFormularioPadre, "malo", "Faltan datos", "De ingresar al menos Nombre, Apellido y Nombre de usuario.", false, false);
+                revisaTextBoxVacios();
+                revisaComboBoxVacios();
+
+                if (vaciosTextBox == true || vaciosComboBox == true)
+                {
+                    Rutinas.PresentaMensajeAceptar(cFormularioPadre, "malo", "Faltan datos", "De ingresar al menos Nombre, Apellido y Nombre de usuario.", false, false);
+                }
+                else
+                {
+                    InsertNewUsuario();
+                }
             }
             else
             {
-                InsertNewUsuario();
-            }            
+                UpdateUsuario();
+            }       
         }       
 
         private void tsMarca_MouseDown(object sender, MouseEventArgs e)
@@ -327,6 +338,14 @@ namespace API.Formularios.Maestros
             tsbCancelarUsu.Visible = true;
             tsbNuevoUsu.Visible = false;
             tsbGrabarUsu.Visible = true;
+
+            txtNombre.Enabled= true;
+            txtApellido.Enabled = true;
+            txtNombreUser.Enabled = true;
+            txtEmail.Enabled = true;
+            txtTelefono.Enabled = true;
+            txtCargo.Enabled = true;
+            auxActualizar = true;         
         }
 
         private void dgListaUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -337,6 +356,58 @@ namespace API.Formularios.Maestros
             txtCargo.Text = dgListaUsuarios.SelectedCells[CargoUsuario].Value.ToString();
             txtEmail.Text = dgListaUsuarios.SelectedCells[EmailUsuario].Value.ToString();
             txtTelefono.Text = dgListaUsuarios.SelectedCells[TelefonoUsuario].Value.ToString();
+            intIdUsuarioUpdate = Convert.ToInt32(dgListaUsuarios.SelectedCells[idUsuario].Value.ToString());
+        }
+
+        private void UpdateUsuario()
+        {
+            string auxRespuesta = "";
+            SqlConnection Con = new SqlConnection(cConexionSQL);
+            Con.Open();
+            SqlCommand cmd = new SqlCommand("spUpdateUsuarioAPI", Con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            SqlParameter auxParametro = null;
+
+            auxParametro = cmd.Parameters.Add("@intIdUsuario", SqlDbType.Int);
+            auxParametro = cmd.Parameters.Add("@vchNombre", SqlDbType.VarChar, 255);
+            auxParametro = cmd.Parameters.Add("@vchApellido", SqlDbType.VarChar, 255);
+            auxParametro = cmd.Parameters.Add("@vchNombreUsuario", SqlDbType.VarChar, 255);
+            auxParametro = cmd.Parameters.Add("@vchCargoUsuario", SqlDbType.VarChar, 255);
+            auxParametro = cmd.Parameters.Add("@vchEmailUsuario", SqlDbType.VarChar, 255);
+            auxParametro = cmd.Parameters.Add("@vchTelefonoUsuario", SqlDbType.VarChar, 255);
+            auxParametro = cmd.Parameters.Add("@msgError", SqlDbType.VarChar, 255);
+            auxParametro.Direction = ParameterDirection.Output;
+
+            cmd.Parameters["@intIdUsuario"].Value = intIdUsuarioUpdate;
+            cmd.Parameters["@vchNombre"].Value = txtNombre.Text.Trim();
+            cmd.Parameters["@vchApellido"].Value = txtApellido.Text.Trim();
+            cmd.Parameters["@vchNombreUsuario"].Value = txtNombreUser.Text.Trim();
+            cmd.Parameters["@vchCargoUsuario"].Value = txtCargo.Text.Trim();
+            cmd.Parameters["@vchEmailUsuario"].Value = txtEmail.Text.Trim();
+            cmd.Parameters["@vchTelefonoUsuario"].Value = txtTelefono.Text.Trim();
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+                if (cmd.Parameters["@msgError"].Value.ToString() != "")
+                {
+                    auxRespuesta = "No se pudo Actualizar, " + cmd.Parameters["@msgError"].Value.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                auxRespuesta = "No se pudo Actualizar" + ex.ToString();
+            }
+
+            cmd.Connection.Close(); cmd.Connection.Dispose();
+            Con.Close(); Con.Dispose();
+
+            if (auxRespuesta == "")
+            {
+                Rutinas.PresentaMensajeAceptar(cFormularioPadre, "bueno", "Operación Correcta.", "Se realizó la Actualización de Usuario.", false, false);
+                EstadoInicial();
+            }
+
         }
     }
 }
