@@ -8,6 +8,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
+using Microsoft.Office.Interop.Excel;
 
 namespace API.Formularios.Maestros
 {
@@ -36,8 +37,8 @@ namespace API.Formularios.Maestros
         private string cConexionSQLMaestro;
         public string ConexionSQLMaestro { set { cConexionSQLMaestro = value; } }
 
-        private Font cFuente;
-        public Font Fuente { set { cFuente = value; } }
+        private System.Drawing.Font cFuente;
+        public System.Drawing.Font Fuente { set { cFuente = value; } }
 
 
         //declarar variables para grilla área
@@ -84,8 +85,7 @@ namespace API.Formularios.Maestros
 
             txtApellido.Text = String.Empty;
             txtCargo.Text = String.Empty;
-            txtEmail.Text = String.Empty;
-            txtIdUsuario.Text = String.Empty;
+            txtEmail.Text = String.Empty;            
             txtNombre.Text = String.Empty;
             txtNombreUser.Text = String.Empty;
             txtTelefono.Text = String.Empty;
@@ -408,6 +408,56 @@ namespace API.Formularios.Maestros
                 EstadoInicial();
             }
 
+        }
+
+        private void ExportDatagridaExcel()
+        {
+            string fechaNombre;
+            fechaNombre = Convert.ToString(DateTime.Now.Year + DateTime.Now.Month + DateTime.Now.Day + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second + DateTime.Now.Millisecond);
+
+            SaveFileDialog fichero = new SaveFileDialog();
+            fichero.Filter = "Excel (*.xls)|*.xls";
+            fichero.FileName = "Excel_Usuarios_" + fechaNombre;         
+
+            if (fichero.ShowDialog() == DialogResult.OK)
+            {
+                Microsoft.Office.Interop.Excel.Application aplicacion;
+                Microsoft.Office.Interop.Excel.Workbook libros_trabajo;
+                Microsoft.Office.Interop.Excel.Worksheet hoja_trabajo;
+                aplicacion = new Microsoft.Office.Interop.Excel.Application();
+                libros_trabajo = aplicacion.Workbooks.Add();                                
+                hoja_trabajo = (Microsoft.Office.Interop.Excel.Worksheet)libros_trabajo.Worksheets.get_Item(1);
+                hoja_trabajo.Name = "Usuarios";
+
+                int valorFila = 0;
+                for (int i = 1; i <= this.dgListaUsuarios.Columns.Count; i++)
+                {
+                    hoja_trabajo.Cells[1, i] = this.dgListaUsuarios.Columns[i - 1].HeaderText;
+                }
+
+                valorFila = valorFila + 1;
+                for (int i = 0; i < dgListaUsuarios.Rows.Count - 1; i++)
+                {
+                    for (int j = 0; j < dgListaUsuarios.Columns.Count; j++)
+                    {
+                        if ((dgListaUsuarios.Rows[i].Cells[j].Value == null) == false)
+                        {
+                            hoja_trabajo.Cells[valorFila + 1, j + 1] = dgListaUsuarios.Rows[i].Cells[j].Value.ToString();
+                        }
+                    }
+                    valorFila++;
+                }
+
+                libros_trabajo.SaveAs(fichero.FileName, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal);                                
+                libros_trabajo.Close(true);
+                aplicacion.Quit();                
+                Rutinas.PresentaMensajeAceptar(cFormularioPadre, "bueno", "Éxito","Archivo " + fichero.FileName + " fue guardado con éxito.",false,false);
+            }            
+        }
+
+        private void tsExportExelUsu_Click(object sender, EventArgs e)
+        {
+            ExportDatagridaExcel();
         }
     }
 }

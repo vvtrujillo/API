@@ -116,6 +116,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\..\Desarrollo\Administración plataforma informática\Form\Desarrollo 102\Desarrollo\bin\Debug\CrystalDecisions.Windows.Forms.dll</HintPath>
     </Reference>
+    <Reference Include="Excel, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Excel.1.0.0\lib\dotnet\Excel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -226,6 +230,12 @@
     <Compile Include="Formularios\mdiPrincipal.Designer.cs">
       <DependentUpon>mdiPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Parametros\fParamApi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Parametros\fParamApi.Designer.cs">
+      <DependentUpon>fParamApi.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Parametros\fConfiguracion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -288,6 +298,9 @@
     <EmbeddedResource Include="Formularios\mdiPrincipal.resx">
       <DependentUpon>mdiPrincipal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Parametros\fParamApi.resx">
+      <DependentUpon>fParamApi.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Parametros\fConfiguracion.resx">
       <DependentUpon>fConfiguracion.cs</DependentUpon>
     </EmbeddedResource>
@@ -304,6 +317,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -320,6 +334,11 @@
   <ItemGroup>
     <Content Include="Logo MSC_2.ico" />
     <Content Include="Logo_256x256.ico" />
+    <None Include="Resources\if_excel_272703.png" />
+    <None Include="Resources\if_excel_272697.png" />
+    <None Include="Resources\File_XLS_Excel.png" />
+    <None Include="Resources\excel_01.jpg" />
+    <None Include="Resources\Blackvariant-Button-Ui-Ms-Office-2016-Excel-2.ico" />
     <None Include="Resources\if_Wide_brush_131923.png" />
     <None Include="Resources\Eliminar.png" />
     <None Include="Resources\cancel-icon.png" />
@@ -332,6 +351,35 @@
     <None Include="Resources\Buscar_16.ico" />
     <None Include="Resources\Grabar2.png" />
     <None Include="Resources\BarraBotones.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>9</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

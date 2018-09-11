@@ -83,6 +83,16 @@ namespace API.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Blackvariant_Button_Ui_Ms_Office_2016_Excel_2 {
+            get {
+                object obj = ResourceManager.GetObject("Blackvariant-Button-Ui-Ms-Office-2016-Excel-2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Buscar_16 {
             get {
                 object obj = ResourceManager.GetObject("Buscar_16", resourceCulture);
@@ -133,9 +143,49 @@ namespace API.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap excel_01 {
+            get {
+                object obj = ResourceManager.GetObject("excel_01", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap File_XLS_Excel {
+            get {
+                object obj = ResourceManager.GetObject("File_XLS_Excel", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Grabar2 {
             get {
                 object obj = ResourceManager.GetObject("Grabar2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap if_excel_272697 {
+            get {
+                object obj = ResourceManager.GetObject("if_excel_272697", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap if_excel_272703 {
+            get {
+                object obj = ResourceManager.GetObject("if_excel_272703", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

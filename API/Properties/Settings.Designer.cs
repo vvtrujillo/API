@@ -25,7 +25,7 @@ namespace API.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1.0.6")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1.0.7")]
         public string VersionSistema {
             get {
                 return ((string)(this["VersionSistema"]));
@@ -49,7 +49,7 @@ namespace API.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("MOLINO61\\CULTIVODES")]
+        [global::System.Configuration.DefaultSettingValueAttribute("MOLINO14\\MOLINO14")]
         public string ServidorSQLCentral {
             get {
                 return ((string)(this["ServidorSQLCentral"]));
