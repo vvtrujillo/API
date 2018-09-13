@@ -36,10 +36,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -48,6 +44,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtUsuarioBuscar = new System.Windows.Forms.TextBox();
             this.lblUsuarioAsc = new System.Windows.Forms.Label();
             this.lblHardwareAsoc = new System.Windows.Forms.Label();
@@ -79,6 +79,26 @@
             this.modelo_impr = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.direcc_ip_imp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombre_eq_red_imp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tbpMonitor = new System.Windows.Forms.TabPage();
+            this.dgSeleccMonit = new System.Windows.Forms.DataGridView();
+            this.sel_monit = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.id_hw_monit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipo_monit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.num_serie_monit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre_monit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.marca_monit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.model_monit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tbpComun = new System.Windows.Forms.TabPage();
+            this.dgSeleccComun = new System.Windows.Forms.DataGridView();
+            this.sel_comu = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.id_hw_comu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipo_comu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.num_serie_comu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre_comu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.marca_comu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.modelo_comu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ip_comu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre_eq_red_comu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbSoftwareList = new System.Windows.Forms.GroupBox();
             this.dgSoftwareList = new System.Windows.Forms.DataGridView();
             this.check_sel_sw = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -96,38 +116,18 @@
             this.tsbCancelarAsocActivo = new System.Windows.Forms.ToolStripButton();
             this.tslAsociaActivo = new System.Windows.Forms.ToolStripLabel();
             this.btnBuscarUsuario = new System.Windows.Forms.Button();
-            this.tbpMonitor = new System.Windows.Forms.TabPage();
-            this.tbpComun = new System.Windows.Forms.TabPage();
-            this.dgSeleccMonit = new System.Windows.Forms.DataGridView();
-            this.dgSeleccComun = new System.Windows.Forms.DataGridView();
-            this.sel_monit = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.id_hw_monit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipo_monit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.num_serie_monit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombre_monit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.marca_monit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.model_monit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sel_comu = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.id_hw_comu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipo_comu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.num_serie_comu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombre_comu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.marca_comu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.modelo_comu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ip_comu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombre_eq_red_comu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tcAsocActivos.SuspendLayout();
             this.tbpCompu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgSeleccComp)).BeginInit();
             this.tbpImpresora.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgSeleccImpr)).BeginInit();
+            this.tbpMonitor.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgSeleccMonit)).BeginInit();
+            this.tbpComun.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgSeleccComun)).BeginInit();
             this.gbSoftwareList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgSoftwareList)).BeginInit();
             this.tsAsociaActivo.SuspendLayout();
-            this.tbpMonitor.SuspendLayout();
-            this.tbpComun.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgSeleccMonit)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgSeleccComun)).BeginInit();
             this.SuspendLayout();
             // 
             // txtUsuarioBuscar
@@ -459,6 +459,224 @@
             this.nombre_eq_red_imp.ReadOnly = true;
             this.nombre_eq_red_imp.Visible = false;
             // 
+            // tbpMonitor
+            // 
+            this.tbpMonitor.Controls.Add(this.dgSeleccMonit);
+            this.tbpMonitor.Location = new System.Drawing.Point(4, 26);
+            this.tbpMonitor.Name = "tbpMonitor";
+            this.tbpMonitor.Size = new System.Drawing.Size(894, 301);
+            this.tbpMonitor.TabIndex = 2;
+            this.tbpMonitor.Text = "Monitor";
+            this.tbpMonitor.UseVisualStyleBackColor = true;
+            // 
+            // dgSeleccMonit
+            // 
+            this.dgSeleccMonit.AllowUserToAddRows = false;
+            this.dgSeleccMonit.AllowUserToDeleteRows = false;
+            this.dgSeleccMonit.AllowUserToResizeColumns = false;
+            this.dgSeleccMonit.AllowUserToResizeRows = false;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(238)))), ((int)(((byte)(239)))));
+            this.dgSeleccMonit.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
+            this.dgSeleccMonit.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgSeleccMonit.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgSeleccMonit.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(152)))), ((int)(((byte)(156)))));
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgSeleccMonit.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            this.dgSeleccMonit.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgSeleccMonit.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.sel_monit,
+            this.id_hw_monit,
+            this.tipo_monit,
+            this.num_serie_monit,
+            this.nombre_monit,
+            this.marca_monit,
+            this.model_monit});
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgSeleccMonit.DefaultCellStyle = dataGridViewCellStyle11;
+            this.dgSeleccMonit.Location = new System.Drawing.Point(3, 4);
+            this.dgSeleccMonit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dgSeleccMonit.MultiSelect = false;
+            this.dgSeleccMonit.Name = "dgSeleccMonit";
+            this.dgSeleccMonit.ReadOnly = true;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(226)))), ((int)(((byte)(228)))));
+            this.dgSeleccMonit.RowsDefaultCellStyle = dataGridViewCellStyle12;
+            this.dgSeleccMonit.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgSeleccMonit.Size = new System.Drawing.Size(882, 207);
+            this.dgSeleccMonit.TabIndex = 193;
+            this.dgSeleccMonit.TabStop = false;
+            this.dgSeleccMonit.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgSeleccMonit_CellContentClick);
+            // 
+            // sel_monit
+            // 
+            this.sel_monit.HeaderText = "Sel";
+            this.sel_monit.Name = "sel_monit";
+            this.sel_monit.ReadOnly = true;
+            // 
+            // id_hw_monit
+            // 
+            this.id_hw_monit.HeaderText = "idHardware";
+            this.id_hw_monit.Name = "id_hw_monit";
+            this.id_hw_monit.ReadOnly = true;
+            // 
+            // tipo_monit
+            // 
+            this.tipo_monit.HeaderText = "Tipo Monitor";
+            this.tipo_monit.Name = "tipo_monit";
+            this.tipo_monit.ReadOnly = true;
+            // 
+            // num_serie_monit
+            // 
+            this.num_serie_monit.HeaderText = "Num Serie";
+            this.num_serie_monit.Name = "num_serie_monit";
+            this.num_serie_monit.ReadOnly = true;
+            // 
+            // nombre_monit
+            // 
+            this.nombre_monit.HeaderText = "Nombre Monitor";
+            this.nombre_monit.Name = "nombre_monit";
+            this.nombre_monit.ReadOnly = true;
+            // 
+            // marca_monit
+            // 
+            this.marca_monit.HeaderText = "Marca";
+            this.marca_monit.Name = "marca_monit";
+            this.marca_monit.ReadOnly = true;
+            // 
+            // model_monit
+            // 
+            this.model_monit.HeaderText = "Modelo";
+            this.model_monit.Name = "model_monit";
+            this.model_monit.ReadOnly = true;
+            // 
+            // tbpComun
+            // 
+            this.tbpComun.Controls.Add(this.dgSeleccComun);
+            this.tbpComun.Location = new System.Drawing.Point(4, 26);
+            this.tbpComun.Name = "tbpComun";
+            this.tbpComun.Size = new System.Drawing.Size(894, 301);
+            this.tbpComun.TabIndex = 3;
+            this.tbpComun.Text = "Comunicaciones";
+            this.tbpComun.UseVisualStyleBackColor = true;
+            // 
+            // dgSeleccComun
+            // 
+            this.dgSeleccComun.AllowUserToAddRows = false;
+            this.dgSeleccComun.AllowUserToDeleteRows = false;
+            this.dgSeleccComun.AllowUserToResizeColumns = false;
+            this.dgSeleccComun.AllowUserToResizeRows = false;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(238)))), ((int)(((byte)(239)))));
+            this.dgSeleccComun.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
+            this.dgSeleccComun.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgSeleccComun.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgSeleccComun.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(152)))), ((int)(((byte)(156)))));
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgSeleccComun.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            this.dgSeleccComun.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgSeleccComun.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.sel_comu,
+            this.id_hw_comu,
+            this.tipo_comu,
+            this.num_serie_comu,
+            this.nombre_comu,
+            this.marca_comu,
+            this.modelo_comu,
+            this.ip_comu,
+            this.nombre_eq_red_comu});
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgSeleccComun.DefaultCellStyle = dataGridViewCellStyle15;
+            this.dgSeleccComun.Location = new System.Drawing.Point(3, 4);
+            this.dgSeleccComun.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dgSeleccComun.MultiSelect = false;
+            this.dgSeleccComun.Name = "dgSeleccComun";
+            this.dgSeleccComun.ReadOnly = true;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(226)))), ((int)(((byte)(228)))));
+            this.dgSeleccComun.RowsDefaultCellStyle = dataGridViewCellStyle16;
+            this.dgSeleccComun.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgSeleccComun.Size = new System.Drawing.Size(882, 207);
+            this.dgSeleccComun.TabIndex = 194;
+            this.dgSeleccComun.TabStop = false;
+            this.dgSeleccComun.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgSeleccComun_CellContentClick);
+            // 
+            // sel_comu
+            // 
+            this.sel_comu.HeaderText = "Sel";
+            this.sel_comu.Name = "sel_comu";
+            this.sel_comu.ReadOnly = true;
+            // 
+            // id_hw_comu
+            // 
+            this.id_hw_comu.HeaderText = "idHardware";
+            this.id_hw_comu.Name = "id_hw_comu";
+            this.id_hw_comu.ReadOnly = true;
+            // 
+            // tipo_comu
+            // 
+            this.tipo_comu.HeaderText = "Tipo";
+            this.tipo_comu.Name = "tipo_comu";
+            this.tipo_comu.ReadOnly = true;
+            // 
+            // num_serie_comu
+            // 
+            this.num_serie_comu.HeaderText = "Num Serie";
+            this.num_serie_comu.Name = "num_serie_comu";
+            this.num_serie_comu.ReadOnly = true;
+            // 
+            // nombre_comu
+            // 
+            this.nombre_comu.HeaderText = "Nombre";
+            this.nombre_comu.Name = "nombre_comu";
+            this.nombre_comu.ReadOnly = true;
+            // 
+            // marca_comu
+            // 
+            this.marca_comu.HeaderText = "Marca";
+            this.marca_comu.Name = "marca_comu";
+            this.marca_comu.ReadOnly = true;
+            // 
+            // modelo_comu
+            // 
+            this.modelo_comu.HeaderText = "Modelo";
+            this.modelo_comu.Name = "modelo_comu";
+            this.modelo_comu.ReadOnly = true;
+            // 
+            // ip_comu
+            // 
+            this.ip_comu.HeaderText = "Direccion IP";
+            this.ip_comu.Name = "ip_comu";
+            this.ip_comu.ReadOnly = true;
+            this.ip_comu.Visible = false;
+            // 
+            // nombre_eq_red_comu
+            // 
+            this.nombre_eq_red_comu.HeaderText = "Nombre Equipo Red";
+            this.nombre_eq_red_comu.Name = "nombre_eq_red_comu";
+            this.nombre_eq_red_comu.ReadOnly = true;
+            this.nombre_eq_red_comu.Visible = false;
+            // 
             // gbSoftwareList
             // 
             this.gbSoftwareList.Controls.Add(this.dgSoftwareList);
@@ -684,222 +902,6 @@
             this.btnBuscarUsuario.UseVisualStyleBackColor = true;
             this.btnBuscarUsuario.Click += new System.EventHandler(this.btnBuscarUsuario_Click);
             // 
-            // tbpMonitor
-            // 
-            this.tbpMonitor.Controls.Add(this.dgSeleccMonit);
-            this.tbpMonitor.Location = new System.Drawing.Point(4, 26);
-            this.tbpMonitor.Name = "tbpMonitor";
-            this.tbpMonitor.Size = new System.Drawing.Size(894, 301);
-            this.tbpMonitor.TabIndex = 2;
-            this.tbpMonitor.Text = "Monitor";
-            this.tbpMonitor.UseVisualStyleBackColor = true;
-            // 
-            // tbpComun
-            // 
-            this.tbpComun.Controls.Add(this.dgSeleccComun);
-            this.tbpComun.Location = new System.Drawing.Point(4, 26);
-            this.tbpComun.Name = "tbpComun";
-            this.tbpComun.Size = new System.Drawing.Size(894, 301);
-            this.tbpComun.TabIndex = 3;
-            this.tbpComun.Text = "Comunicaciones";
-            this.tbpComun.UseVisualStyleBackColor = true;
-            // 
-            // dgSeleccMonit
-            // 
-            this.dgSeleccMonit.AllowUserToAddRows = false;
-            this.dgSeleccMonit.AllowUserToDeleteRows = false;
-            this.dgSeleccMonit.AllowUserToResizeColumns = false;
-            this.dgSeleccMonit.AllowUserToResizeRows = false;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(238)))), ((int)(((byte)(239)))));
-            this.dgSeleccMonit.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
-            this.dgSeleccMonit.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dgSeleccMonit.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dgSeleccMonit.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(152)))), ((int)(((byte)(156)))));
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgSeleccMonit.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
-            this.dgSeleccMonit.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgSeleccMonit.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.sel_monit,
-            this.id_hw_monit,
-            this.tipo_monit,
-            this.num_serie_monit,
-            this.nombre_monit,
-            this.marca_monit,
-            this.model_monit});
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgSeleccMonit.DefaultCellStyle = dataGridViewCellStyle11;
-            this.dgSeleccMonit.Location = new System.Drawing.Point(3, 4);
-            this.dgSeleccMonit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.dgSeleccMonit.MultiSelect = false;
-            this.dgSeleccMonit.Name = "dgSeleccMonit";
-            this.dgSeleccMonit.ReadOnly = true;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(226)))), ((int)(((byte)(228)))));
-            this.dgSeleccMonit.RowsDefaultCellStyle = dataGridViewCellStyle12;
-            this.dgSeleccMonit.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgSeleccMonit.Size = new System.Drawing.Size(882, 207);
-            this.dgSeleccMonit.TabIndex = 193;
-            this.dgSeleccMonit.TabStop = false;
-            // 
-            // dgSeleccComun
-            // 
-            this.dgSeleccComun.AllowUserToAddRows = false;
-            this.dgSeleccComun.AllowUserToDeleteRows = false;
-            this.dgSeleccComun.AllowUserToResizeColumns = false;
-            this.dgSeleccComun.AllowUserToResizeRows = false;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(238)))), ((int)(((byte)(239)))));
-            this.dgSeleccComun.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
-            this.dgSeleccComun.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dgSeleccComun.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dgSeleccComun.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(152)))), ((int)(((byte)(156)))));
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgSeleccComun.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
-            this.dgSeleccComun.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgSeleccComun.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.sel_comu,
-            this.id_hw_comu,
-            this.tipo_comu,
-            this.num_serie_comu,
-            this.nombre_comu,
-            this.marca_comu,
-            this.modelo_comu,
-            this.ip_comu,
-            this.nombre_eq_red_comu});
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgSeleccComun.DefaultCellStyle = dataGridViewCellStyle15;
-            this.dgSeleccComun.Location = new System.Drawing.Point(3, 4);
-            this.dgSeleccComun.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.dgSeleccComun.MultiSelect = false;
-            this.dgSeleccComun.Name = "dgSeleccComun";
-            this.dgSeleccComun.ReadOnly = true;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(226)))), ((int)(((byte)(228)))));
-            this.dgSeleccComun.RowsDefaultCellStyle = dataGridViewCellStyle16;
-            this.dgSeleccComun.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgSeleccComun.Size = new System.Drawing.Size(882, 207);
-            this.dgSeleccComun.TabIndex = 194;
-            this.dgSeleccComun.TabStop = false;
-            // 
-            // sel_monit
-            // 
-            this.sel_monit.HeaderText = "Sel";
-            this.sel_monit.Name = "sel_monit";
-            this.sel_monit.ReadOnly = true;
-            // 
-            // id_hw_monit
-            // 
-            this.id_hw_monit.HeaderText = "idHardware";
-            this.id_hw_monit.Name = "id_hw_monit";
-            this.id_hw_monit.ReadOnly = true;
-            // 
-            // tipo_monit
-            // 
-            this.tipo_monit.HeaderText = "Tipo Monitor";
-            this.tipo_monit.Name = "tipo_monit";
-            this.tipo_monit.ReadOnly = true;
-            // 
-            // num_serie_monit
-            // 
-            this.num_serie_monit.HeaderText = "Num Serie";
-            this.num_serie_monit.Name = "num_serie_monit";
-            this.num_serie_monit.ReadOnly = true;
-            // 
-            // nombre_monit
-            // 
-            this.nombre_monit.HeaderText = "Nombre Monitor";
-            this.nombre_monit.Name = "nombre_monit";
-            this.nombre_monit.ReadOnly = true;
-            // 
-            // marca_monit
-            // 
-            this.marca_monit.HeaderText = "Marca";
-            this.marca_monit.Name = "marca_monit";
-            this.marca_monit.ReadOnly = true;
-            // 
-            // model_monit
-            // 
-            this.model_monit.HeaderText = "Modelo";
-            this.model_monit.Name = "model_monit";
-            this.model_monit.ReadOnly = true;
-            // 
-            // sel_comu
-            // 
-            this.sel_comu.HeaderText = "Sel";
-            this.sel_comu.Name = "sel_comu";
-            this.sel_comu.ReadOnly = true;
-            // 
-            // id_hw_comu
-            // 
-            this.id_hw_comu.HeaderText = "idHardware";
-            this.id_hw_comu.Name = "id_hw_comu";
-            this.id_hw_comu.ReadOnly = true;
-            // 
-            // tipo_comu
-            // 
-            this.tipo_comu.HeaderText = "Tipo";
-            this.tipo_comu.Name = "tipo_comu";
-            this.tipo_comu.ReadOnly = true;
-            // 
-            // num_serie_comu
-            // 
-            this.num_serie_comu.HeaderText = "Num Serie";
-            this.num_serie_comu.Name = "num_serie_comu";
-            this.num_serie_comu.ReadOnly = true;
-            // 
-            // nombre_comu
-            // 
-            this.nombre_comu.HeaderText = "Nombre";
-            this.nombre_comu.Name = "nombre_comu";
-            this.nombre_comu.ReadOnly = true;
-            // 
-            // marca_comu
-            // 
-            this.marca_comu.HeaderText = "Marca";
-            this.marca_comu.Name = "marca_comu";
-            this.marca_comu.ReadOnly = true;
-            // 
-            // modelo_comu
-            // 
-            this.modelo_comu.HeaderText = "Modelo";
-            this.modelo_comu.Name = "modelo_comu";
-            this.modelo_comu.ReadOnly = true;
-            // 
-            // ip_comu
-            // 
-            this.ip_comu.HeaderText = "Direccion IP";
-            this.ip_comu.Name = "ip_comu";
-            this.ip_comu.ReadOnly = true;
-            this.ip_comu.Visible = false;
-            // 
-            // nombre_eq_red_comu
-            // 
-            this.nombre_eq_red_comu.HeaderText = "Nombre Equipo Red";
-            this.nombre_eq_red_comu.Name = "nombre_eq_red_comu";
-            this.nombre_eq_red_comu.ReadOnly = true;
-            this.nombre_eq_red_comu.Visible = false;
-            // 
             // fAsociaActivo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -923,14 +925,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgSeleccComp)).EndInit();
             this.tbpImpresora.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgSeleccImpr)).EndInit();
+            this.tbpMonitor.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgSeleccMonit)).EndInit();
+            this.tbpComun.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgSeleccComun)).EndInit();
             this.gbSoftwareList.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgSoftwareList)).EndInit();
             this.tsAsociaActivo.ResumeLayout(false);
             this.tsAsociaActivo.PerformLayout();
-            this.tbpMonitor.ResumeLayout(false);
-            this.tbpComun.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgSeleccMonit)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgSeleccComun)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

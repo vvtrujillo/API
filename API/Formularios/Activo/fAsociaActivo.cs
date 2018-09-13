@@ -478,7 +478,7 @@ namespace API.Formularios.Activo
                     dgSeleccMonit.Rows.Add(1);
                     dgSeleccMonit.Rows[dgSeleccMonit.Rows.Count - 1].Cells[CheckSelMon].Value = false;
                     dgSeleccMonit.Rows[dgSeleccMonit.Rows.Count - 1].Cells[idHardwareMon].Value = drBuscar.GetInt32(drBuscar.GetOrdinal("idHardware"));
-                    dgSeleccMonit.Rows[dgSeleccMonit.Rows.Count - 1].Cells[TipoMonitorHW].Value = drBuscar.GetString(drBuscar.GetOrdinal("TipoImpresoraHW"));
+                    dgSeleccMonit.Rows[dgSeleccMonit.Rows.Count - 1].Cells[TipoMonitorHW].Value = drBuscar.GetString(drBuscar.GetOrdinal("TipoMonitorHW"));
                     dgSeleccMonit.Rows[dgSeleccMonit.Rows.Count - 1].Cells[SerieHWMon].Value = drBuscar.GetString(drBuscar.GetOrdinal("SerieHW"));
                     dgSeleccMonit.Rows[dgSeleccMonit.Rows.Count - 1].Cells[NombreHWMon].Value = drBuscar.GetString(drBuscar.GetOrdinal("NombreHW"));
                     dgSeleccMonit.Rows[dgSeleccMonit.Rows.Count - 1].Cells[NombreMarcaMon].Value = drBuscar.GetString(drBuscar.GetOrdinal("NombreMarca"));
@@ -983,6 +983,18 @@ namespace API.Formularios.Activo
             dgSeleccImpr.EndEdit();
             VerificarImpresoraSeleccionada(dgSeleccImpr, e.RowIndex, e.ColumnIndex);
             intIdHardware = Convert.ToInt32(dgSeleccImpr.Rows[e.RowIndex].Cells[idHardwareImp].Value);
+        }
+
+        private void dgSeleccMonit_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dgSeleccMonit.EndEdit();
+            intIdHardware = Convert.ToInt32(dgSeleccMonit.Rows[e.RowIndex].Cells[idHardwareMon].Value);
+        }
+
+        private void dgSeleccComun_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dgSeleccComun.EndEdit();
+            intIdHardware = Convert.ToInt32(dgSeleccComun.Rows[e.RowIndex].Cells[idHardwareComu].Value);
         }
     }
 }

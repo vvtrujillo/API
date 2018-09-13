@@ -968,6 +968,7 @@
             this.cmbTamanoMonitorHW.Name = "cmbTamanoMonitorHW";
             this.cmbTamanoMonitorHW.Size = new System.Drawing.Size(143, 25);
             this.cmbTamanoMonitorHW.TabIndex = 25;
+            this.cmbTamanoMonitorHW.SelectionChangeCommitted += new System.EventHandler(this.cmbTamanoMonitorHW_SelectionChangeCommitted);
             // 
             // lblTamanoMonHW
             // 
@@ -986,6 +987,7 @@
             this.cmbTipoMoniHW.Name = "cmbTipoMoniHW";
             this.cmbTipoMoniHW.Size = new System.Drawing.Size(143, 25);
             this.cmbTipoMoniHW.TabIndex = 23;
+            this.cmbTipoMoniHW.SelectionChangeCommitted += new System.EventHandler(this.cmbTipoMoniHW_SelectionChangeCommitted);
             // 
             // lblTipoMonitorHW
             // 
@@ -1019,6 +1021,7 @@
             this.cmbCantBocasHW.Name = "cmbCantBocasHW";
             this.cmbCantBocasHW.Size = new System.Drawing.Size(143, 25);
             this.cmbCantBocasHW.TabIndex = 26;
+            this.cmbCantBocasHW.SelectionChangeCommitted += new System.EventHandler(this.cmbCantBocasHW_SelectionChangeCommitted);
             // 
             // lblCantBocasHW
             // 
@@ -1037,6 +1040,7 @@
             this.cmbTipoComHW.Name = "cmbTipoComHW";
             this.cmbTipoComHW.Size = new System.Drawing.Size(143, 25);
             this.cmbTipoComHW.TabIndex = 24;
+            this.cmbTipoComHW.SelectionChangeCommitted += new System.EventHandler(this.cmbTipoComHW_SelectionChangeCommitted);
             // 
             // lblTipoComunHW
             // 

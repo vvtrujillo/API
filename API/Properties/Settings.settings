@@ -6,10 +6,10 @@
       <Value Profile="(Default)">1.0.7</Value>
     </Setting>
     <Setting Name="ServidorSQLMaestroEntidades" Type="System.String" Scope="User">
-      <Value Profile="(Default)">MOLINO14\MOLINO14</Value>
+      <Value Profile="(Default)">MOLINO61\CULTIVODES</Value>
     </Setting>
     <Setting Name="ServidorSQLCentral" Type="System.String" Scope="User">
-      <Value Profile="(Default)">MOLINO14\MOLINO14</Value>
+      <Value Profile="(Default)">MOLINO61\CULTIVODES</Value>
     </Setting>
     <Setting Name="RutaProgramaAcceso" Type="System.String" Scope="User">
       <Value Profile="(Default)" />

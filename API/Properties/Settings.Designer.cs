@@ -37,7 +37,7 @@ namespace API.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("MOLINO14\\MOLINO14")]
+        [global::System.Configuration.DefaultSettingValueAttribute("MOLINO61\\CULTIVODES")]
         public string ServidorSQLMaestroEntidades {
             get {
                 return ((string)(this["ServidorSQLMaestroEntidades"]));
@@ -49,7 +49,7 @@ namespace API.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("MOLINO14\\MOLINO14")]
+        [global::System.Configuration.DefaultSettingValueAttribute("MOLINO61\\CULTIVODES")]
         public string ServidorSQLCentral {
             get {
                 return ((string)(this["ServidorSQLCentral"]));

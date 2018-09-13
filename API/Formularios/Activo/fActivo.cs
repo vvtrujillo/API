@@ -148,6 +148,12 @@ namespace API.Formularios.Activo
             CargarComboBoxTamanoPantallaHW();
 
             CargarComboBoxAnioActivo();
+
+            CargarComboBoxTipoPantallaHWMon();
+            CargarComboBoxTamanoPantallaHWMon();
+
+            CargarComboBoxTipoComunicaciones();
+            CargarComboBoxCapacComunicaciones();
         }
 
         private void cmbModelo_SelectionChangeCommitted(object sender, EventArgs e)
@@ -264,6 +270,10 @@ namespace API.Formularios.Activo
             cmbCapacMemRam.SelectedIndex = -1;
             cmbTipoPantallaHW.SelectedIndex = -1;
             cmbTamPantallaHW.SelectedIndex = -1;
+            cmbTipoMoniHW.SelectedIndex = -1;
+            cmbTamanoMonitorHW.SelectedIndex = -1;
+            cmbTipoComHW.SelectedIndex = -1;
+            cmbCantBocasHW.SelectedIndex = -1;
 
             //Combo Box Ins
 
@@ -497,12 +507,12 @@ namespace API.Formularios.Activo
             cmd.Parameters["@CapacidadDD"].Value = CapacidadDD;
             cmd.Parameters["@VelocidadDD"].Value = DBNull.Value;
             cmd.Parameters["@MemoriaRam"].Value = MemoriaRam;
-            cmd.Parameters["@TipoComunic"].Value = DBNull.Value;
-            cmd.Parameters["@CantidadBocas"].Value = DBNull.Value;
+            cmd.Parameters["@TipoComunic"].Value = TipoComunic;
+            cmd.Parameters["@CantidadBocas"].Value = CantidadBocas;
             cmd.Parameters["@TipoImpresora"].Value = TipoImpresora;
             cmd.Parameters["@VelocidadImpr"].Value = VelocidadImpr;
-            cmd.Parameters["@TipoMonitor"].Value = DBNull.Value;
-            cmd.Parameters["@TamanoMonitor"].Value = DBNull.Value;
+            cmd.Parameters["@TipoMonitor"].Value = TipoMonitor;
+            cmd.Parameters["@TamanoMonitor"].Value = TamanoMonitor;
             cmd.Parameters["@dtFechaCompra"].Value = dtpFechaCompraHW.Text;
             cmd.Parameters["@vchTipoPantComp"].Value = TipoPantallaComp;
             cmd.Parameters["@vchTamanoPantComp"].Value = TamanoPantallaComp;
@@ -800,16 +810,40 @@ namespace API.Formularios.Activo
             cmbTipoPantallaHW.SelectedIndex = -1;
         }
 
+        private void CargarComboBoxTipoPantallaHWMon()
+        {
+            Rutinas.CargarDatosComboBox(cConexionSQL, "spObtieneCBTipoMonitor", cmbTipoMoniHW, "ValorParam", "idParamHW");
+            cmbTipoMoniHW.SelectedIndex = -1;
+        }
+
         private void CargarComboBoxTamanoPantallaHW()
         {
             Rutinas.CargarDatosComboBox(cConexionSQL, "spObtieneCBTamanoMonitor", cmbTamPantallaHW, "ValorParam", "idParamHW");
             cmbTamPantallaHW.SelectedIndex = -1;
         }
 
+        private void CargarComboBoxTamanoPantallaHWMon()
+        {
+            Rutinas.CargarDatosComboBox(cConexionSQL, "spObtieneCBTamanoMonitor", cmbTamanoMonitorHW, "ValorParam", "idParamHW");
+            cmbTamanoMonitorHW.SelectedIndex = -1;
+        }
+
         private void CargarComboBoxAnioActivo()
         {
             Rutinas.CargarDatosComboBox(cConexionSQL, "spObtieneAniosComboBox", cmbAnoSW, "ValorAnio", "idAnio");
             cmbAnoSW.SelectedIndex = -1;
+        }
+
+        private void CargarComboBoxTipoComunicaciones()
+        {
+            Rutinas.CargarDatosComboBox(cConexionSQL, "spObtieneCBTipoComunicaciones", cmbTipoComHW, "ValorParam", "idParamHW");
+            cmbTipoComHW.SelectedIndex = -1;
+        }
+
+        private void CargarComboBoxCapacComunicaciones()
+        {
+            Rutinas.CargarDatosComboBox(cConexionSQL, "spObtieneCBCapacComunicaciones", cmbCantBocasHW, "ValorParam", "idParamHW");
+            cmbCantBocasHW.SelectedIndex = -1;
         }
 
         private void cmbTipoHW_SelectionChangeCommitted(object sender, EventArgs e)
@@ -1106,6 +1140,26 @@ namespace API.Formularios.Activo
                 //el resto de teclas pulsadas se desactivan
                 e.Handled = true;
             }
+        }
+
+        private void cmbTipoMoniHW_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            TipoMonitor = cmbTipoMoniHW.Text;
+        }
+
+        private void cmbTamanoMonitorHW_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            TamanoMonitor = cmbTamanoMonitorHW.Text;
+        }
+
+        private void cmbTipoComHW_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            TipoComunic = cmbTipoComHW.Text;
+        }
+
+        private void cmbCantBocasHW_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            CantidadBocas = cmbCantBocasHW.Text;
         }
     }
 }
