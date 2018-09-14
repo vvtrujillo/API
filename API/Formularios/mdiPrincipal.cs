@@ -338,5 +338,20 @@ namespace API.Formularios
             faux.Show();
             faux.Focus();
         }
+
+        private void tsmListadoHardware_Click(object sender, EventArgs e)
+        {
+            fListadoHardware fAux = new fListadoHardware();
+            sstPrincipal.Items["Proceso"].Text = "Acerca de";
+            Rutinas.AplicarAccesoAFuncionalidad(fAux, Properties.Settings.Default.PrivilegioAccesoFuncionalidad);
+            fAux.FormularioPadre = this;
+            fAux.MdiParent = this;
+            fAux.ConexionSQL = cConexionSQLCentral;
+            fAux.StartPosition = FormStartPosition.CenterScreen;
+            fAux.TopLevel = false;
+            fAux.AutoScaleMode = AutoScaleMode.None;
+            fAux.Show();
+            fAux.Focus();
+        }
     }
 }

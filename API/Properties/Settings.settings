@@ -3,13 +3,13 @@
   <Profiles />
   <Settings>
     <Setting Name="VersionSistema" Type="System.String" Scope="User">
-      <Value Profile="(Default)">1.0.7</Value>
+      <Value Profile="(Default)">1.0.8</Value>
     </Setting>
     <Setting Name="ServidorSQLMaestroEntidades" Type="System.String" Scope="User">
-      <Value Profile="(Default)">MOLINO61\CULTIVODES</Value>
+      <Value Profile="(Default)">MOLINO14\MOLINO14</Value>
     </Setting>
     <Setting Name="ServidorSQLCentral" Type="System.String" Scope="User">
-      <Value Profile="(Default)">MOLINO61\CULTIVODES</Value>
+      <Value Profile="(Default)">MOLINO14\MOLINO14</Value>
     </Setting>
     <Setting Name="RutaProgramaAcceso" Type="System.String" Scope="User">
       <Value Profile="(Default)" />

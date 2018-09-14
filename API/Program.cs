@@ -13,6 +13,10 @@ namespace API
         /// <summary>
         /// Punto de entrada principal para la aplicación.
         /// </summary>
+
+        public static bool InsertaSoftwareGrillaSW;
+        public static bool cierraFormularioGrillaSw;
+
         [STAThread]
         static void Main(string[] args)
         {

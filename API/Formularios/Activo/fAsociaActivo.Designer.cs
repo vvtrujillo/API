@@ -681,7 +681,7 @@
             // 
             this.gbSoftwareList.Controls.Add(this.dgSoftwareList);
             this.gbSoftwareList.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbSoftwareList.Location = new System.Drawing.Point(35, 464);
+            this.gbSoftwareList.Location = new System.Drawing.Point(35, 493);
             this.gbSoftwareList.Name = "gbSoftwareList";
             this.gbSoftwareList.Size = new System.Drawing.Size(902, 269);
             this.gbSoftwareList.TabIndex = 75;
@@ -787,7 +787,7 @@
             this.tslAsociaActivo});
             this.tsAsociaActivo.Location = new System.Drawing.Point(0, 0);
             this.tsAsociaActivo.Name = "tsAsociaActivo";
-            this.tsAsociaActivo.Size = new System.Drawing.Size(973, 25);
+            this.tsAsociaActivo.Size = new System.Drawing.Size(956, 25);
             this.tsAsociaActivo.TabIndex = 65;
             this.tsAsociaActivo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tsAsociaActivo_MouseDown);
             // 
@@ -906,7 +906,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(973, 745);
+            this.ClientSize = new System.Drawing.Size(956, 480);
             this.Controls.Add(this.gbSoftwareList);
             this.Controls.Add(this.tcAsocActivos);
             this.Controls.Add(this.cmbHardwareAsoc);

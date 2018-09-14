@@ -624,8 +624,7 @@ namespace API.Formularios.Activo
             cmd.CommandType = CommandType.StoredProcedure;
             SqlParameter auxParametro = null;
 
-            auxParametro = cmd.Parameters.Add("@intIdHardware", SqlDbType.Int);
-            auxParametro = cmd.Parameters.Add("@intIdSoftware", SqlDbType.Int);
+            auxParametro = cmd.Parameters.Add("@intIdHardware", SqlDbType.Int);           
             auxParametro = cmd.Parameters.Add("@intIdUsuario", SqlDbType.Int);
             auxParametro = cmd.Parameters.Add("@intIdInsumo", SqlDbType.Int);
             auxParametro = cmd.Parameters.Add("@dtFechaAsign", SqlDbType.DateTime);
@@ -636,15 +635,7 @@ namespace API.Formularios.Activo
             auxParametro = cmd.Parameters.Add("@msgError", SqlDbType.VarChar, 255);
             auxParametro.Direction = ParameterDirection.Output;
 
-            cmd.Parameters["@intIdHardware"].Value = intIdHardware;
-            if (AgregoSoftware)
-            {
-                cmd.Parameters["@intIdSoftware"].Value = intIdSoftware;                
-            }
-            else
-            {
-                cmd.Parameters["@intIdSoftware"].Value = DBNull.Value;
-            }            
+            cmd.Parameters["@intIdHardware"].Value = intIdHardware;                     
             cmd.Parameters["@intIdUsuario"].Value = Convert.ToInt32(strUsuarioBusqueda);
             cmd.Parameters["@intIdInsumo"].Value = DBNull.Value;
             cmd.Parameters["@dtFechaAsign"].Value = DateTime.Now;
@@ -672,16 +663,10 @@ namespace API.Formularios.Activo
 
             if (auxRespuesta == "")
             {
-                if (Rutinas.PresentaMensajeAceptarCancelar(cFormularioPadre, "alertabuenoverde", "Operación Correcta.", "Se realizó la Inserción.\n"
-                                                           +"Desea Agregar otro Software?", false, false))
-                {
-                    ObtieneSoftwareList();
-                }
-                else
-                {
-                    EstadoInicial();
-                }                
-            }
+                Rutinas.PresentaMensajeAceptar(cFormularioPadre, "alertabuenoverde", "Éxito", "Se realizo la inserción correcta de Hardware y Software.", false, false);
+                EstadoInicial();
+                                
+            }            
             else
             {
                 Rutinas.PresentaMensajeAceptar(cFormularioPadre, "malo", "Error en la Operación.", auxRespuesta, false, false);
@@ -761,13 +746,14 @@ namespace API.Formularios.Activo
                 {
                     if (Rutinas.PresentaMensajeAceptarCancelar(cFormularioPadre, "alertaconsultaamarillo", "Atención", "Usuario ya tiene Computador asignado.\n"
                                                            + "Desea Agregar Software a este?", false, false) == false)
-                    {                        
-                        ObtieneHWAsocComp();
+                    {
+                        ObtieneHWAsocComp();                        
                     }
 
                     else
                     {
                         ObtieneHWyaAsociadoUsr();
+                        CallFormGrillaSoftware();
                         txtNumIPComp.Enabled = false;
                         txtNombEquipRed.Enabled = false;
                     }
@@ -933,8 +919,26 @@ namespace API.Formularios.Activo
                 {
                     if (Rutinas.PresentaMensajeAceptarCancelar(cFormularioPadre, "alertaexclamacionamarillo", "Atención", "Desea Agregar Software antes de Grabar?", false, false))
                     {
-                        gbSoftwareList.Visible = true;
-                        ObtieneSoftwareList();
+                        // gbSoftwareList.Visible = true;
+
+                        CallFormGrillaSoftware();
+
+                        if (Program.cierraFormularioGrillaSw)
+                        {
+                            InsertaNuevoAsocHW();
+                            return;
+                        }
+
+                        if (Program.InsertaSoftwareGrillaSW)
+                        {
+                            Rutinas.PresentaMensajeAceptar(cFormularioPadre, "alertabuenoverde", "Éxito", "Se realizo la asociacion de Software.", false, false);
+                            InsertaNuevoAsocHW();
+                        }
+                        else
+                        {
+                            Rutinas.PresentaMensajeAceptar(cFormularioPadre, "alertamalorojo", "Error", "No se pudo realizar la asociación de Software.", false, false);
+                            EstadoInicial();
+                        }
                     }
                     else
                     {
@@ -995,6 +999,20 @@ namespace API.Formularios.Activo
         {
             dgSeleccComun.EndEdit();
             intIdHardware = Convert.ToInt32(dgSeleccComun.Rows[e.RowIndex].Cells[idHardwareComu].Value);
+        }
+
+        private void CallFormGrillaSoftware()
+        {
+            fGrillaSoftwareAsoc fAux = new fGrillaSoftwareAsoc();
+            Rutinas.AplicarAccesoAFuncionalidad(fAux, Properties.Settings.Default.PrivilegioAccesoFuncionalidad);
+            fAux.FormularioPadre = this;
+            fAux.ConexionCentral = cConexionSQL;
+            //fAux.ConexionSQLMaestro = cConexionSQLMaestro;
+            fAux.StartPosition = FormStartPosition.CenterScreen;
+            fAux.AutoScaleMode = AutoScaleMode.None;
+            fAux.intIdHardwareGrillaSw = intIdHardware;
+            fAux.ShowDialog(this);
+            fAux.Focus();
         }
     }
 }

@@ -61,6 +61,7 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmCerrarSesion = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmSalirSistema = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmListadoHardware = new System.Windows.Forms.ToolStripMenuItem();
             this.sstPrincipal.SuspendLayout();
             this.msPrincipal.SuspendLayout();
             this.SuspendLayout();
@@ -216,7 +217,8 @@
             // 
             this.tsmBusquedas.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tslItemBusqueda,
-            this.tsmBusqActxUsuario});
+            this.tsmBusqActxUsuario,
+            this.tsmListadoHardware});
             this.tsmBusquedas.Name = "tsmBusquedas";
             this.tsmBusquedas.Size = new System.Drawing.Size(76, 20);
             this.tsmBusquedas.Tag = "-";
@@ -349,6 +351,13 @@
             this.tsmSalirSistema.Text = "Salir del sistema";
             this.tsmSalirSistema.Click += new System.EventHandler(this.tsmSalirSistema_Click);
             // 
+            // tsmListadoHardware
+            // 
+            this.tsmListadoHardware.Name = "tsmListadoHardware";
+            this.tsmListadoHardware.Size = new System.Drawing.Size(226, 22);
+            this.tsmListadoHardware.Text = "Listado de Hardware";
+            this.tsmListadoHardware.Click += new System.EventHandler(this.tsmListadoHardware_Click);
+            // 
             // mdiPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -405,6 +414,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsmBusquedas;
         private System.Windows.Forms.ToolStripMenuItem tslItemBusqueda;
         private System.Windows.Forms.ToolStripMenuItem tsmBusqActxUsuario;
+        private System.Windows.Forms.ToolStripMenuItem tsmListadoHardware;
     }
 }
 

@@ -152,6 +152,12 @@
     <Compile Include="Formularios\Activo\fBusquedaActivos.Designer.cs">
       <DependentUpon>fBusquedaActivos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Activo\fGrillaSoftwareAsoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Activo\fGrillaSoftwareAsoc.Designer.cs">
+      <DependentUpon>fGrillaSoftwareAsoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Auditoria\fAuditoria.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -163,6 +169,12 @@
     </Compile>
     <Compile Include="Formularios\Busquedas\fBusqueda.Designer.cs">
       <DependentUpon>fBusqueda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Busquedas\fListadoHardware.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Busquedas\fListadoHardware.Designer.cs">
+      <DependentUpon>fListadoHardware.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Fin\fAcercaDe.cs">
       <SubType>Form</SubType>
@@ -259,11 +271,17 @@
     <EmbeddedResource Include="Formularios\Activo\fBusquedaActivos.resx">
       <DependentUpon>fBusquedaActivos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Activo\fGrillaSoftwareAsoc.resx">
+      <DependentUpon>fGrillaSoftwareAsoc.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Auditoria\fAuditoria.resx">
       <DependentUpon>fAuditoria.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Busquedas\fBusqueda.resx">
       <DependentUpon>fBusqueda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Busquedas\fListadoHardware.resx">
+      <DependentUpon>fListadoHardware.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Fin\fAcercaDe.resx">
       <DependentUpon>fAcercaDe.cs</DependentUpon>
