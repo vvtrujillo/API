@@ -64,6 +64,11 @@ namespace API.Formularios.Busquedas
 
         private void fListadoHardware_Load(object sender, EventArgs e)
         {
+            EstadoInicial();
+        }
+
+        private void EstadoInicial()
+        {
             ObtieneListadoComputador();
             ObtieneListadoMonitor();
             ObtieneListadoImpresoras();
@@ -213,6 +218,92 @@ namespace API.Formularios.Busquedas
         {
             ReleaseCapture();
             SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+        }
+
+        private void tsbRefrescaListadoHW_Click(object sender, EventArgs e)
+        {
+            EstadoInicial();
+        }
+
+        private void ExportarGrillasExcell()
+        {
+            string fechaNombre;
+            fechaNombre = Convert.ToString(DateTime.Now.Year + DateTime.Now.Month + DateTime.Now.Day + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second + DateTime.Now.Millisecond);
+
+            SaveFileDialog fichero = new SaveFileDialog();
+            fichero.Filter = "Excel (*.xls)|*.xls";
+            fichero.FileName = "Excel_Hardware_" + fechaNombre;
+
+            if (fichero.ShowDialog() == DialogResult.OK)
+            {
+                Microsoft.Office.Interop.Excel.Application aplicacion;
+                Microsoft.Office.Interop.Excel.Workbook libros_trabajo;
+                Microsoft.Office.Interop.Excel.Worksheet hoja_trabajo;
+                aplicacion = new Microsoft.Office.Interop.Excel.Application();
+                libros_trabajo = aplicacion.Workbooks.Add();
+               
+
+                int valorFila = 0;
+                for (int i = 1; i <= this.dgListadoComputadores.Columns.Count; i++)
+                {
+                    hoja_trabajo = (Microsoft.Office.Interop.Excel.Worksheet)libros_trabajo.Worksheets.get_Item(1);
+                    hoja_trabajo.Name = "Computadores";
+
+                    hoja_trabajo.Cells[1, i] = this.dgListadoComputadores.Columns[i - 1].HeaderText;
+                }
+
+                valorFila = valorFila + 1;
+                for (int i = 0; i < dgListadoComputadores.Rows.Count - 1; i++)
+                {
+                    for (int j = 0; j < dgListadoComputadores.Columns.Count; j++)
+                    {
+                        if ((dgListadoComputadores.Rows[i].Cells[j].Value == null) == false)
+                        {
+                            hoja_trabajo = (Microsoft.Office.Interop.Excel.Worksheet)libros_trabajo.Worksheets.get_Item(1);
+                            hoja_trabajo.Name = "Computadores";
+
+                            hoja_trabajo.Cells[valorFila + 1, j + 1] = dgListadoComputadores.Rows[i].Cells[j].Value.ToString();
+                        }
+                    }
+                    valorFila++;
+                }
+
+                //int valorFila = 0;
+                for (int i = 1; i <= this.dgListadoMonitores.Columns.Count; i++)
+                {
+                    hoja_trabajo = (Microsoft.Office.Interop.Excel.Worksheet)libros_trabajo.Worksheets.get_Item(1);
+                    hoja_trabajo.Name = "Monitores";
+
+                    hoja_trabajo.Cells[1, i] = this.dgListadoMonitores.Columns[i - 1].HeaderText;
+                }
+
+                valorFila = valorFila + 1;
+                for (int i = 0; i < dgListadoMonitores.Rows.Count - 1; i++)
+                {
+                    for (int j = 0; j < dgListadoMonitores.Columns.Count; j++)
+                    {
+                        if ((dgListadoMonitores.Rows[i].Cells[j].Value == null) == false)
+                        {
+                            hoja_trabajo = (Microsoft.Office.Interop.Excel.Worksheet)libros_trabajo.Worksheets.get_Item(1);
+                            hoja_trabajo.Name = "Monitores";
+
+                            hoja_trabajo.Cells[valorFila + 1, j + 1] = dgListadoMonitores.Rows[i].Cells[j].Value.ToString();
+                        }
+                    }
+                    valorFila++;
+                }
+
+                libros_trabajo.SaveAs(fichero.FileName, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal);
+                libros_trabajo.Close(true);
+                aplicacion.Quit();
+                Rutinas.PresentaMensajeAceptar(cFormularioPadre, "bueno", "Éxito", "Archivo " + fichero.FileName + " fue guardado con éxito.", false, false);
+            }
+
+        }
+
+        private void tsExportExelListadoHW_Click(object sender, EventArgs e)
+        {
+            ExportarGrillasExcell();
         }
     }
 }

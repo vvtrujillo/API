@@ -82,7 +82,7 @@ namespace API.Formularios.Activo
                 {
                     dgListaSoftwareDisp.Rows.Add(1);
                     dgListaSoftwareDisp.Rows[dgListaSoftwareDisp.Rows.Count - 1].Cells[chkSel].Value = false;
-                    dgListaSoftwareDisp.Rows[dgListaSoftwareDisp.Rows.Count - 1].Cells[NombreProducto].Value = drBuscar.GetString(drBuscar.GetOrdinal("NombreProducto"));
+                    dgListaSoftwareDisp.Rows[dgListaSoftwareDisp.Rows.Count - 1].Cells[NombreProducto].Value = drBuscar.GetString(drBuscar.GetOrdinal("NombreProd"));
                     dgListaSoftwareDisp.Rows[dgListaSoftwareDisp.Rows.Count - 1].Cells[Cantidad].Value = drBuscar.GetInt32(drBuscar.GetOrdinal("Cantidad"));
                     dgListaSoftwareDisp.Rows[dgListaSoftwareDisp.Rows.Count - 1].Cells[NoLicencia].Value = drBuscar.GetString(drBuscar.GetOrdinal("NoLicencia"));
                     dgListaSoftwareDisp.Rows[dgListaSoftwareDisp.Rows.Count - 1].Cells[TipoLicencia].Value = drBuscar.GetString(drBuscar.GetOrdinal("TipoLicencia"));
@@ -140,36 +140,16 @@ namespace API.Formularios.Activo
                 dgListaSoftwareDisp.Columns[idActivoSel].Visible = false; pDataGrid.Columns[idActivoSel].HeaderText = "idActivo";                
 
             }
-        }
-
-        private void VerificarSoftwareSeleccionado(DataGridView pDataGrid, int pFila, int pColumna)
-        {
-            if (pFila < 0 || pColumna != 0) { return; } //columna distinta de cero
-
-            foreach (DataGridViewRow row in pDataGrid.Rows)
-            {
-                if (pFila != row.Index)
-                {
-                    DataGridViewCheckBoxCell chbDesocupados = (DataGridViewCheckBoxCell)row.Cells[chkSel]; //columna donde se hace la selección
-                    if ((bool)chbDesocupados.Value == true)
-                    {
-                        chbDesocupados.Value = false;
-                    }
-                }
-            }
-
-            //AgregoSoftware = true;
-        }
+        }       
 
         private void dgListaSoftwareDisp_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            dgListaSoftwareDisp.EndEdit();
-            //VerificarSoftwareSeleccionado(dgListaSoftwareDisp, e.RowIndex, e.ColumnIndex);
+            dgListaSoftwareDisp.EndEdit();            
         }
 
         private void txtFiltroNombreSw_TextChanged(object sender, EventArgs e)
         {
-            (dgListaSoftwareDisp.DataSource as DataTable).DefaultView.RowFilter = string.Format("a.NombreProducto LIKE '{0}%' OR a.NombreProducto LIKE '% {0}%'", txtFiltroNombreSw.Text);
+            (dgListaSoftwareDisp.DataSource as DataTable).DefaultView.RowFilter = string.Format("NombreProd LIKE '{0}%' OR NombreProd LIKE '% {0}%'", txtFiltroNombreSw.Text);
         }
 
         private void tsAsociaSwGrilla_MouseDown(object sender, MouseEventArgs e)
@@ -245,6 +225,17 @@ namespace API.Formularios.Activo
                 
                 Program.InsertaSoftwareGrillaSW = false;               
             }
+        }
+
+        private void txtNumLicGrillaSW_TextChanged(object sender, EventArgs e)
+        {
+            //DataSet ds = new DataSet("Consulta");          
+
+            //dgListaSoftwareDisp.DataSource = ds.Tables["Consulta"];
+            //DataTable dt = new DataTable("Consulta");
+            //(dgListaSoftwareDisp.DataSource as DataTable).DefaultView.RowFilter = string.Format("NombreCompleto LIKE '{0}%' OR NombreCompleto LIKE '% {0}%'", txtNumLicGrillaSW.Text);
+
+            //(dgListaSoftwareDisp.DataSource as dt).DefaultView.RowFilter = string.Format("NoLicencia LIKE '{0}%' OR NoLicencia LIKE '% {0}%'", txtNumLicGrillaSW.Text);
         }
     }
 }

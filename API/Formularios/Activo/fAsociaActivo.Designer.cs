@@ -167,7 +167,7 @@
             this.cmbHardwareAsoc.Location = new System.Drawing.Point(103, 84);
             this.cmbHardwareAsoc.Name = "cmbHardwareAsoc";
             this.cmbHardwareAsoc.Size = new System.Drawing.Size(164, 25);
-            this.cmbHardwareAsoc.TabIndex = 68;
+            this.cmbHardwareAsoc.TabIndex = 68;  
             this.cmbHardwareAsoc.SelectionChangeCommitted += new System.EventHandler(this.cmbHardwareAsoc_SelectionChangeCommitted);
             // 
             // tcAsocActivos

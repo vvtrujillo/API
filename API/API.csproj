@@ -200,6 +200,12 @@
     <Compile Include="Formularios\fVistaPrevia.designer.cs">
       <DependentUpon>fVistaPrevia.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Gestion Tickets\fAgregaTicket.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Gestion Tickets\fAgregaTicket.Designer.cs">
+      <DependentUpon>fAgregaTicket.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Maestros\Empresa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -295,6 +301,9 @@
     <EmbeddedResource Include="Formularios\fVistaPrevia.resx">
       <DependentUpon>fVistaPrevia.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Gestion Tickets\fAgregaTicket.resx">
+      <DependentUpon>fAgregaTicket.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Maestros\Empresa.resx">
       <DependentUpon>Empresa.cs</DependentUpon>
     </EmbeddedResource>
@@ -352,6 +361,10 @@
   <ItemGroup>
     <Content Include="Logo MSC_2.ico" />
     <Content Include="Logo_256x256.ico" />
+    <None Include="Resources\Power_-_Restart.png" />
+    <None Include="Resources\refresh-double-rounded-flat.png" />
+    <None Include="Resources\green-refresh-icon-png-11.png" />
+    <None Include="Resources\refrescar.png" />
     <None Include="Resources\if_excel_272703.png" />
     <None Include="Resources\if_excel_272697.png" />
     <None Include="Resources\File_XLS_Excel.png" />

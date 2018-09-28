@@ -1014,5 +1014,7 @@ namespace API.Formularios.Activo
             fAux.ShowDialog(this);
             fAux.Focus();
         }
+
+       
     }
 }

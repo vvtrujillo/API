@@ -173,6 +173,16 @@ namespace API.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap green_refresh_icon_png_11 {
+            get {
+                object obj = ResourceManager.GetObject("green-refresh-icon-png-11", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap if_excel_272697 {
             get {
                 object obj = ResourceManager.GetObject("if_excel_272697", resourceCulture);
@@ -223,9 +233,39 @@ namespace API.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Power___Restart {
+            get {
+                object obj = ResourceManager.GetObject("Power_-_Restart", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Prohibido_32x32 {
             get {
                 object obj = ResourceManager.GetObject("Prohibido_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap refrescar {
+            get {
+                object obj = ResourceManager.GetObject("refrescar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap refresh_double_rounded_flat {
+            get {
+                object obj = ResourceManager.GetObject("refresh-double-rounded-flat", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -45,23 +45,25 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gbListComputador = new System.Windows.Forms.GroupBox();
-            this.gbListMonitorHw = new System.Windows.Forms.GroupBox();
-            this.gbListadoImpreHw = new System.Windows.Forms.GroupBox();
-            this.gbListadoComunHw = new System.Windows.Forms.GroupBox();
             this.dgListadoComputadores = new System.Windows.Forms.DataGridView();
+            this.gbListMonitorHw = new System.Windows.Forms.GroupBox();
             this.dgListadoMonitores = new System.Windows.Forms.DataGridView();
+            this.gbListadoImpreHw = new System.Windows.Forms.GroupBox();
             this.dgListadoImpresoras = new System.Windows.Forms.DataGridView();
+            this.gbListadoComunHw = new System.Windows.Forms.GroupBox();
             this.dgListadoComunicaciones = new System.Windows.Forms.DataGridView();
             this.tsListadoHardwareFull = new System.Windows.Forms.ToolStrip();
             this.tsbCerrarListadoHardware = new System.Windows.Forms.ToolStripButton();
+            this.tsbRefrescaListadoHW = new System.Windows.Forms.ToolStripButton();
             this.tslListadoHardFull = new System.Windows.Forms.ToolStripLabel();
+            this.tsExportExelListadoHW = new System.Windows.Forms.ToolStripButton();
             this.gbListComputador.SuspendLayout();
-            this.gbListMonitorHw.SuspendLayout();
-            this.gbListadoImpreHw.SuspendLayout();
-            this.gbListadoComunHw.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgListadoComputadores)).BeginInit();
+            this.gbListMonitorHw.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgListadoMonitores)).BeginInit();
+            this.gbListadoImpreHw.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgListadoImpresoras)).BeginInit();
+            this.gbListadoComunHw.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgListadoComunicaciones)).BeginInit();
             this.tsListadoHardwareFull.SuspendLayout();
             this.SuspendLayout();
@@ -77,42 +79,6 @@
             this.gbListComputador.TabIndex = 0;
             this.gbListComputador.TabStop = false;
             this.gbListComputador.Text = "Computador";
-            // 
-            // gbListMonitorHw
-            // 
-            this.gbListMonitorHw.Controls.Add(this.dgListadoMonitores);
-            this.gbListMonitorHw.Location = new System.Drawing.Point(590, 41);
-            this.gbListMonitorHw.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.gbListMonitorHw.Name = "gbListMonitorHw";
-            this.gbListMonitorHw.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.gbListMonitorHw.Size = new System.Drawing.Size(464, 246);
-            this.gbListMonitorHw.TabIndex = 1;
-            this.gbListMonitorHw.TabStop = false;
-            this.gbListMonitorHw.Text = "Monitor";
-            // 
-            // gbListadoImpreHw
-            // 
-            this.gbListadoImpreHw.Controls.Add(this.dgListadoImpresoras);
-            this.gbListadoImpreHw.Location = new System.Drawing.Point(12, 295);
-            this.gbListadoImpreHw.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.gbListadoImpreHw.Name = "gbListadoImpreHw";
-            this.gbListadoImpreHw.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.gbListadoImpreHw.Size = new System.Drawing.Size(572, 302);
-            this.gbListadoImpreHw.TabIndex = 1;
-            this.gbListadoImpreHw.TabStop = false;
-            this.gbListadoImpreHw.Text = "Impresora";
-            // 
-            // gbListadoComunHw
-            // 
-            this.gbListadoComunHw.Controls.Add(this.dgListadoComunicaciones);
-            this.gbListadoComunHw.Location = new System.Drawing.Point(590, 295);
-            this.gbListadoComunHw.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.gbListadoComunHw.Name = "gbListadoComunHw";
-            this.gbListadoComunHw.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.gbListadoComunHw.Size = new System.Drawing.Size(464, 302);
-            this.gbListadoComunHw.TabIndex = 2;
-            this.gbListadoComunHw.TabStop = false;
-            this.gbListadoComunHw.Text = "Comunicaciones";
             // 
             // dgListadoComputadores
             // 
@@ -154,6 +120,18 @@
             this.dgListadoComputadores.TabIndex = 191;
             this.dgListadoComputadores.TabStop = false;
             // 
+            // gbListMonitorHw
+            // 
+            this.gbListMonitorHw.Controls.Add(this.dgListadoMonitores);
+            this.gbListMonitorHw.Location = new System.Drawing.Point(590, 41);
+            this.gbListMonitorHw.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.gbListMonitorHw.Name = "gbListMonitorHw";
+            this.gbListMonitorHw.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.gbListMonitorHw.Size = new System.Drawing.Size(464, 246);
+            this.gbListMonitorHw.TabIndex = 1;
+            this.gbListMonitorHw.TabStop = false;
+            this.gbListMonitorHw.Text = "Monitor";
+            // 
             // dgListadoMonitores
             // 
             this.dgListadoMonitores.AllowUserToAddRows = false;
@@ -194,6 +172,18 @@
             this.dgListadoMonitores.TabIndex = 192;
             this.dgListadoMonitores.TabStop = false;
             // 
+            // gbListadoImpreHw
+            // 
+            this.gbListadoImpreHw.Controls.Add(this.dgListadoImpresoras);
+            this.gbListadoImpreHw.Location = new System.Drawing.Point(12, 295);
+            this.gbListadoImpreHw.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.gbListadoImpreHw.Name = "gbListadoImpreHw";
+            this.gbListadoImpreHw.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.gbListadoImpreHw.Size = new System.Drawing.Size(572, 302);
+            this.gbListadoImpreHw.TabIndex = 1;
+            this.gbListadoImpreHw.TabStop = false;
+            this.gbListadoImpreHw.Text = "Impresora";
+            // 
             // dgListadoImpresoras
             // 
             this.dgListadoImpresoras.AllowUserToAddRows = false;
@@ -233,6 +223,18 @@
             this.dgListadoImpresoras.Size = new System.Drawing.Size(560, 268);
             this.dgListadoImpresoras.TabIndex = 193;
             this.dgListadoImpresoras.TabStop = false;
+            // 
+            // gbListadoComunHw
+            // 
+            this.gbListadoComunHw.Controls.Add(this.dgListadoComunicaciones);
+            this.gbListadoComunHw.Location = new System.Drawing.Point(590, 295);
+            this.gbListadoComunHw.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.gbListadoComunHw.Name = "gbListadoComunHw";
+            this.gbListadoComunHw.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.gbListadoComunHw.Size = new System.Drawing.Size(464, 302);
+            this.gbListadoComunHw.TabIndex = 2;
+            this.gbListadoComunHw.TabStop = false;
+            this.gbListadoComunHw.Text = "Comunicaciones";
             // 
             // dgListadoComunicaciones
             // 
@@ -281,7 +283,9 @@
             this.tsListadoHardwareFull.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tsListadoHardwareFull.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbCerrarListadoHardware,
-            this.tslListadoHardFull});
+            this.tsbRefrescaListadoHW,
+            this.tslListadoHardFull,
+            this.tsExportExelListadoHW});
             this.tsListadoHardwareFull.Location = new System.Drawing.Point(0, 0);
             this.tsListadoHardwareFull.Name = "tsListadoHardwareFull";
             this.tsListadoHardwareFull.Size = new System.Drawing.Size(1086, 25);
@@ -305,6 +309,22 @@
             this.tsbCerrarListadoHardware.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.tsbCerrarListadoHardware.Click += new System.EventHandler(this.tsbCerrarListadoHardware_Click);
             // 
+            // tsbRefrescaListadoHW
+            // 
+            this.tsbRefrescaListadoHW.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbRefrescaListadoHW.AutoSize = false;
+            this.tsbRefrescaListadoHW.Font = new System.Drawing.Font("Verdana", 9.75F);
+            this.tsbRefrescaListadoHW.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tsbRefrescaListadoHW.Image = global::API.Properties.Resources.Power___Restart;
+            this.tsbRefrescaListadoHW.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tsbRefrescaListadoHW.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbRefrescaListadoHW.Name = "tsbRefrescaListadoHW";
+            this.tsbRefrescaListadoHW.Size = new System.Drawing.Size(100, 22);
+            this.tsbRefrescaListadoHW.Text = "Refrescar";
+            this.tsbRefrescaListadoHW.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.tsbRefrescaListadoHW.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.tsbRefrescaListadoHW.Click += new System.EventHandler(this.tsbRefrescaListadoHW_Click);
+            // 
             // tslListadoHardFull
             // 
             this.tslListadoHardFull.Font = new System.Drawing.Font("Verdana", 9.75F);
@@ -312,6 +332,23 @@
             this.tslListadoHardFull.Name = "tslListadoHardFull";
             this.tslListadoHardFull.Size = new System.Drawing.Size(70, 22);
             this.tslListadoHardFull.Text = "Hardware";
+            // 
+            // tsExportExelListadoHW
+            // 
+            this.tsExportExelListadoHW.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsExportExelListadoHW.AutoSize = false;
+            this.tsExportExelListadoHW.Font = new System.Drawing.Font("Verdana", 9.75F);
+            this.tsExportExelListadoHW.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tsExportExelListadoHW.Image = global::API.Properties.Resources.if_excel_272703;
+            this.tsExportExelListadoHW.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tsExportExelListadoHW.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsExportExelListadoHW.Name = "tsExportExelListadoHW";
+            this.tsExportExelListadoHW.Size = new System.Drawing.Size(80, 22);
+            this.tsExportExelListadoHW.Text = "Excel";
+            this.tsExportExelListadoHW.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.tsExportExelListadoHW.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.tsExportExelListadoHW.Visible = false;
+            this.tsExportExelListadoHW.Click += new System.EventHandler(this.tsExportExelListadoHW_Click);
             // 
             // fListadoHardware
             // 
@@ -330,12 +367,12 @@
             this.Text = "fListadoHardware";
             this.Load += new System.EventHandler(this.fListadoHardware_Load);
             this.gbListComputador.ResumeLayout(false);
-            this.gbListMonitorHw.ResumeLayout(false);
-            this.gbListadoImpreHw.ResumeLayout(false);
-            this.gbListadoComunHw.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgListadoComputadores)).EndInit();
+            this.gbListMonitorHw.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgListadoMonitores)).EndInit();
+            this.gbListadoImpreHw.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgListadoImpresoras)).EndInit();
+            this.gbListadoComunHw.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgListadoComunicaciones)).EndInit();
             this.tsListadoHardwareFull.ResumeLayout(false);
             this.tsListadoHardwareFull.PerformLayout();
@@ -357,5 +394,7 @@
         private System.Windows.Forms.ToolStrip tsListadoHardwareFull;
         private System.Windows.Forms.ToolStripButton tsbCerrarListadoHardware;
         private System.Windows.Forms.ToolStripLabel tslListadoHardFull;
+        private System.Windows.Forms.ToolStripButton tsbRefrescaListadoHW;
+        private System.Windows.Forms.ToolStripButton tsExportExelListadoHW;
     }
 }
